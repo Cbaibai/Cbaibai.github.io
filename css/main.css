@@ -2060,7 +2060,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #42f2ff;
+  background: #ff04ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3317,7 +3317,7 @@ pre {
 }
 @font-face {
   font-family: HanYi;
-  src: url("/fonts/汉仪寒石体简.ttf");
+  src: url("fonts/汉仪寒石体简.ttf");
 }
 .site-title {
   color: #000;

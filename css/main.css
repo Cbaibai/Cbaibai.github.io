@@ -2060,7 +2060,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #422ade;
+  background: #42f2ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3336,8 +3336,8 @@ pre {
   font-family: '微软雅黑';
   color: #fff;
 }
-.site-description:before {
-  border-top: 1px solid #000;
+.site-description {
+  border-top: 1px solid rgba(120,120,120,0.5);
 }
 .btn {
   color: #906060;
@@ -3380,7 +3380,7 @@ pre {
 }
 .post-tags a {
   padding: 2px 5px 2px 5px;
-  border: 1px solid #000;
+  border: 1px solid #aaa;
   border-radius: 5px;
   background-color: #fff;
   transition: background-color 0.5s;
@@ -3394,15 +3394,12 @@ pre {
   transition: transform 0.5s;
 }
 .links-of-blogroll-list .links-of-blogroll-item:hover {
-  color: #666;
+  color: #800080;
   -webkit-transform: scale(1.2, 1.2);
   -moz-transform: scale(1.2, 1.2);
   -ms-transform: scale(1.2, 1.2);
   -o-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
-}
-.links-of-blogroll-item a:active {
-  color: #800080;
 }
 .menu .badge {
   transition: transform 0.2s;
@@ -3414,10 +3411,6 @@ pre {
   -ms-transform: scale(1.5, 1.5);
   -o-transform: scale(1.5, 1.5);
   transform: scale(1.5, 1.5);
-}
-.footer-inner {
-  position: absolute;
-  bottom: 20px;
 }
 a #download {
   display: inline-block;
@@ -3433,55 +3426,7 @@ a #download:hover {
   background: #000;
   color: #fff;
 }
-span #inline-yellow {
-  display: inline;
-  padding: 0.2em 0.6em 0.3em;
-  font-size: 80%;
-  font-weight: bold;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0;
-  background-color: #f0ad4e;
-}
-span #inline-green {
-  display: inline;
-  padding: 0.2em 0.6em 0.3em;
-  font-size: 80%;
-  font-weight: bold;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0;
-  background-color: #5cb85c;
-}
-span #inline-blue {
-  display: inline;
-  padding: 0.2em 0.6em 0.3em;
-  font-size: 80%;
-  font-weight: bold;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0;
-  background-color: #2780e3;
-}
-span #inline-purple {
-  display: inline;
-  padding: 0.2em 0.6em 0.3em;
-  font-size: 80%;
-  font-weight: bold;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0;
-  background-color: #9954bb;
+.footer {
+  position: fixed;
+  bottom: 20px;
 }

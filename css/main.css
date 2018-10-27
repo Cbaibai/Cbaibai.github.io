@@ -2060,7 +2060,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff04ff;
+  background: #ff2960;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3269,10 +3269,11 @@ ul.breadcrumb li+li:last-child {
 body {
   background: url("/images/wood-back.jpg");
 }
-code {
+.code {
   color: #ff7600;
   background: #fbf7f8;
   margin: 2px;
+  border: 2px solid #aaa;
 }
 .highlight,
 pre {
@@ -3281,9 +3282,12 @@ pre {
   border-radius: 3px;
 }
 .highlight,
-code,
+.code,
 pre {
   border: 1px solid #d6d6d6;
+}
+.highlight {
+  box-shadow: 2px 1px 10px #906060;
 }
 .post {
   margin-top: 20px;
@@ -3313,11 +3317,11 @@ pre {
 }
 .headband {
   height: 5px;
-  background: #aaa;
+  background: #ccc;
 }
 @font-face {
   font-family: HanYi;
-  src: url("fonts/汉仪寒石体简.ttf");
+  src: url("/fonts/汉仪寒石体简.ttf");
 }
 .site-title {
   color: #000;

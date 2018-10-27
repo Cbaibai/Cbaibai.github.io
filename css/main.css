@@ -2060,7 +2060,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e5b9bd;
+  background: #422ade;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2826,7 +2826,7 @@ ul.breadcrumb li+li:last-child {
   overflow: hidden;
   padding: 0;
   width: 240px;
-  background: #fff;
+  background: rgba(255,255,240,0.5);
   box-shadow: initial;
   border-radius: initial;
 }
@@ -2882,7 +2882,7 @@ ul.breadcrumb li+li:last-child {
   box-sizing: border-box;
   padding: 40px;
   width: calc(100% - 252px);
-  background: #fff;
+  background: rgba(240,255,255,0.5);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
@@ -2903,7 +2903,8 @@ ul.breadcrumb li+li:last-child {
   }
 }
 .sidebar {
-  position: static;
+  position: absolute;
+  left: 256px;
   float: left;
   margin-top: 300px;
   width: 240px;
@@ -2919,6 +2920,10 @@ ul.breadcrumb li+li:last-child {
   .sidebar {
     display: none;
   }
+}
+.sidebar-inner {
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 5%;
 }
 .sidebar-toggle {
   display: none;
@@ -3237,6 +3242,33 @@ ul.breadcrumb li+li:last-child {
     text-align: justify;
   }
 }
+::-webkit-scrollbar {
+  width: 10px; /*对垂直流动条有效*/
+  height: 10px;
+  background-color: #aa80aa;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #bc8f8f;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #e8e8e8;
+}
+::-webkit-scrollbar-button {
+  background-color: #0ff;
+}
+::-webkit-scrollbar-corner {
+  background: #f0e68c;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #8b0000;
+}
+body {
+  background: url("/images/wood-back.jpg");
+}
 code {
   color: #ff7600;
   background: #fbf7f8;
@@ -3257,8 +3289,88 @@ pre {
   margin-top: 20px;
   margin-bottom: 30px;
   padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+  box-shadow: 2px 1px 5px #906060;
+  -webkit-box-shadow: 2px 1px 5px #906060;
+  -moz-box-shadow: 2px 1px 5px #906060;
+}
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body p a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
+}
+::selection {
+  background: #609090;
+  color: #f7f7f7;
+}
+::-moz-selection {
+  background: #00c4b6;
+  color: #f7f7f7;
+}
+.headband {
+  height: 5px;
+  background: #aaa;
+}
+@font-face {
+  font-family: HanYi;
+  src: url("/fonts/汉仪寒石体简.ttf");
+}
+.site-title {
+  color: #000;
+  font-size: 40px !important;
+  font-weight: bold;
+  font-family: 'HanYi' !important;
+}
+.site-meta {
+  padding: 20px 0;
+  color: #fff;
+  background: #aaa;
+}
+.site-subtitle {
+  margin-top: 10px;
+  font-size: 13px;
+  font-family: '微软雅黑';
+  color: #fff;
+}
+.site-description:before {
+  border-top: 1px solid #000;
+}
+.btn {
+  color: #906060;
+  background: #fff;
+  border: 2px solid #906060;
+  border-radius: 5%;
+}
+.btn:hover {
+  border-color: #aaa;
+  color: #fff;
+  background: #aaa;
+}
+.posts-expand .post-title-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #aaa;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }
 * {
   cursor: url("http://om8u46rmb.bkt.clouddn.com/sword2.ico"), auto !important;
@@ -3266,7 +3378,110 @@ pre {
 :active {
   cursor: url("http://om8u46rmb.bkt.clouddn.com/sword1.ico"), auto !important;
 }
-menu badge:active {
-  background_color: #906060;
-  color: #609090;
+.post-tags a {
+  padding: 2px 5px 2px 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: background-color 0.5s;
+}
+.post-tags a:hover {
+  transfrom: scale(1.5, 1.5);
+  background-color: #60aaaa;
+  color: #fff;
+}
+.links-of-blogroll-list .links-of-blogroll-item {
+  transition: transform 0.5s;
+}
+.links-of-blogroll-list .links-of-blogroll-item:hover {
+  color: #666;
+  -webkit-transform: scale(1.2, 1.2);
+  -moz-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  -o-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+.links-of-blogroll-item a:active {
+  color: #800080;
+}
+.menu .badge {
+  transition: transform 0.2s;
+}
+.menu .badge:hover {
+  background-color: #906060;
+  -webkit-transform: scale(1.5, 1.5);
+  -moz-transform: scale(1.5, 1.5);
+  -ms-transform: scale(1.5, 1.5);
+  -o-transform: scale(1.5, 1.5);
+  transform: scale(1.5, 1.5);
+}
+.footer-inner {
+  position: absolute;
+  bottom: 20px;
+}
+a #download {
+  display: inline-block;
+  padding: 0 10px;
+  color: #000;
+  background: transparent;
+  border: 2px solid #000;
+  border-radius: 2px;
+  transition: all 0.5s ease;
+  font-weight: bold;
+}
+a #download:hover {
+  background: #000;
+  color: #fff;
+}
+span #inline-yellow {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #f0ad4e;
+}
+span #inline-green {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #5cb85c;
+}
+span #inline-blue {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #2780e3;
+}
+span #inline-purple {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 80%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0;
+  background-color: #9954bb;
 }

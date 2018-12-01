@@ -5,9 +5,9 @@
   <subtitle>书写，是对思维的缓存！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://Cbaibai.com/"/>
   <updated>2018-12-01T12:45:18.694Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://Cbaibai.com/</id>
   
   <author>
     <name>Cbaibai</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Qt控件及对话框</title>
-    <link href="http://yoursite.com/2018/12/01/Qt%E6%8E%A7%E4%BB%B6%E5%8F%8A%E5%AF%B9%E8%AF%9D%E6%A1%86/"/>
-    <id>http://yoursite.com/2018/12/01/Qt控件及对话框/</id>
+    <link href="http://Cbaibai.com/2018/12/01/Qt%E6%8E%A7%E4%BB%B6%E5%8F%8A%E5%AF%B9%E8%AF%9D%E6%A1%86/"/>
+    <id>http://Cbaibai.com/2018/12/01/Qt控件及对话框/</id>
     <published>2018-12-01T12:39:30.000Z</published>
     <updated>2018-12-01T12:45:18.694Z</updated>
     
@@ -35,17 +35,17 @@
     
     </summary>
     
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+      <category term="Qt" scheme="http://Cbaibai.com/categories/Qt/"/>
     
     
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+      <category term="Qt" scheme="http://Cbaibai.com/tags/Qt/"/>
     
   </entry>
   
   <entry>
     <title>Perl子程序(函数)</title>
-    <link href="http://yoursite.com/2018/10/26/Perl%20_process/"/>
-    <id>http://yoursite.com/2018/10/26/Perl _process/</id>
+    <link href="http://Cbaibai.com/2018/10/26/Perl%20_process/"/>
+    <id>http://Cbaibai.com/2018/10/26/Perl _process/</id>
     <published>2018-10-26T02:40:40.000Z</published>
     <updated>2018-10-27T14:33:25.281Z</updated>
     
@@ -61,12 +61,12 @@
     
     </summary>
     
-      <category term="perl" scheme="http://yoursite.com/categories/perl/"/>
+      <category term="perl" scheme="http://Cbaibai.com/categories/perl/"/>
     
     
-      <category term="perl" scheme="http://yoursite.com/tags/perl/"/>
+      <category term="perl" scheme="http://Cbaibai.com/tags/perl/"/>
     
-      <category term="函数" scheme="http://yoursite.com/tags/%E5%87%BD%E6%95%B0/"/>
+      <category term="函数" scheme="http://Cbaibai.com/tags/%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   

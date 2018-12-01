@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+<script>
+  (function(){
+    if(''){
+        if (prompt('该文章属于加密文章，请输入文章阅读密码') !== ''){
+            alert('密码错误！');
+            history.back();
+        }
+    }
+  })();
+</script>
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cube.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cube.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"bounceIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftBigIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;emsp;&amp;emsp;当QML第一版发布时，QML缺少开发应用程序所必须的一些通用控件，这需要开发者自己编写，但效果往往差强人意。 &amp;emsp;&amp;emsp;Qt 5.1为QML增加了独立的模块Qt Quick Controls和Qt Quick Dialog，这些模块提供了很多QML通用的控件以及通用对话框，用于构建完整的应用程序界面。 第一个实例首先我们先来看看使用Qt Quick Contr">
+<meta name="keywords" content="Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt控件及对话框">
+<meta property="og:url" content="http://yoursite.com/2018/12/01/Qt控件及对话框/index.html">
+<meta property="og:site_name" content="摆摆笔记">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;当QML第一版发布时，QML缺少开发应用程序所必须的一些通用控件，这需要开发者自己编写，但效果往往差强人意。 &amp;emsp;&amp;emsp;Qt 5.1为QML增加了独立的模块Qt Quick Controls和Qt Quick Dialog，这些模块提供了很多QML通用的控件以及通用对话框，用于构建完整的应用程序界面。 第一个实例首先我们先来看看使用Qt Quick Contr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/WEBRESOURCEf9658a733ee4257ba5675a51daad4016/33523">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/2c2a6303c9f79b21cb1af9c49ad1e4b9/33558">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/9f889624909048e8514d2132ba2b5464/33561">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/a3683838a1d3f253ab0990a6b6333ad7/33564">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/d6a55b3c18d3cb5adf92fe0f53631635/33568">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/ef17dbf0707ea1576ce0af6f13a4cdff/33569">
+<meta property="og:updated_time" content="2018-12-01T12:45:18.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Qt控件及对话框">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;当QML第一版发布时，QML缺少开发应用程序所必须的一些通用控件，这需要开发者自己编写，但效果往往差强人意。 &amp;emsp;&amp;emsp;Qt 5.1为QML增加了独立的模块Qt Quick Controls和Qt Quick Dialog，这些模块提供了很多QML通用的控件以及通用对话框，用于构建完整的应用程序界面。 第一个实例首先我们先来看看使用Qt Quick Contr">
+<meta name="twitter:image" content="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/WEBRESOURCEf9658a733ee4257ba5675a51daad4016/33523">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="摆摆笔记" type="application/atom+xml">
+
+
+
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Qt控件及对话框 | 摆摆笔记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/Cbaibai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">摆摆笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">书写，是对思维的缓存！</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-address-card-o"></i> <br>关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">2</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-douban_books">
+    <a href="/books/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br>豆瓣书评</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <!--<form action="http://www.baidu.com/baidu" target="_blank" style="border-radius: 5%;">
+    <table bgcolor="#FFFFFF"><tr><td>
+      <input name="tn" type="hidden" value="baidu">
+        <a href="http://www.baidu.com/">
+          <img src="https://gss0.bdstatic.com/70cFsjip0QIZ8tyhnq/img/logo-80px.gif" alt="Baidu" align="bottom" border="0">
+        </a>
+        <div style="display: flex;flex-direction: row; margin-left:290px;">
+          <input type="text" name="word" size="50"><input type="submit" value="百度搜索" class="btn">
+        </div>
+    </td></tr></table>
+  </form>-->
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/Qt控件及对话框/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cbaibai">
+      <meta itemprop="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+      <meta itemprop="image" content="/images/Cbaibai.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="摆摆笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Qt控件及对话框
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-01 20:39:30 / 修改时间：20:45:18" itemprop="dateCreated datePublished" datetime="2018-12-01T20:39:30+08:00">2018-12-01</time>
+            
+
+            
+              
+
+              
+            
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;当QML第一版发布时，QML缺少开发应用程序所必须的一些通用控件，这需要开发者自己编写，但效果往往差强人意。</p>
+<p>&emsp;&emsp;Qt 5.1为QML增加了独立的模块Qt Quick Controls和Qt Quick Dialog，这些模块提供了很多QML通用的控件以及通用对话框，用于构建完整的应用程序界面。</p>
+<h1 id="第一个实例"><a href="#第一个实例" class="headerlink" title="第一个实例"></a><font color="#906060" size="4">第一个实例</font></h1><p>首先我们先来看看使用Qt Quick Controls模块的第一个例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQucik.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    title: qsTr(&quot;Hello World&quot;)</span><br><span class="line">    width: 640; height: 480</span><br><span class="line">    menuBar: MenuBar &#123;</span><br><span class="line">        Menu &#123;</span><br><span class="line">            title: qsTr(&quot;File&quot;)</span><br><span class="line">            MenuItem &#123;</span><br><span class="line">                text: qsTr(&quot;Exit&quot;)</span><br><span class="line">                onTriggered: Qt.quit()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Button &#123;</span><br><span class="line">        text: qsTr(&quot;Hello World&quot;)</span><br><span class="line">        anchors.horizontalCenter: parent.horizontalCenter</span><br><span class="line">        anchors.verticalCenter</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;QtQuick Controls的根容器是ApplicationWindow，这是一个类似于QMainWindow的类型，拥有自己的菜单栏，工具栏和状态栏。</p>
+<h1 id="ApplicationWindow应用程序窗口"><a href="#ApplicationWindow应用程序窗口" class="headerlink" title="ApplicationWindow应用程序窗口"></a><font color="#906060" size="4">ApplicationWindow应用程序窗口</font></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Layouts 1.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    id: window; width: 800; height: 600</span><br><span class="line">    contentItem.minimumWidth: 400; contentItem.minimumHeight: 300;</span><br><span class="line">    contentItem.maximumWidth: 800; contentItem.maximumHeight: 600</span><br><span class="line">    </span><br><span class="line">    // 中心区域</span><br><span class="line">    TextArea &#123; id: myContent; anchors.fill: parent &#125;</span><br><span class="line">    Action &#123;</span><br><span class="line">        id: quitAction; text: qsTr(&quot;Quit&quot;)</span><br><span class="line">        shortcut: &quot;ctrl+q&quot;; iconSource: &quot;images/quit.png&quot;</span><br><span class="line">        onTrigger: Qt.quit()</span><br><span class="line">    &#125;</span><br><span class="line">    Action &#123;</span><br><span class="line">        id: quitAction; text: qsTr(&quot;Cut&quot;)</span><br><span class="line">        shortcut: &quot;ctrl+x&quot;; iconSource: &quot;images/cut.png&quot;</span><br><span class="line">        onTrigger: myContent.Cut()</span><br><span class="line">    &#125;</span><br><span class="line">    Action &#123;</span><br><span class="line">        id: quitAction; text: qsTr(&quot;Copy&quot;)</span><br><span class="line">        shortcut: &quot;ctrl+c&quot;; iconSource: &quot;images/copy.png&quot;</span><br><span class="line">        onTrigger: myContent.Copy()</span><br><span class="line">    &#125;</span><br><span class="line">    Action &#123;</span><br><span class="line">        id: quitAction; text: qsTr(&quot;Paste&quot;)</span><br><span class="line">        shortcut: &quot;ctrl+v&quot;; iconSource: &quot;images/paste.png&quot;</span><br><span class="line">        onTrigger: myContent.Paste()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 菜单栏</span><br><span class="line">    menuBar: MenuBar &#123;</span><br><span class="line">        Menu &#123;</span><br><span class="line">            title: qsTr(&quot;&amp;File&quot;)</span><br><span class="line">            MenuItem: &#123; action: quitAction &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Menu &#123;</span><br><span class="line">            title: qsTr(&quot;&amp;Edit&quot;)</span><br><span class="line">            MenuItem &#123; action: cutAction &#125;</span><br><span class="line">            MenuItem &#123; action: copyAction &#125;</span><br><span class="line">            MenuItem &#123; action: pasteAction &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 工具栏</span><br><span class="line">    toolBar: ToolBar &#123;</span><br><span class="line">        id: mainToolBar</span><br><span class="line">        width: parent.width</span><br><span class="line">        Row &#123;</span><br><span class="line">            anchors.fill: parent</span><br><span class="line">            ToolButton &#123; action: cutAction &#125;</span><br><span class="line">            ToolButton &#123; action: copyAction &#125;</span><br><span class="line">            ToolButton &#123; action: pasteAction &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 状态栏</span><br><span class="line">    statusBar: StatusBar &#123; </span><br><span class="line">        RowLayout &#123;</span><br><span class="line">            Label &#123; text: &quot;Ready.&quot; &#125;</span><br><span class="line">            Label &#123; text: &quot;Welcome.&quot; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-Action"><a href="#1-Action" class="headerlink" title="1. Action"></a><font color="#906060" size="3">1. Action</font></h2><p>&emsp;&emsp;Action控件类似于QAction类，其内封装了应用程序中的动作命令，Action可以添加到菜单，工具条中，由用户触发或通过快捷键调用。</p>
+<p>&emsp;&emsp;使用Action最大的好处是多个位置的action可以自动同步，比如，如果将一个action加入到菜单栏和工具栏，当action被修改时，菜单栏和工具栏对应的按钮就会同步做出改变。QtQuick支持为Button，ToolButton和MenuItem添加Action。</p>
+<h2 id="2-菜单类控件"><a href="#2-菜单类控件" class="headerlink" title="2. 菜单类控件"></a><font color="#906060" size="3">2. 菜单类控件</font></h2><p>&emsp;&emsp;ApplicationWindow有一个menuBar属性，拥有设置菜单栏，menuBar属性要指定一个MenuBar类型对象。MenuBar只有menus和style两个属性，其中menus是list<menu>类型，这意味着可以向MenuBar添加Menu类型的子控件。Menu对应着QMenu，它可以作为菜单栏的顶层菜单，也可以作为另外菜单的子菜单，独立菜单或上下文菜单。</menu></p>
+<p>&emsp;&emsp;Menu有一个items属性，用来设置菜单的子项目，虽然这个属性的类型是list<object>，但实际上，它仅支持Menu，MenuItem和MenuSeparator这三种类型的对象作为其输入。<br><br>&emsp;&emsp;其中，Menu可以作为当前菜单的子菜单;MenuItem可以作为当前菜单的菜单栏，MenuSeparator作为当前菜单的分隔符。</object></p>
+<p>&emsp;&emsp;Menu类型包含了一系列有用的方法，例如添加菜单项addItem()，添加子菜单addMenu()，添加分隔符addSeparator()，插入菜单项insertItem()，插入菜单insertMenu()，插入分隔符insertSeparator()，移除项removeItem()以及在光标划过处打开菜单popup()。</p>
+<h2 id="3-StatusBar"><a href="#3-StatusBar" class="headerlink" title="3. StatusBar"></a><font color="#906060" size="3">3. StatusBar</font></h2><p>&emsp;&emsp;ApplicationWindow的statusBar属性用于向应用程序窗口添加状态栏，这个属性的类型是Item，隐因此可以将任何Item对象设置为状态栏，但最常见的还是使用StatusBar控件。</p>
+<p>&emsp;&emsp;使用时，要自己为StatusBar添加布局管理器，一般是RowLayout布局管理器，用于排列添加到状态栏的控件。</p>
+<h2 id="4-工具栏类控件"><a href="#4-工具栏类控件" class="headerlink" title="4. 工具栏类控件"></a><font color="#906060" size="3">4. 工具栏类控件</font></h2><p>&emsp;&emsp;ToolBar与StatusBar类似，这个属性的类型也是Item，一般为其添加RowLayout布局管理器。添加到工具栏的按钮可以是ToolButton类型，ToolButton是Button的子类，这是一种专门为工具栏显示优化的按钮。</p>
+<h1 id="Window"><a href="#Window" class="headerlink" title="Window"></a><font color="#906060" size="4">Window</font></h1><p>ApplicationWindow是Window的子类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    width: 400; height: 400</span><br><span class="line">    color: &quot;gray&quot;; opacity: 0.6</span><br><span class="line">    x: 300; y: 300</span><br><span class="line">    Window &#123;</span><br><span class="line">        id: dialog; title: &quot;Dialog&quot;</span><br><span class="line">        width: 200; height: 200</span><br><span class="line">        flags: Qt.Dialog   // Window.flag设置为Qt.Dialog表示该窗口是一个对话框</span><br><span class="line">        Label &#123;</span><br><span class="line">            width: parent.width; height: parent.height</span><br><span class="line">            text: &quot;This is a dialog&quot;</span><br><span class="line">            horizontalAlignment: Text.AlignHCenter</span><br><span class="line">            verticalAlignment: Text.AlignVCenter</span><br><span class="line">        &#125;</span><br><span class="line">        onClosing: console.log(&quot;quit!&quot;);</span><br><span class="line">        // 窗口关闭信号close的信号处理器</span><br><span class="line">    &#125;</span><br><span class="line">    Button &#123;</span><br><span class="line">        text: qsTr(&quot;Open&quot;);</span><br><span class="line">        anchors.centerIn: parent</span><br><span class="line">        onClicked: &#123; dialog.show(); &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="按钮类控件"><a href="#按钮类控件" class="headerlink" title="按钮类控件"></a><font color="#906060" size="4">按钮类控件</font></h1><p>&emsp;&emsp;QtQuick Controls中提供了5类按钮:Button，checkBox，RadioButton，Switch和ToolButton。</p>
+<h2 id="1-ExclusiveGroup"><a href="#1-ExclusiveGroup" class="headerlink" title="1. ExclusiveGroup"></a><font color="#906060" size="3">1. ExclusiveGroup</font></h2><p>&emsp;&emsp;一般的按钮都包含一个ExclusiveGroup属性，需要为其指定一个ExclusiveGroup类型的对象。ExclusiveGroup类型可以包含多个Action对象，使得这些Action能够彼此互斥。当Action被添加到ExclusiveGroup时，ExclusiveGroup对象会自动赋值给每一个Action对象的Action::exclusiveGroup属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    ExclusiveGroup &#123;</span><br><span class="line">        id: radioInputGroup</span><br><span class="line">        Action &#123; id: dabRadioInput; text: &quot;DAB&quot;; checkable: true &#125;</span><br><span class="line">        Action &#123; id: fmRadioInput; text: &quot;FM&quot;; checkable: true &#125;</span><br><span class="line">        Action &#123; id: amRadioInput; text: &quot;AM&quot;; checkable: true &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    toolBar: ToolBar &#123;</span><br><span class="line">        id: mainToolBar; width:parent.width</span><br><span class="line">        Row &#123;</span><br><span class="line">            anchors.fill: parent</span><br><span class="line">            ToolButton &#123; action: dabRadioInput &#125;</span><br><span class="line">            ToolButton &#123; action: fmRadioInput &#125;</span><br><span class="line">            ToolButton &#123; action: amRadioInput &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;ExclusiveGroup仅支持将Action对象添加为自己的子元素，所以当我们需要使用其他控件时，只能显式地将ExcludiveGroup对象赋值给这些元素各自的exclusiveGroup属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    ExclusiveGroup &#123; id: radioInputGroup &#125;</span><br><span class="line">    toolBar: ToolBar &#123;</span><br><span class="line">        id: mainToolBar; width: parent.width</span><br><span class="line">        Row &#123;</span><br><span class="line">            anchors.fill: parent</span><br><span class="line">            ToolButton &#123;</span><br><span class="line">                id: dabRadioInput; text: &quot;DAB&quot;;</span><br><span class="line">                checkable: true; exclusiveGroup: radioInputGroup</span><br><span class="line">            &#125;</span><br><span class="line">            ToolButton &#123;</span><br><span class="line">                id: fmRadioInput; text: &quot;FM&quot;;</span><br><span class="line">                checkable: true; exclusiveGroup: radioInputGroup</span><br><span class="line">            &#125;</span><br><span class="line">            ToolButton &#123;</span><br><span class="line">                id: amRadioInput; text: &quot;AM&quot;</span><br><span class="line">                checkable: true; exclusiveGroup: radioInputGroup</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-Button"><a href="#2-Button" class="headerlink" title="2. Button"></a><font color="#906060" size="3">2. Button</font></h2><p>&emsp;&emsp;Button对应着Qt中的QPushButton，Button既可以使用Action进行初始化，也可以通过自身属性初始化。</p>
+<p>&emsp;&emsp;Button有一个menu属性，可以为这个按钮添加菜单:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    Button &#123;</span><br><span class="line">        x: 10; y: 10; width: 140</span><br><span class="line">        text: qsTr(&quot;Button with menu&quot;)</span><br><span class="line">        menu: Menu &#123;</span><br><span class="line">            MenuItem &#123; text: qsTr(&quot;Item1&quot;) &#125;</span><br><span class="line">            MenuItem &#123; text: qsTr(&quot;Item2&quot;) &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;与QPushButton一样，Button也提供了checkable和checked属性，可以将按钮设置为有状态的形式，Button的exclusiveGroup属性可以将几个Button对象组成一个互斥的组，当其中之一被选择时，其余的按钮会自动取消选择。</p>
+<h2 id="3-CheckBox"><a href="#3-CheckBox" class="headerlink" title="3. CheckBox"></a><font color="#906060" size="3">3. CheckBox</font></h2><p>&emsp;&emsp;CheckBox对应着Qt中的QCheckBox。CheckBox有选中和未选中状态，实际上，CheckBox还有处于一种”部分选中”的状态，可以将partiallyCheckedEnabled设为true来开启这种状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    CheckBox &#123;</span><br><span class="line">        width: 140</span><br><span class="line">        text: qsTr(&quot;3 - state CheckBox&quot;)</span><br><span class="line">        partiallyCheckedEnabled: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;CheckBox的exclusiveGroup属性可以将几个CheckBox对象组成一个互斥的组，当其中之一被选择时，其余会自动取消选择。</p>
+<h2 id="4-RadioButton"><a href="#4-RadioButton" class="headerlink" title="4. RadioButton"></a><font color="#906060" size="3">4. RadioButton</font></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    Column &#123;</span><br><span class="line">        // 定义一个ExclusiveGroup组</span><br><span class="line">        ExclusiveGroup &#123; id: group &#125;</span><br><span class="line">        RadioButton &#123;</span><br><span class="line">            text: qsTr(&quot;From top&quot;)</span><br><span class="line">            exclusiveGroup: group    // 属于同一组的按钮互斥</span><br><span class="line">            checkable:.true</span><br><span class="line">        &#125;</span><br><span class="line">        RadioButton &#123;</span><br><span class="line">            text: qsTr(&quot;From cursor&quot;)</span><br><span class="line">            exclusiveGroup: group</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-Switch"><a href="#5-Switch" class="headerlink" title="5. Switch"></a><font color="#906060" size="3">5. Switch</font></h2><p>&emsp;&emsp;Switch是从移动平台引入的一个控件，用于表示相对独立的，具有启用和禁用两种状态的情况，它非常类似CheckBox。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.3</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    Column &#123;</span><br><span class="line">        spacing: 8</span><br><span class="line">        Switch &#123; checkable: true &#125;</span><br><span class="line">        Switch &#123; checkable: false &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="数据选择类控件"><a href="#数据选择类控件" class="headerlink" title="数据选择类控件"></a><font color="#906060" size="4">数据选择类控件</font></h1><h2 id="1-ComboBox"><a href="#1-ComboBox" class="headerlink" title="1. ComboBox"></a><font color="#906060" size="3">1. ComboBox</font></h2><p>下拉选择框。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ComboBox &#123;</span><br><span class="line">    width: 200</span><br><span class="line">    // 数据模型</span><br><span class="line">    model: [ &quot;Banana&quot;, &quot;Apple&quot;, &quot;Coconut&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>ComboBox还可以使用ListModel作为数据模型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    ComboBox &#123;</span><br><span class="line">        width: 200; currentIndex: 2</span><br><span class="line">        model: ListModel &#123;</span><br><span class="line">            id: cbItems</span><br><span class="line">            ListElement &#123; text: &quot;Banana&quot;; color: &quot;Yellow&quot; &#125;</span><br><span class="line">            ListElement &#123; text: &quot;Apple&quot;; color: &quot;Green&quot; &#125;</span><br><span class="line">            ListElement &#123; text: &quot;Coconut&quot;; color: &quot;Brown&quot; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        onCurrentIndexChanged: console.debug(cbItems.get(currentItem).text + &quot;, &quot; + cbItems.get(currentIndex).color)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;ComboBox的editable属性可以设置这个ComboBox是否可编辑，将其设为true时，下拉框允许用户编辑数据。accepted信号确定是否可以将用户输入的数据添加到下拉框中，不过，在添加新数据之前，需要确定下拉框中是否存在重复项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick2 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	ComboBox &#123;</span><br><span class="line">		id: editableCombo; editable: true</span><br><span class="line">		model: ListModel &#123;</span><br><span class="line">			id: model</span><br><span class="line">			ListElement &#123; text: &quot;Banana&quot;; color: &quot;Yellow&quot; &#125;</span><br><span class="line">			ListElement &#123; text: &quot;Apple&quot;; color: &quot;Green&quot; &#125;</span><br><span class="line">			ListElement &#123; text: &quot;Coconut&quot;; color: &quot;Brown&quot; &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		onAccepted: &#123;</span><br><span class="line">			if(editableComboBox.find(currentText) === -1) &#123;</span><br><span class="line">			// currentText即用户输入的内容</span><br><span class="line">				model.append(&#123;text: editText&#125;)</span><br><span class="line">				currentIndex = editableCombo.find(editText)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/WEBRESOURCEf9658a733ee4257ba5675a51daad4016/33523" alt=""></p>
+<h2 id="2-Slider"><a href="#2-Slider" class="headerlink" title="2. Slider"></a><font color="#906060" size="3">2. Slider</font></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	Slider &#123;</span><br><span class="line">		minimumValue: 0; maximumValue: 100</span><br><span class="line">		stepSize: 1; onValueChanged: console.log(value)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-SpinBox"><a href="#3-SpinBox" class="headerlink" title="3. SpinBox"></a><font color="#906060" size="3">3. SpinBox</font></h2><p>&emsp;&emsp;SpinBox对应着Qt中的QSpinBox，允许用户通过单击上下按钮或使用上下键来改变数值，SpinBox的默认范围是[0-99]，默认精度decimals是0。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	SpinBox &#123;</span><br><span class="line">		minimumValue: -5; maximumValue: 10</span><br><span class="line">		prefix: &quot;Today&quot;; suffix: &quot;Degree&quot;</span><br><span class="line">		decimals: 1; stepSize: 0.1</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="文本类控件"><a href="#文本类控件" class="headerlink" title="文本类控件"></a><font color="#906060" size="4">文本类控件</font></h1><h2 id="1-TextField"><a href="#1-TextField" class="headerlink" title="1. TextField"></a><font color="#906060" size="3">1. TextField</font></h2><p>&emsp;&emsp;TextField对应Qt中的QLineEdit，是一个单行的输入框允许用户输入和编辑单行的文本，TextField可以使用cut()，copy()和paste()实现剪贴板的剪贴，复制和粘贴等操作。在粘贴之前，可以使用canPaste测试其是否允许粘贴操作。</p>
+<p>&emsp;&emsp;与QLineEdit类似，TextField有四种显示模式，使用echoMode属性进行设置，其值是一个enumeration类型，允许的值包括:</p>
+<blockquote>
+<ul>
+<li>TextInput.Normal: 默认值，正常显示输入的内容</li>
+<li>TextInput.Password: 密码样式，以黑点或星号显示</li>
+<li>TextInput.NoEcho: 不显示任何输入</li>
+<li>TextInput.PasswordEchoOnEdit:在编辑时显示正常输入的内容，其余情况下则显示为密码样式</li>
+</ul>
+</blockquote>
+<p>&emsp;&emsp;TextField支持输入掩码限制输入的内容，输入掩码使用inputMask属性设置，可以利用一些特殊字符指定输入的格式和内容，也可以validator属性给TextField设置验证器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	TextField &#123;</span><br><span class="line">		y: 10; width: 200</span><br><span class="line">		placeholderText: &quot;Please enter a password&quot;		// 占位符</span><br><span class="line">		echoMode: TextInput.PasswordEchoOnEdit</span><br><span class="line">		validator: IntValidator&#123;bottom: 11; top: 31&#125; 	// 输入限制在11-31字</span><br><span class="line">		onAccepted: console.debug(text)</span><br><span class="line">	&#125;</span><br><span class="line">	TextField &#123; y: 40; width: 200 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-TextArea"><a href="#2-TextArea" class="headerlink" title="2. TextArea"></a><font color="#906060" size="3">2. TextArea</font></h2><p>&emsp;&emsp;TextArea对应着QTextEdit,是一个多行的文本输入框，与TextField的纯文本不同，TextArea支持富文本显示，这可以通过textFormat来设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	TextArea &#123;</span><br><span class="line">		id: textArea_1; width: 240; height: 100</span><br><span class="line">		textFormat: TextEdit.RichText</span><br><span class="line">		font.pointSize: 13</span><br><span class="line">		text: &quot;&lt;b&gt;Hello&lt;/b&gt;&lt;i&gt;World!&lt;/i&gt;&quot;</span><br><span class="line">	&#125;</span><br><span class="line">	TextArea &#123;</span><br><span class="line">		id: textArea_2; y: 100; width: 240</span><br><span class="line">		textFormat: TextEdit.PlainText</span><br><span class="line">		text: &quot;&lt;b&gt;Hello&lt;/b&gt;&lt;i&gt;World!&lt;/i&gt;&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="其他控件"><a href="#其他控件" class="headerlink" title="其他控件"></a><font color="#906060" size="4">其他控件</font></h1><h2 id="1-Label"><a href="#1-Label" class="headerlink" title="1. Label"></a><font color="#906060" size="3">1. Label</font></h2><p>&emsp;&emsp;Label对应着QLabel，用于显示普通文本，与TextArea类似，Label既可以纯文本，也可以显示富文本。Label继承自Text类型，所以包含了Text的所有特点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	Label &#123;</span><br><span class="line">		textFormat: TextEdit.PlainText</span><br><span class="line">		text: &quot;&lt;b&gt;Hello&lt;/b&gt;&lt;i&gt;World!&lt;/i&gt;&quot;</span><br><span class="line">		font.pixelSize: 22</span><br><span class="line">		font.italic: true</span><br><span class="line">		color: &quot;steelblue&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-GroupBox"><a href="#2-GroupBox" class="headerlink" title="2. GroupBox"></a><font color="#906060" size="3">2. GroupBox</font></h2><p>&emsp;&emsp;GroupBox对应着Qt中的QGroupBox，用来组织一组相关的控件，GroupBox通常有一个标题，同时还可以有一个边框将整个控件围绕起来。使用时，GroupBox可以根据自己的大小设置自己的尺寸，但如果需要定位GroupBox内的子控件，必须显式指定GroupBox的宽度和高度。</p>
+<p>&emsp;&emsp;GroupBox可以设置为可被选中的，此时，GroupBox左上角会显示一个复选框，只有当用户选中GroupBox时，其子控件才可用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	width: 300; height: 200</span><br><span class="line">	GroupBox &#123;</span><br><span class="line">		title: qsTr(&quot;Group 2&quot;); checkable: true</span><br><span class="line">		x: 10; y: 10; width: 200; height: 100</span><br><span class="line">		Column &#123;</span><br><span class="line">			spacing: 2</span><br><span class="line">			CheckBox &#123; text: qsTr(&quot;Update system&quot;) &#125;</span><br><span class="line">			CheckBox &#123; text: qsTr(&quot;Update system&quot;) &#125;</span><br><span class="line">			CheckBox &#123; text: qsTr(&quot;Update documentation&quot;) &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-BusyIndicator"><a href="#3-BusyIndicator" class="headerlink" title="3. BusyIndicator"></a><font color="#906060" size="3">3. BusyIndicator</font></h2><p>&emsp;&emsp;BusyIndicator是从移动平台借鉴来的一个控件，类似于忙碌的鼠标样式，用于在内容正在加载或UI阻塞的时候显示，提示用户正在运行，而在所等待的资源可用时，BusyIndicator应该停止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	BusyIndicator &#123;</span><br><span class="line">		id: busyIndicator; running: true</span><br><span class="line">	&#125;</span><br><span class="line">	MouseArea &#123;</span><br><span class="line">		anchors.fill: parent</span><br><span class="line">		onClicked: busyIndicator.running = false</span><br><span class="line">		// busyIndicator为true时，显示，为false时，消失</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-ProgressBar"><a href="#4-ProgressBar" class="headerlink" title="4. ProgressBar"></a><font color="#906060" size="3">4. ProgressBar</font></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	ProgressBar &#123;</span><br><span class="line">		id: progressBar</span><br><span class="line">		minimumValue: 0; maximumValue: 100</span><br><span class="line">	&#125;</span><br><span class="line">	Timer &#123;</span><br><span class="line">		interval: 100; running: true; repeat: true</span><br><span class="line">		onTriggered: progressBar.value++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="导航类视图"><a href="#导航类视图" class="headerlink" title="导航类视图"></a><font color="#906060" size="4">导航类视图</font></h1><p>&emsp;&emsp;ScrollView对应着Qt中的QScrollView，即带有滚动条的视图，ScrollView中只能包含一个组件，这个控件会隐式的充满整个视图。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	width: 200; height: 200</span><br><span class="line">	ScrollView &#123;</span><br><span class="line">		anchors.fill: parent</span><br><span class="line">		Image &#123; source: &quot;screen.png&quot; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-SplitView"><a href="#2-SplitView" class="headerlink" title="2. SplitView"></a><font color="#906060" size="3">2. SplitView</font></h2><p>&emsp;&emsp;SplitView对应着Qt中的QSplitter，可以将多个组件水平或垂直排列起来，相邻组件由可被拖动的分隔块分隔。SplitView通常要与布局管理器结合使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Layouts 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">	width: 400; height: 200</span><br><span class="line">	SplitView &#123;</span><br><span class="line">		anchors.fill: parent</span><br><span class="line">		oritentation: Qt.Horizontal</span><br><span class="line">		Rectangle &#123;</span><br><span class="line">			width: 200; color: &quot;gray&quot;</span><br><span class="line">			Layout.maximumWidth: 300</span><br><span class="line">		&#125;</span><br><span class="line">		Rectangle &#123;</span><br><span class="line">			id: centerItem; color: &quot;darkgray&quot;</span><br><span class="line">			Layout.minimumWidth: 50</span><br><span class="line">			Layout.fillWidth: true</span><br><span class="line">		&#125;</span><br><span class="line">		Rectangle &#123;</span><br><span class="line">			width: 200; color: &quot;gray&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-StackView"><a href="#3-StackView" class="headerlink" title="3. StackView"></a><font color="#906060" size="3">3. StackView</font></h2><p>&emsp;&emsp;StackView对应着C++中设置了QStackedLayout的QWidget。这是一种基于栈的导航模型，可以将一系列相关联的视图页面添加到这个栈中。这个“栈”遵循“先进后出”的操作方式：视图被压入栈中，只有最上面的才会被显示，当点击“后退”按钮时，顶层的视图会被弹出。</p>
+<p>&emsp;&emsp;StackView提供了一系列用于实现导航的函数，比如push,pop和clear等。供StackView显示的第一个视图会被赋值给initialItem属性，被压入栈中的视图会获得3个Stack附加属性：</p>
+<blockquote>
+<ul>
+<li>Stack.index: 保存该视图在StackView的索引</li>
+<li>Stack.view: 保存该视图所在的StackView对象</li>
+<li>Stack.status: 保存该视图的状态，这个状态有下面几个有效值:<ul>
+<li>Stack.Inactive: 该视图不可见</li>
+<li>Stack.Activating：该视图正在变为可见状态</li>
+<li>Stack.Active: 该视图可见，即处于栈顶</li>
+<li>Stack.Deactivating: 该视图正在变为不可见状态</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a><font color="#906060" size="2">1. 基本操作</font></h3><p>&emsp;&emsp;StackView最常用的3个操作是push,pop和replace。压入操作相当于将导航前进一步，弹出操作相当于将导航后退一步，替换操作相当于更换当前视图。在界面进行切换时，StackView会添加过渡动画，但如果栈本来就是空的，那么第一次压入操作不会有动画出现。另外，如果一个栈只有一个或没有视图，弹出操作也不会起作用，这意味着弹出操作不会将栈清空，如果需要将栈彻底清空，需要使用专门的清空操作(clear)。</p>
+<p>&emsp;&emsp;有时候，程序需要后退多步，例如退回主界面等。这种情况下，可以给弹出操作一个参数，这种操作成为“展开”，相当于将该元素上面的视图全部弹出。如果找不到指定视图，则会弹出除最下层的视图以外的全部上层视图，直接显示最底层视图也可以使用pop(null)来实现。</p>
+<p>下面，我们通过一个例子，来理解StackView的基本操作：</p>
+<p>假设StackView现在已有三个视图，栈中内容为[A,B,C]，现对其做如下操作:</p>
+<blockquote>
+<ul>
+<li>push(D)=&gt;[A,B,C,D]，压入的过渡动画出现在C,D之间</li>
+<li>pop()=&gt;[A,B]，弹出的过渡动画出现在C，B之间</li>
+<li>push(D, replace)=&gt;[A,B,D]，替换的过渡动画出现在C,D之间</li>
+<li>pop(A)=&gt;[A]，弹出的过渡动画出现在C，A之间</li>
+</ul>
+</blockquote>
+<p>&emsp;&emsp;除了针对单个视图进行的操作，StackView还支持对视图数组进行压入，弹出等操作，这种操作被称为”深链接”。压入一个视图数组，会将数组中所有视图压入栈中，但是，过渡动画只会出现在栈顶视图与最后一个视图之间。</p>
+<p>&emsp;&emsp;依然是上面的例子，假设StackView已有3个视图，栈中的内容是[A,B,C]，我们现在对其进行”深链接”操作:</p>
+<ul>
+<li>push([D,E,F])=&gt;[A,B,C,D,E,F]，压入的过渡动画将出现在C，F之间</li>
+<li>push([D,E,F], replace)=&gt;[A,B,D,E,F]，替换的过渡动画将出现在C,F之间</li>
+<li>clear();push([D,E,F])=&gt;没有过渡动画，这个操作实质上相当于替换整个栈的内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    width: 800; height: 600</span><br><span class="line">    MouseArea &#123;</span><br><span class="line">    // 动态增加StackView的视图</span><br><span class="line">        anchors.fill: parent</span><br><span class="line">        acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton</span><br><span class="line">        onClicked: &#123;</span><br><span class="line">            if(mouse.button == Qt.LeftButton)</span><br><span class="line">                stackView.push([blueView, greenView, yellowView]);</span><br><span class="line">            else if(mouse.button == Qt.RightButton)</span><br><span class="line">                stackView.pop();</span><br><span class="line">            else</span><br><span class="line">                stackView.push(&#123;item: orangeView, replace: true&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Rectangle &#123; id: blueView; color: &quot;blue&quot; &#125;</span><br><span class="line">    Rectangle &#123; id: greenView; color: &quot;green&quot; &#125;</span><br><span class="line">    Rectangle &#123; id: yellowView; color: &quot;yellow&quot; &#125;</span><br><span class="line">    Rectangle &#123; id: orangeView; color: &quot;orange&quot; &#125;</span><br><span class="line">    StackView &#123;</span><br><span class="line">        id: StackView; anchors.fill: parent</span><br><span class="line">        // initialItem表示在窗口显示时就加载的最初控件</span><br><span class="line">        initialItem: Item &#123;</span><br><span class="line">            id: redView</span><br><span class="line">            Rectangle &#123; anchors.fill: parent; color:&quot;red&quot; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果要压入多个视图，最好使用数组，而不是一个一个压入，因为QtQuick对数组压入做了优化，即实质上只压入要显示的那张视图，数组内其余视图只有在需要显示的时候才会被载入。</p>
+<p>&emsp;&emsp;上述代码中stackView.push(blueView)其实是stackView.push({item: blueView})的简写，push的完整参数应是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">push(&#123;item: , properties: , immediate: , replace: , destroyOnPop: &#125;)</span><br><span class="line">// item: 必填属性，即被压入的视图</span><br><span class="line">// properties: 一个属性列表，这些属性会在加载或显示时赋值给被压入视图</span><br><span class="line">// immediate: 当该属性设为true时，可以跳过过渡动画，如果压入一个视图数组，只需要设置数组中第一个元素的属性即可</span><br><span class="line">// replace: 当该属性设为true时，会使用设置了该属性的视图替换栈顶视图。如果压入一个视图数组，可以将其设置为数组的第一个视图，那么，栈中原有的与数组视图个数相同的整个视图都会被替换</span><br><span class="line">// destroyOnPop: 当该属性设为true时，StackView会在弹出后销毁被弹出的视图</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-生命周期"><a href="#2-生命周期" class="headerlink" title="2. 生命周期"></a><font color="#906060" size="2">2. 生命周期</font></h3><p>&emsp;&emsp;当视图处于活动状态时，意味着这个视图正在屏幕显示，也就是所谓的”当前视图”，当视图没有在屏幕显示时，即便这个视图处于栈顶，也处于非活动状态。活动状态与非活动状态之间可以进行多次转换。</p>
+<p><img src="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/2c2a6303c9f79b21cb1af9c49ad1e4b9/33558" alt=""></p>
+<p>&emsp;&emsp;可以使用附加属性Stack.status追踪视图的生命周期，status属性在前面已经介绍过了。</p>
+<p>&emsp;&emsp;结合Component.onComplete和Component.onDestruction两个信号，可以使用以下信号监控视图的生命周期。</p>
+<blockquote>
+<ul>
+<li>视图被创建: Component.onComplete()</li>
+<li>转换为活动状态: Stack.onStatusChanged(此时Stack.status为Stack.Activating)</li>
+<li>转换为活动状态: Stack.onStatusChanged(Stack.status为Stack.Stack.Active)</li>
+<li>转换为非活动状态: Stack.onStatusChanged(Stack.status为Stack.Inactive)</li>
+<li>视图被销毁: Component.onDestruction()</li>
+</ul>
+</blockquote>
+<h3 id="3-查找视图"><a href="#3-查找视图" class="headerlink" title="3. 查找视图"></a><font color="#906060" size="2">3. 查找视图</font></h3><p>&emsp;&emsp;视图的查找操作通过StackView的find()函数来实现，这个函数接受一个回调函数作为参数，这个回调函数会依照栈中视图从上向下的顺序针对每一个遍历到的视图调用。如果回调函数返回true，说明找到了视图，find()会返回这个函数，如果始终没有找到视图，find()将返回null。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stackView.pop(stackView.find(function(item) &#123;</span><br><span class="line">    return item.name == &quot;order_id&quot;;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;也可以使用get(index)函数获取特定索引的视图，这个函数适用于具有前后关系的视图，比如要找到特定视图view前面的一张视图，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">previousItem = stackView.get(view.Stack.index - 1)</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-TabView"><a href="#4-TabView" class="headerlink" title="4. TabView"></a><font color="#906060" size="3">4. TabView</font></h2><p>&emsp;&emsp;TabView对应着Qt中的QTabWidget，用于显示带有标签页的控件。<br><br>&emsp;&emsp;TabView的count属性返回该视图中共有几个标签页;currentIndex属性返回当前显示的标签页的索引;tabPosition属性设置标签栏的显示位置，可选值有Qt.TopEdge(默认值)和Qt.BottomEdge;如果暂时不想显示标签栏，可以设置tabsVisible属性;如果不想显示边框，可以设置frameVisible属性。<br><br>&emsp;&emsp;TabView还提供了用于维护标签页的几个函数，比如addTab()，insertTab()，moveTab()和removeTab()等。</p>
+<p>&emsp;&emsp;TabView需要添加Tab控件作为子视图，Tab控件继承自Loader，可以动态加载其他QML文档。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.2</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    width: 300; height: 200</span><br><span class="line">    TabView &#123;</span><br><span class="line">        anchors.fill: parent</span><br><span class="line">        Tab &#123; title: &quot;Home&quot; &#125;</span><br><span class="line">        Tab &#123; title: &quot;Edit&quot;&#125;</span><br><span class="line">        Tab &#123; title: &quot;View&quot;&#125;</span><br><span class="line">        Tab &#123; title: &quot;Help&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/9f889624909048e8514d2132ba2b5464/33561" alt=""></p>
+<h2 id="5-TableView"><a href="#5-TableView" class="headerlink" title="5. TableView"></a><font color="#906060" size="3">5. TableView</font></h2><p>&emsp;&emsp;TableView对应着QTableView，但增加了滚动条，选择可改变大小的列头。TableView使用数据模型为表格模型为表格的每一行提供数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Window 2.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    width: 600; height: 200</span><br><span class="line">    ListModel &#123;</span><br><span class="line">        id: libraryModel</span><br><span class="line">        ListElement &#123; title: &quot;A Masterpiece&quot;; author: &quot;Gabriel&quot; &#125;</span><br><span class="line">        ListElement &#123; title: &quot;Brilliance&quot;; author: &quot;Jens&quot; &#125;</span><br><span class="line">        ListElement &#123; title: &quot;Outstanding&quot;; author: &quot;Frederik&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    TableView &#123;</span><br><span class="line">        anchors.fill: parent; model: libraryModel</span><br><span class="line">        TableViewColumn &#123; role: &quot;title&quot;; title: &quot;Title&quot;; width: 100 &#125;</span><br><span class="line">        TableViewColumn &#123; role: &quot;author&quot;; title: &quot;Author&quot;; width: 200 &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在TableView中需要使用TableViewColumn来指定模型中的字段，每一个TableViewColumn对应一个字段。其中，需要指定role即模型中字段名称，title是要显示的每一列的列头。<br><br>&emsp;&emsp;TableViewColumn类型中还包含了visible，width，resizable，movable，delegate等属性，其中delegate属性可以给特定的列使用委托来指定显示方式，在委托中可以访问特定的属性。</p>
+<p>TableViewColumn的delegate中可以访问的属性:</p>
+<p><img src="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/a3683838a1d3f253ab0990a6b6333ad7/33564" alt=""></p>
+<p>&emsp;&emsp;TableView可以通过itemDelegate属性，使用委托来绘制指定单元格，它与TableViewColumn的delegate效果相同，还可以通过rowDelegate和headerDelegate来委托绘制行或列头。<br><br>&emsp;&emsp;TableView类型还提供了一些常用的函数，比如addColumn()，getColumn()，insertColumn()，removeColumn()和rowAt(x,y)等进行相关操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TableView &#123;</span><br><span class="line">    anchors.fill: parent; model: libraryModel</span><br><span class="line">    TableViewColumn &#123; role: &quot;title&quot;; title: &quot;Title&quot;; width: 100 &#125;</span><br><span class="line">    TableViewColumn &#123; role: &quot;author&quot;; title: &quot;Author&quot;; width: 200 &#125;</span><br><span class="line">    itemDelegate &#123;</span><br><span class="line">        Text &#123;</span><br><span class="line">            anchors.horizontalCenter: parent.horizontalCenter</span><br><span class="line">            color: styleData.selected ? &quot;red&quot; : &quot;blue&quot;</span><br><span class="line">            font.pointSize: 10</span><br><span class="line">            text: styleData.row == 2 ? &quot;myrow&quot; : styleData.value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 当TableView中的行被点击后，会发射clicked信号</span><br><span class="line">    onClicked: console.debug(row)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="标准对话框"><a href="#标准对话框" class="headerlink" title="标准对话框"></a><font color="#906060" size="4">标准对话框</font></h1><p>&emsp;&emsp;一个完整的应用程序通常需要使用对话框来完成一些交互，有些对话框提供一些通用功能，比如选择文件，选择颜色等。由于这部分对话框对于每个程序都是一样的，QML提供了一系列预定义的对话框，被称为标准对话框。</p>
+<p>&emsp;&emsp;Dialogs模块中提供了4种标准对话框:ColorDialog，FileDialog，FontDialog和MessageDialog。</p>
+<h2 id="ColorDialog"><a href="#ColorDialog" class="headerlink" title="ColorDialog"></a><font color="#906060" size="3">ColorDialog</font></h2><p>&emsp;&emsp;ColorDialog对应C++中的QColorDialog，用于进行颜色选择的对话框。初始状态下，该对话框是不可见的，需要先对属性进行设置，然后将其visible属性设置为true，或者调用open()显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Dialogs 1.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    id: window; width: 300; height: 300</span><br><span class="line">    Button &#123;</span><br><span class="line">        width: 100; height: 50; text: &quot;Color Dialog&quot;</span><br><span class="line">        anchors.centerIn: parent</span><br><span class="line">        onClicked: colorDialog.open()</span><br><span class="line">    &#125;</span><br><span class="line">    ColorDialog &#123;</span><br><span class="line">        id: colorDialog</span><br><span class="line">        title: &quot;Please choose a color&quot;</span><br><span class="line">        onAccepted: &#123; window.color = color &#125;</span><br><span class="line">        onRejected: &#123; console.log(&quot;Canceled&quot;) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="FileDialog"><a href="#FileDialog" class="headerlink" title="FileDialog"></a><font color="#906060" size="3">FileDialog</font></h2><p>&emsp;&emsp;FileDialog对应着C++中的QFileDialog，用于显示选择文件的对话框，同ColorDialog，初始状态下，FileDialog也是不可见的。</p>
+<p>&emsp;&emsp;选择的文件或文件列表(选择了多个文件)的路径可以通过fileUrl和fileUrls来获取，如果要选择多个文件，需要设置selectMultiple属性为true。如果要选择的是目录而不是文件，可以设置selectFolder为true，然后通过folder属性来获取选中的目录路径。如果在调用open()之前设置了folder属性，那么会打开指定的目录。还可以使用nameFilter来设置文件名过滤器，过滤器中可以使用？和*通配符，每个字符串之间使用空格隔开。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Dialogs 1.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    id: window; width: 300; height: 300</span><br><span class="line">    Button &#123;</span><br><span class="line">        width: 100; height: 50; text: &quot;file dialog&quot;</span><br><span class="line">        anchors.centerIn: parent</span><br><span class="line">        onClicked: fileDialog.open()</span><br><span class="line">    &#125;</span><br><span class="line">    fileDialog &#123;</span><br><span class="line">        id: fileDialog</span><br><span class="line">        title: &quot;Please choose a file&quot;</span><br><span class="line">        nameFilter: [ &quot;image file(*.jpg *.png)&quot;, &quot;All files(*)&quot; ]</span><br><span class="line">        folder: &quot;..&quot;</span><br><span class="line">        onAccepted: &#123; window.title = fileDialog.fileUrl &#125;</span><br><span class="line">        onRejected: &#123; console.log(&quot;Cancel&quot;) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="FontDialog"><a href="#FontDialog" class="headerlink" title="FontDialog"></a><font color="#906060" size="3">FontDialog</font></h2><p>&emsp;&emsp;FontDialog对应着C++中的QFontDialog，用于进行字体选择的对话框。FontDialog类型中可以在使用open()以前使用font属性来设置初始的字体，当关闭对话框后，可以使用font来获取选中的字体内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Dialogs 1.1</span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">    id: window; width: 300; height: 300</span><br><span class="line">    Button &#123;</span><br><span class="line">        width: 100; height: 50; text: &quot;Font Dialog&quot;</span><br><span class="line">        anchors.centerIn: parent</span><br><span class="line">        onClicked: fontDialog.open()</span><br><span class="line">    &#125;</span><br><span class="line">    FontDialog &#123;</span><br><span class="line">        id: fontDialog</span><br><span class="line">        title: &quot;Please choose a font&quot;</span><br><span class="line">        font: Qt.font(&#123; family: &quot;Arial&quot;, pointSize: 24; weight: Font.Normal &#125;)</span><br><span class="line">        onAccepted: &#123; console.log(&quot;you choose&quot; + fontDialog.font) &#125;</span><br><span class="line">        onRejected: &#123; console.log(&quot;Canceled&quot;) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="MessageDialog"><a href="#MessageDialog" class="headerlink" title="MessageDialog"></a><font color="#906060" size="3">MessageDialog</font></h2><p>&emsp;&emsp;MessageDialog对应着C++中的QMessageBox，用于显示一些提示信息的标准对话框，比如警告，错误等。需要一个个设置MessageDialog的各个属性，以便达到需要的效果。</p>
+<p>&emsp;&emsp;使用text属性可以设置主要显示的内容,使用detailedtext属性可以设置要显示的详细信息。</p>
+<p>&emsp;&emsp;icon属性用来设置对话框的图标,一共有5种: Standardicon. nicon(没 有图标) Standardicon. Question(问题)、 Standardicon. Information(信息)、 Standardi con. Warning(警告) Standardicon. Critical(错误)。</p>
+<p>&emsp;&emsp;使用standardbuttons属性可以设置对话框中的按钮。每一个按钮都包含一个ButtonRole,用来决定按钮被按下时发射的信号类型。例如Ok按钮对应的是AcceptRole,那么Ok按钮按下时就应该在onAccepted()信号处理器中进行相应操作;而Help按钮对应的是HelpRole,那么其对应的就是help()信号处理器。</p>
+<p><strong>MessageDialog中的标准按钮类型</strong>：<br><img src="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/d6a55b3c18d3cb5adf92fe0f53631635/33568" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Dialogs 1.1</span><br><span class="line">Applicationwindow &#123;</span><br><span class="line">    id: window; width: 300; height: 300</span><br><span class="line">    Button &#123;</span><br><span class="line">        width: 100; height: 50; text: &quot;Message Dialog&quot;</span><br><span class="line">        anchors.centerIn: parent</span><br><span class="line">        onClicked: messageDialog.open()</span><br><span class="line">    &#125;</span><br><span class="line">    MessageDialog &#123;</span><br><span class="line">        id: messageDialog</span><br><span class="line">        title: &quot;May I have your attention please&quot;</span><br><span class="line">        text: &quot;it&apos;s so cool that you are using Qt Quick.&quot;</span><br><span class="line">        detailedText: &quot;this is the detailed text&quot;</span><br><span class="line">        icon: StandardIcon.Question</span><br><span class="line">        standardButtons: StandardButton.Yes | StandardButton.Help | Standardbutton.Open</span><br><span class="line">        onYes: &#123; console. log(&quot;yes&quot;) &#125;</span><br><span class="line">        onhelp: &#123; console.log(&quot;help&quot;) &#125;</span><br><span class="line">        onAccepted: &#123; console.log(&quot;open.&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/public/resource/3a46f7ee5af1f694f9a33badad780f51/xmlnote/ef17dbf0707ea1576ce0af6f13a4cdff/33569" alt=""></p>
+<h1 id="定义控件样式"><a href="#定义控件样式" class="headerlink" title="定义控件样式"></a><font color="#906060" size="4">定义控件样式</font></h1><p>&emsp;&emsp;QtQuick模块提供的控件样式都是最基本的样式，在QtQuick Controls模块中，每一个控件都包含了一个style属性，需要指定对应的样式类型，样式类型就是在该控件类型名称的后面加上Style。例如，Button对应的就是ButtonStyle。在样式类型中包含了特定的属性和简单的委托来修改一个控件的外观和行为。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import QtQuick 2.2</span><br><span class="line">import QtQuick.Controls 1.2</span><br><span class="line">import QtQuick.Controls.Styles 1.2</span><br><span class="line">Application &#123;</span><br><span class="line">    Button &#123;</span><br><span class="line">        style: ButtonStyle &#123;</span><br><span class="line">            label: Text &#123;</span><br><span class="line">                text: &quot;A button&quot;; font.pointSize: 12</span><br><span class="line">                color: control.pressed ? &quot;blue&quot; : &quot;green&quot;</span><br><span class="line">            &#125;</span><br><span class="line">            background： Rectangle &#123;</span><br><span class="line">                implicitWidth： 100; implicitHeight： 25</span><br><span class="line">                border.width： 100; control.activeFocus ? 2 ： 1</span><br><span class="line">                border.color： &quot;#888&quot;; radius： 4</span><br><span class="line">                gradient： Gradient &#123;</span><br><span class="line">                    GradientStop &#123;</span><br><span class="line">                        position： 0</span><br><span class="line">                        color: control.pressed ? &quot;#ccc&quot; : &quot;#eee&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                    GradientStop &#123;</span><br><span class="line">                        position: 1</span><br><span class="line">                        color: control.pressed ? &quot;#aaa&quot; : &quot;#ccc&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;与ButtonStyle类似，其他控件对应的样式类型也可以通过委托组件的方式来定义控件的相关部分。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文已结束<i class="fa fa-paw"></i>感谢您的阅读！-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="Cbaibai wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎订阅本站公众号!</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Cbaibai 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cbaibai 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>摆摆</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/12/01/Qt控件及对话框/" title="Qt控件及对话框">http://yoursite.com/2018/12/01/Qt控件及对话框/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag" style="margin-right:2px;"></i>Qt</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/26/Perl _process/" rel="next" title="Perl子程序(函数)">
+                <i class="fa fa-chevron-left"></i> Perl子程序(函数)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/Cbaibai.gif" alt="Cbaibai">
+            
+              <p class="site-author-name" itemprop="name">Cbaibai</p>
+              <p class="site-description motion-element" itemprop="description">本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS订阅
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yourname" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/4172b00e93da" target="_blank" title="简书" rel="external nofollow"><i class="fa fa-fw fa-pencil"></i>简书</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/cheng-yixi-68/activities" target="_blank" title="知乎" rel="external nofollow"><i class="fa fa-fw fa-tags"></i>知乎</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/people/186465728" target="_blank" title="豆瓣" rel="external nofollow"><i class="fa fa-fw fa-mortar-board"></i>豆瓣</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/6646223936" target="_blank" title="微博" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.shejidaren.com/" title="设计达人" target="_blank">设计达人</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="leetCode" target="_blank">leetCode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://codepen.io/" title="Codepen" target="_blank">Codepen</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          <!--
+	<hr>
+
+	<div id="music163player">
+	    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66">
+	    </iframe>
+	</div>
+-->
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个实例"><span class="nav-number">1.</span> <span class="nav-text">第一个实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ApplicationWindow应用程序窗口"><span class="nav-number">2.</span> <span class="nav-text">ApplicationWindow应用程序窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Action"><span class="nav-number">2.1.</span> <span class="nav-text">1. Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-菜单类控件"><span class="nav-number">2.2.</span> <span class="nav-text">2. 菜单类控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-StatusBar"><span class="nav-number">2.3.</span> <span class="nav-text">3. StatusBar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-工具栏类控件"><span class="nav-number">2.4.</span> <span class="nav-text">4. 工具栏类控件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Window"><span class="nav-number">3.</span> <span class="nav-text">Window</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按钮类控件"><span class="nav-number">4.</span> <span class="nav-text">按钮类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ExclusiveGroup"><span class="nav-number">4.1.</span> <span class="nav-text">1. ExclusiveGroup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Button"><span class="nav-number">4.2.</span> <span class="nav-text">2. Button</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CheckBox"><span class="nav-number">4.3.</span> <span class="nav-text">3. CheckBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-RadioButton"><span class="nav-number">4.4.</span> <span class="nav-text">4. RadioButton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Switch"><span class="nav-number">4.5.</span> <span class="nav-text">5. Switch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据选择类控件"><span class="nav-number">5.</span> <span class="nav-text">数据选择类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ComboBox"><span class="nav-number">5.1.</span> <span class="nav-text">1. ComboBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Slider"><span class="nav-number">5.2.</span> <span class="nav-text">2. Slider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SpinBox"><span class="nav-number">5.3.</span> <span class="nav-text">3. SpinBox</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本类控件"><span class="nav-number">6.</span> <span class="nav-text">文本类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TextField"><span class="nav-number">6.1.</span> <span class="nav-text">1. TextField</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TextArea"><span class="nav-number">6.2.</span> <span class="nav-text">2. TextArea</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他控件"><span class="nav-number">7.</span> <span class="nav-text">其他控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Label"><span class="nav-number">7.1.</span> <span class="nav-text">1. Label</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GroupBox"><span class="nav-number">7.2.</span> <span class="nav-text">2. GroupBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-BusyIndicator"><span class="nav-number">7.3.</span> <span class="nav-text">3. BusyIndicator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ProgressBar"><span class="nav-number">7.4.</span> <span class="nav-text">4. ProgressBar</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导航类视图"><span class="nav-number">8.</span> <span class="nav-text">导航类视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SplitView"><span class="nav-number">8.1.</span> <span class="nav-text">2. SplitView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-StackView"><span class="nav-number">8.2.</span> <span class="nav-text">3. StackView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本操作"><span class="nav-number">8.2.1.</span> <span class="nav-text">1. 基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-生命周期"><span class="nav-number">8.2.2.</span> <span class="nav-text">2. 生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查找视图"><span class="nav-number">8.2.3.</span> <span class="nav-text">3. 查找视图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TabView"><span class="nav-number">8.3.</span> <span class="nav-text">4. TabView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-TableView"><span class="nav-number">8.4.</span> <span class="nav-text">5. TableView</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标准对话框"><span class="nav-number">9.</span> <span class="nav-text">标准对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ColorDialog"><span class="nav-number">9.1.</span> <span class="nav-text">ColorDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileDialog"><span class="nav-number">9.2.</span> <span class="nav-text">FileDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FontDialog"><span class="nav-number">9.3.</span> <span class="nav-text">FontDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MessageDialog"><span class="nav-number">9.4.</span> <span class="nav-text">MessageDialog</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义控件样式"><span class="nav-number">10.</span> <span class="nav-text">定义控件样式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-up">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-info"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cbaibai</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+	
+    
+
+    
+  </div>
+    
+  <script type="text/javascript" src="source/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/baidu_js_push.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Evernote";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.4.2"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.4.2"></script>
+
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>

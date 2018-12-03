@@ -12,7 +12,7 @@
 
 
 
-<html class="theme-next pisces" lang="zh-CN">
+<html class="theme-next gemini" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -107,13 +107,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '6.4.2',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     fastclick: false,
     lazyload: true,
-    tabs: true,
+    tabs: false,
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"bounceIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftBigIn"}},
     algolia: {
       applicationID: '',
@@ -222,7 +222,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta custom-logo">
     
 
     <div class="custom-logo-site-title">
@@ -465,6 +465,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/01/Qt控件及对话框/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/01/Qt控件及对话框/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -770,6 +780,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -786,8 +799,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
-      <div id="sidebar-dimmer"></div>
     
     <div class="sidebar-inner">
 
@@ -958,7 +969,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个实例"><span class="nav-number">1.</span> <span class="nav-text">第一个实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ApplicationWindow应用程序窗口"><span class="nav-number">2.</span> <span class="nav-text">ApplicationWindow应用程序窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Action"><span class="nav-number">2.1.</span> <span class="nav-text">1. Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-菜单类控件"><span class="nav-number">2.2.</span> <span class="nav-text">2. 菜单类控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-StatusBar"><span class="nav-number">2.3.</span> <span class="nav-text">3. StatusBar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-工具栏类控件"><span class="nav-number">2.4.</span> <span class="nav-text">4. 工具栏类控件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Window"><span class="nav-number">3.</span> <span class="nav-text">Window</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按钮类控件"><span class="nav-number">4.</span> <span class="nav-text">按钮类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ExclusiveGroup"><span class="nav-number">4.1.</span> <span class="nav-text">1. ExclusiveGroup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Button"><span class="nav-number">4.2.</span> <span class="nav-text">2. Button</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CheckBox"><span class="nav-number">4.3.</span> <span class="nav-text">3. CheckBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-RadioButton"><span class="nav-number">4.4.</span> <span class="nav-text">4. RadioButton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Switch"><span class="nav-number">4.5.</span> <span class="nav-text">5. Switch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据选择类控件"><span class="nav-number">5.</span> <span class="nav-text">数据选择类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ComboBox"><span class="nav-number">5.1.</span> <span class="nav-text">1. ComboBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Slider"><span class="nav-number">5.2.</span> <span class="nav-text">2. Slider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SpinBox"><span class="nav-number">5.3.</span> <span class="nav-text">3. SpinBox</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本类控件"><span class="nav-number">6.</span> <span class="nav-text">文本类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TextField"><span class="nav-number">6.1.</span> <span class="nav-text">1. TextField</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TextArea"><span class="nav-number">6.2.</span> <span class="nav-text">2. TextArea</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他控件"><span class="nav-number">7.</span> <span class="nav-text">其他控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Label"><span class="nav-number">7.1.</span> <span class="nav-text">1. Label</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GroupBox"><span class="nav-number">7.2.</span> <span class="nav-text">2. GroupBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-BusyIndicator"><span class="nav-number">7.3.</span> <span class="nav-text">3. BusyIndicator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ProgressBar"><span class="nav-number">7.4.</span> <span class="nav-text">4. ProgressBar</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导航类视图"><span class="nav-number">8.</span> <span class="nav-text">导航类视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SplitView"><span class="nav-number">8.1.</span> <span class="nav-text">2. SplitView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-StackView"><span class="nav-number">8.2.</span> <span class="nav-text">3. StackView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本操作"><span class="nav-number">8.2.1.</span> <span class="nav-text">1. 基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-生命周期"><span class="nav-number">8.2.2.</span> <span class="nav-text">2. 生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查找视图"><span class="nav-number">8.2.3.</span> <span class="nav-text">3. 查找视图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TabView"><span class="nav-number">8.3.</span> <span class="nav-text">4. TabView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-TableView"><span class="nav-number">8.4.</span> <span class="nav-text">5. TableView</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标准对话框"><span class="nav-number">9.</span> <span class="nav-text">标准对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ColorDialog"><span class="nav-number">9.1.</span> <span class="nav-text">ColorDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileDialog"><span class="nav-number">9.2.</span> <span class="nav-text">FileDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FontDialog"><span class="nav-number">9.3.</span> <span class="nav-text">FontDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MessageDialog"><span class="nav-number">9.4.</span> <span class="nav-text">MessageDialog</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义控件样式"><span class="nav-number">10.</span> <span class="nav-text">定义控件样式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个实例"><span class="nav-text">第一个实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ApplicationWindow应用程序窗口"><span class="nav-text">ApplicationWindow应用程序窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Action"><span class="nav-text">1. Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-菜单类控件"><span class="nav-text">2. 菜单类控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-StatusBar"><span class="nav-text">3. StatusBar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-工具栏类控件"><span class="nav-text">4. 工具栏类控件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Window"><span class="nav-text">Window</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按钮类控件"><span class="nav-text">按钮类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ExclusiveGroup"><span class="nav-text">1. ExclusiveGroup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Button"><span class="nav-text">2. Button</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CheckBox"><span class="nav-text">3. CheckBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-RadioButton"><span class="nav-text">4. RadioButton</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Switch"><span class="nav-text">5. Switch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据选择类控件"><span class="nav-text">数据选择类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ComboBox"><span class="nav-text">1. ComboBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Slider"><span class="nav-text">2. Slider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SpinBox"><span class="nav-text">3. SpinBox</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本类控件"><span class="nav-text">文本类控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TextField"><span class="nav-text">1. TextField</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TextArea"><span class="nav-text">2. TextArea</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他控件"><span class="nav-text">其他控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Label"><span class="nav-text">1. Label</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GroupBox"><span class="nav-text">2. GroupBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-BusyIndicator"><span class="nav-text">3. BusyIndicator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ProgressBar"><span class="nav-text">4. ProgressBar</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导航类视图"><span class="nav-text">导航类视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SplitView"><span class="nav-text">2. SplitView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-StackView"><span class="nav-text">3. StackView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本操作"><span class="nav-text">1. 基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-生命周期"><span class="nav-text">2. 生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查找视图"><span class="nav-text">3. 查找视图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TabView"><span class="nav-text">4. TabView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-TableView"><span class="nav-text">5. TableView</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标准对话框"><span class="nav-text">标准对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ColorDialog"><span class="nav-text">ColorDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileDialog"><span class="nav-text">FileDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FontDialog"><span class="nav-text">FontDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MessageDialog"><span class="nav-text">MessageDialog</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义控件样式"><span class="nav-text">定义控件样式</span></a></li></ol></div>
             
 
           </div>
@@ -966,13 +977,6 @@
       <!--/noindex-->
       
 
-      
-        <div class="back-to-up">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
       
 
     </div>
@@ -1029,6 +1033,13 @@
       </div>
     </footer>
 
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
     
 
     
@@ -1162,6 +1173,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aLVVb5yKAIwYkY3q1TQkFHef-gzGzoHsz',
+        appKey: 'MAyvoih1a2EacmTYskPHHUyA',
+        placeholder: '来吧，输入你的第一条评论',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 
@@ -1626,5 +1662,5 @@
   </script>
 
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

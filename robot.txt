@@ -4,13 +4,18 @@ Allow: /
 Allow: /archives/
 Allow: /categories/
 Allow: /tags/
+Allow: /about/
+Allow: /2018/
+Allow: /images/
+Allow: /books/
+Allow: /sample/
 
-Disallow: /vendors/
+Disallow: /lib/
 Disallow: /js/
 Disallow: /css/
 Disallow: /fonts/
-Disallow: /vendors/
 Disallow: /fancybox/
+Disallow: /live2dw/
 
 Sitemap: https://baibainote.pro/sitemap.xml
 Sitemap: https://baibainote.pro/baidusitemap.xml

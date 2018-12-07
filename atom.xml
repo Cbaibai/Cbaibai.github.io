@@ -5,9 +5,9 @@
   <subtitle>书写，是对思维的缓存！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://Cbaibai.com/"/>
+  <link href="https://baibainote.pro/"/>
   <updated>2018-12-07T11:37:21.421Z</updated>
-  <id>http://Cbaibai.com/</id>
+  <id>https://baibainote.pro/</id>
   
   <author>
     <name>Cbaibai</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>C++命名空间</title>
-    <link href="http://Cbaibai.com/2018/12/07/C++%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"/>
-    <id>http://Cbaibai.com/2018/12/07/C++命名空间/</id>
+    <link href="https://baibainote.pro/2018/12/07/C++%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"/>
+    <id>https://baibainote.pro/2018/12/07/C++命名空间/</id>
     <published>2018-12-07T11:34:45.000Z</published>
     <updated>2018-12-07T11:37:21.421Z</updated>
     
@@ -35,42 +35,17 @@
     
     </summary>
     
-      <category term="C++" scheme="http://Cbaibai.com/categories/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/categories/C/"/>
     
     
-      <category term="C++" scheme="http://Cbaibai.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++引用</title>
-    <link href="http://Cbaibai.com/2018/12/07/C++%E5%BC%95%E7%94%A8/"/>
-    <id>http://Cbaibai.com/2018/12/07/C++引用/</id>
-    <published>2018-12-07T11:34:45.000Z</published>
-    <updated>2018-12-07T11:37:44.554Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void main() &#123;</span><br><span class="line">    int i = 9;</span><br><span class="line">    int &amp;ri = i;</span><br><span class="line">    cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;    &quot; &lt;&lt; &quot;ri = &quot; &lt;&lt; ri &lt;&lt; endl;</span><br><span class="line">    ri = 20;</span><br><span class="line">    cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;    &quot; &lt;&lt; &quot;ri = &quot; &lt;&lt; ri &lt;&lt; endl;</span><br><span class="line">    i = 12;</span><br><span class="line">    cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;    &quot; &lt;&lt; &quot;ri = &quot; &lt;&lt; ri &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;i 的地址是：&quot; &lt;&lt; &amp;i &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;ri 的地址是：&quot; &lt;&lt; &amp;ri &lt;&lt; endl; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 运行结果：</span><br><span class="line">    i = 9    ri = 9</span><br><span class="line">    i = 20    ri = 20</span><br><span class="line">    i = 12    ri = 12</span><br><span class="line">    i 的地址是： 0029FDB0</span><br><span class="line">    ri 的地址是： 0029FDB0</span><br><span class="line">*/</span><br></pre></td></tr></table></figure><p>可以看到，ri和i指的实际上是同一个变量(内存地址)，对ri的操作实际上就是对i的操作，ri可以看做是i的别名。<br><img src="https://note.youdao.com/yws/public/resource/221712b3563701a749b4b8925395f5d3/xmlnote/ff61098393b04a6e0be38516cd6422dc/25835" alt=""><br><i>使用引用时需要注意以下几个问题：</i><br><br>&emsp;&emsp;① 在定义引用时，&amp;在类型与引用名之间的位置是灵活的，故以下几种定义完全等价：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int&amp; ri = i;    int &amp; ri = i;    int &amp;ri = i;</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;② 在变量声明时出现的&amp;才是引用运算符(包括函数参数声明和函数返回类型的声明)，其它地方出现的&amp;则是地址操作符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i;</span><br><span class="line">int &amp;r = i;     // 引用</span><br><span class="line">int&amp; f(int &amp;i1, int &amp;);     // 引用参数(声明参数变量)</span><br><span class="line">int *p = &amp;i;    // &amp;取i的地址</span><br><span class="line">cout &lt;&lt; &amp;p;     // &amp;取p的地址</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;③ 引用必须在定义时初始化，不能在定义完成后再给它赋值<b>;</b>为引用提供的初始值可以是一个变量名，也可以是另一个引用名，也可以是另一个引用名<b>;</b>同一个变量可以定义多个引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">float f;</span><br><span class="line">float &amp;fr;   // error,引用定义时未初始化</span><br><span class="line">float &amp;r1 = f;   // r1 &lt;=&gt; f</span><br><span class="line">float &amp;r2 = f;   // r2 &lt;=&gt; f</span><br><span class="line">float &amp;r3 = r1;  // r3 &lt;=&gt; r1 &lt;=&gt; f</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;④引用对应着变量的左值，代表变量的内存区域，实际是一种隐式指针，但与指针存在区别。<br><br>&emsp;&emsp;引用与指针的区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    int i = 9;</span><br><span class="line">    int *pi = &amp;i;   // 取地址</span><br><span class="line">    int &amp;ri = i;    // 定义引用</span><br><span class="line">    *pi = 2;</span><br><span class="line">    ri = 8;         // ri等价于*pi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><img src="https://note.youdao.com/yws/public/resource/221712b3563701a749b4b8925395f5d3/xmlnote/29a08d9b1efd597d0cd30813de70e334/25021" alt=""></p><p>可以看到，引用本质上也是指针的一种隐式封装，即将*pi简化为ri。但它与指针至少存在两点区别：</p><ul><li>指针必须通过解引用运算符”*”才能访问它所指向的内存单元，而引用则与普通变量的访问方法差不多;</li><li>指针是一个变量，它有自己独立的内存区域，可以对它重新赋值，让它指向其他地址。但引用只是某个变量的别名，甚至没有自己独立的内存区域，必须在定义时进行初始化，并且一经定义就再也不能作为其他变量的引用了。</li></ul><p>&emsp;&emsp;⑤ 当用&amp;运算符获取一个引用的地址时，实际取出的是引用对应的变量的地址。例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;ri = i;</span><br><span class="line"><span class="keyword">int</span> *pi = &amp;ri;   <span class="comment">// pi的值实际上是i(ri是i的别名引用)的地址</span></span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;⑥ 建立引用时，引用应当类型匹配。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double d;</span><br><span class="line">int &amp;rd = d;   // 引用类型与它对应的变量类型不匹配</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;⑦ 引用与数组。可以建立数组或数组元素的引用，但不能建立引用数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int i = 0, a[10] = &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10&#125;, *b[10];</span><br><span class="line">int (&amp;ra)[10] = a;   // ra是具有10个元素的整型数组的引用</span><br><span class="line">int &amp;aa = a[0];      // 数组元素的引用</span><br><span class="line">int *(&amp;rpa)[10] = b; // rpa是具有10个整型指针的数组的引用</span><br><span class="line">int &amp;ai[10] = a;     // error,ai是引用数组(每个数组元素都是引用)，这是不允定义的</span><br><span class="line">ra[3] = 0;           // 数组引用的用法</span><br><span class="line">rpa[3] = &amp;i;         //</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;⑧ 引用与指针。可以建立指针的引用，但不能创建指向引用的指针。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int i = 0, a[10];</span><br><span class="line">int &amp;*ip = i;     // error,ip是指向引用的指针</span><br><span class="line">int *pi = &amp;i;</span><br><span class="line">int *pr = pi;     // pr是指针的引用</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
-      
-    
-    </summary>
-    
-      <category term="C++" scheme="http://Cbaibai.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://Cbaibai.com/tags/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>C++常量</title>
-    <link href="http://Cbaibai.com/2018/12/07/C++%E5%B8%B8%E9%87%8F/"/>
-    <id>http://Cbaibai.com/2018/12/07/C++常量/</id>
+    <link href="https://baibainote.pro/2018/12/07/C++%E5%B8%B8%E9%87%8F/"/>
+    <id>https://baibainote.pro/2018/12/07/C++常量/</id>
     <published>2018-12-07T11:34:45.000Z</published>
     <updated>2018-12-07T11:35:04.452Z</updated>
     
@@ -86,42 +61,17 @@
     
     </summary>
     
-      <category term="C++" scheme="http://Cbaibai.com/categories/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/categories/C/"/>
     
     
-      <category term="C++" scheme="http://Cbaibai.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>文件的读写</title>
-    <link href="http://Cbaibai.com/2018/12/07/%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/"/>
-    <id>http://Cbaibai.com/2018/12/07/文件输入与输出/</id>
-    <published>2018-12-07T11:34:45.000Z</published>
-    <updated>2018-12-07T11:38:19.500Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但<code>iostream</code>中定义的数据类型和函数只能用于标准输入/输出设配的数据处理。C++将处理文件的数据类型放在了头文件<code>fstream</code>里，分为<code>ofstream</code>和<code>ifstream</code>。<br><br>文件流操作一般包括五个步骤:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* &lt;1&gt; 包含头文件 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;2&gt; 定义文件流句柄file_handler */</span></span><br><span class="line">ifstream inData;</span><br><span class="line">ofstream outData;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;3&gt; 将文件流句柄与磁盘文件filename关联起来 */</span></span><br><span class="line">file_handler.open(filename, mode)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    打开或建立文件的模式mode的可选值:</span></span><br><span class="line"><span class="comment">    ios::in            // 打开输入文件，ifstream类型变量的默认方式</span></span><br><span class="line"><span class="comment">    ios::out           // 建立输出文件，ofstream类型变量的默认方式</span></span><br><span class="line"><span class="comment">    ios::app           // 增加方式，若文件存在，将在文件尾增加数据，否则就建立文件</span></span><br><span class="line"><span class="comment">    ios::trunk         // 若文件存在，则文件中已有内容将被清除</span></span><br><span class="line"><span class="comment">    ios::nocreate      // 若文件不存在，则打开操作失败</span></span><br><span class="line"><span class="comment">    ios::noreplace     // 若文件存在，则打开操作失败</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/* 打开一个文件:</span></span><br><span class="line"><span class="comment">    ofstream outData;</span></span><br><span class="line"><span class="comment">    outData.open("abc.txt", ios:in);</span></span><br><span class="line"><span class="comment">或将&lt;2&gt;,&lt;3&gt;合为一步:</span></span><br><span class="line"><span class="comment">    ofstream outData("abc.txt", ios::in)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;4&gt; 用文件流(&lt;&lt;或&gt;&gt;)操作文件，读/写文件数据，将输入文件流与&gt;&gt;连接，就能够从文件中读入数据，与cin用法相同。将输出文件流与&lt;&lt;连接，就能够从文件中读入数据，与cout用法相同。 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;5&gt; 关闭文件 */</span></span><br><span class="line">inData.close();</span><br><span class="line">ourData.close();</span><br></pre></td></tr></table></figure></p><p><strong>示例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;fstream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void main() &#123;</span><br><span class="line">    ofstream outData(&quot;C:\\data.txt&quot;);    // 前一个 / 用于转义</span><br><span class="line">    ifstream inData;</span><br><span class="line">    int x, a[10];</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        outData &lt;&lt; x &lt;&lt; &quot; &quot;;  // 将x的值写入文件流句柄outData指向的文件data.txt中</span><br><span class="line">    &#125;</span><br><span class="line">    outData.close();</span><br><span class="line">    inData.open(&quot;D:\\data.txt&quot;);</span><br><span class="line">    int j = 0;</span><br><span class="line">    while(!inData.eof())</span><br><span class="line">        inData &gt;&gt; a[j++];   // 将data.txt中的数据载入数组a[]中</span><br><span class="line">    inData.close();</span><br><span class="line">    int s = 0;</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        s += a[i];</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;the sum is: &quot; &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;emsp;&amp;emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但&lt;code&gt;iostream&lt;/code&gt;中定义的数据类型和函数只能用于标准输入/输出设配的
-      
-    
-    </summary>
-    
-      <category term="C++" scheme="http://Cbaibai.com/categories/C/"/>
-    
-    
-      <category term="C++" scheme="http://Cbaibai.com/tags/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>C++函数</title>
-    <link href="http://Cbaibai.com/2018/12/07/C++%E5%87%BD%E6%95%B0/"/>
-    <id>http://Cbaibai.com/2018/12/07/C++函数/</id>
+    <link href="https://baibainote.pro/2018/12/07/C++%E5%87%BD%E6%95%B0/"/>
+    <id>https://baibainote.pro/2018/12/07/C++函数/</id>
     <published>2018-12-07T11:34:45.000Z</published>
     <updated>2018-12-07T11:35:51.684Z</updated>
     
@@ -136,17 +86,17 @@
     
     </summary>
     
-      <category term="C++" scheme="http://Cbaibai.com/categories/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/categories/C/"/>
     
     
-      <category term="C++" scheme="http://Cbaibai.com/tags/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>C++z作用域与生命周期</title>
-    <link href="http://Cbaibai.com/2018/12/07/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%94%9F%E5%91%BD%E6%9C%9F/"/>
-    <id>http://Cbaibai.com/2018/12/07/作用域和生命期/</id>
+    <link href="https://baibainote.pro/2018/12/07/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E7%94%9F%E5%91%BD%E6%9C%9F/"/>
+    <id>https://baibainote.pro/2018/12/07/作用域和生命期/</id>
     <published>2018-12-07T11:34:45.000Z</published>
     <updated>2018-12-07T11:38:51.546Z</updated>
     
@@ -161,10 +111,60 @@
     
     </summary>
     
-      <category term="C++" scheme="http://Cbaibai.com/categories/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/categories/C/"/>
     
     
-      <category term="C++" scheme="http://Cbaibai.com/tags/C/"/>
+      <category term="C++" scheme="https://baibainote.pro/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件的读写</title>
+    <link href="https://baibainote.pro/2018/12/07/%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/"/>
+    <id>https://baibainote.pro/2018/12/07/文件输入与输出/</id>
+    <published>2018-12-07T11:34:45.000Z</published>
+    <updated>2018-12-07T11:38:19.500Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但<code>iostream</code>中定义的数据类型和函数只能用于标准输入/输出设配的数据处理。C++将处理文件的数据类型放在了头文件<code>fstream</code>里，分为<code>ofstream</code>和<code>ifstream</code>。<br><br>文件流操作一般包括五个步骤:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* &lt;1&gt; 包含头文件 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;2&gt; 定义文件流句柄file_handler */</span></span><br><span class="line">ifstream inData;</span><br><span class="line">ofstream outData;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;3&gt; 将文件流句柄与磁盘文件filename关联起来 */</span></span><br><span class="line">file_handler.open(filename, mode)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    打开或建立文件的模式mode的可选值:</span></span><br><span class="line"><span class="comment">    ios::in            // 打开输入文件，ifstream类型变量的默认方式</span></span><br><span class="line"><span class="comment">    ios::out           // 建立输出文件，ofstream类型变量的默认方式</span></span><br><span class="line"><span class="comment">    ios::app           // 增加方式，若文件存在，将在文件尾增加数据，否则就建立文件</span></span><br><span class="line"><span class="comment">    ios::trunk         // 若文件存在，则文件中已有内容将被清除</span></span><br><span class="line"><span class="comment">    ios::nocreate      // 若文件不存在，则打开操作失败</span></span><br><span class="line"><span class="comment">    ios::noreplace     // 若文件存在，则打开操作失败</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/* 打开一个文件:</span></span><br><span class="line"><span class="comment">    ofstream outData;</span></span><br><span class="line"><span class="comment">    outData.open("abc.txt", ios:in);</span></span><br><span class="line"><span class="comment">或将&lt;2&gt;,&lt;3&gt;合为一步:</span></span><br><span class="line"><span class="comment">    ofstream outData("abc.txt", ios::in)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;4&gt; 用文件流(&lt;&lt;或&gt;&gt;)操作文件，读/写文件数据，将输入文件流与&gt;&gt;连接，就能够从文件中读入数据，与cin用法相同。将输出文件流与&lt;&lt;连接，就能够从文件中读入数据，与cout用法相同。 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;5&gt; 关闭文件 */</span></span><br><span class="line">inData.close();</span><br><span class="line">ourData.close();</span><br></pre></td></tr></table></figure></p><p><strong>示例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;fstream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void main() &#123;</span><br><span class="line">    ofstream outData(&quot;C:\\data.txt&quot;);    // 前一个 / 用于转义</span><br><span class="line">    ifstream inData;</span><br><span class="line">    int x, a[10];</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        outData &lt;&lt; x &lt;&lt; &quot; &quot;;  // 将x的值写入文件流句柄outData指向的文件data.txt中</span><br><span class="line">    &#125;</span><br><span class="line">    outData.close();</span><br><span class="line">    inData.open(&quot;D:\\data.txt&quot;);</span><br><span class="line">    int j = 0;</span><br><span class="line">    while(!inData.eof())</span><br><span class="line">        inData &gt;&gt; a[j++];   // 将data.txt中的数据载入数组a[]中</span><br><span class="line">    inData.close();</span><br><span class="line">    int s = 0;</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        s += a[i];</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;the sum is: &quot; &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;emsp;&amp;emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但&lt;code&gt;iostream&lt;/code&gt;中定义的数据类型和函数只能用于标准输入/输出设配的
+      
+    
+    </summary>
+    
+      <category term="C++" scheme="https://baibainote.pro/categories/C/"/>
+    
+    
+      <category term="C++" scheme="https://baibainote.pro/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++引用</title>
+    <link href="https://baibainote.pro/2018/12/07/C++%E5%BC%95%E7%94%A8/"/>
+    <id>https://baibainote.pro/2018/12/07/C++引用/</id>
+    <published>2018-12-07T11:34:45.000Z</published>
+    <updated>2018-12-07T11:37:44.554Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void main() &#123;</span><br><span class="line">    int i = 9;</span><br><span class="line">    int &amp;ri = i;</span><br><span class="line">    cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;    &quot; &lt;&lt; &quot;ri = &quot; &lt;&lt; ri &lt;&lt; endl;</span><br><span class="line">    ri = 20;</span><br><span class="line">    cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;    &quot; &lt;&lt; &quot;ri = &quot; &lt;&lt; ri &lt;&lt; endl;</span><br><span class="line">    i = 12;</span><br><span class="line">    cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;    &quot; &lt;&lt; &quot;ri = &quot; &lt;&lt; ri &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;i 的地址是：&quot; &lt;&lt; &amp;i &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;ri 的地址是：&quot; &lt;&lt; &amp;ri &lt;&lt; endl; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 运行结果：</span><br><span class="line">    i = 9    ri = 9</span><br><span class="line">    i = 20    ri = 20</span><br><span class="line">    i = 12    ri = 12</span><br><span class="line">    i 的地址是： 0029FDB0</span><br><span class="line">    ri 的地址是： 0029FDB0</span><br><span class="line">*/</span><br></pre></td></tr></table></figure><p>可以看到，ri和i指的实际上是同一个变量(内存地址)，对ri的操作实际上就是对i的操作，ri可以看做是i的别名。<br><img src="https://note.youdao.com/yws/public/resource/221712b3563701a749b4b8925395f5d3/xmlnote/ff61098393b04a6e0be38516cd6422dc/25835" alt=""><br><i>使用引用时需要注意以下几个问题：</i><br><br>&emsp;&emsp;① 在定义引用时，&amp;在类型与引用名之间的位置是灵活的，故以下几种定义完全等价：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int&amp; ri = i;    int &amp; ri = i;    int &amp;ri = i;</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;② 在变量声明时出现的&amp;才是引用运算符(包括函数参数声明和函数返回类型的声明)，其它地方出现的&amp;则是地址操作符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int i;</span><br><span class="line">int &amp;r = i;     // 引用</span><br><span class="line">int&amp; f(int &amp;i1, int &amp;);     // 引用参数(声明参数变量)</span><br><span class="line">int *p = &amp;i;    // &amp;取i的地址</span><br><span class="line">cout &lt;&lt; &amp;p;     // &amp;取p的地址</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;③ 引用必须在定义时初始化，不能在定义完成后再给它赋值<b>;</b>为引用提供的初始值可以是一个变量名，也可以是另一个引用名，也可以是另一个引用名<b>;</b>同一个变量可以定义多个引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">float f;</span><br><span class="line">float &amp;fr;   // error,引用定义时未初始化</span><br><span class="line">float &amp;r1 = f;   // r1 &lt;=&gt; f</span><br><span class="line">float &amp;r2 = f;   // r2 &lt;=&gt; f</span><br><span class="line">float &amp;r3 = r1;  // r3 &lt;=&gt; r1 &lt;=&gt; f</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;④引用对应着变量的左值，代表变量的内存区域，实际是一种隐式指针，但与指针存在区别。<br><br>&emsp;&emsp;引用与指针的区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    int i = 9;</span><br><span class="line">    int *pi = &amp;i;   // 取地址</span><br><span class="line">    int &amp;ri = i;    // 定义引用</span><br><span class="line">    *pi = 2;</span><br><span class="line">    ri = 8;         // ri等价于*pi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><img src="https://note.youdao.com/yws/public/resource/221712b3563701a749b4b8925395f5d3/xmlnote/29a08d9b1efd597d0cd30813de70e334/25021" alt=""></p><p>可以看到，引用本质上也是指针的一种隐式封装，即将*pi简化为ri。但它与指针至少存在两点区别：</p><ul><li>指针必须通过解引用运算符”*”才能访问它所指向的内存单元，而引用则与普通变量的访问方法差不多;</li><li>指针是一个变量，它有自己独立的内存区域，可以对它重新赋值，让它指向其他地址。但引用只是某个变量的别名，甚至没有自己独立的内存区域，必须在定义时进行初始化，并且一经定义就再也不能作为其他变量的引用了。</li></ul><p>&emsp;&emsp;⑤ 当用&amp;运算符获取一个引用的地址时，实际取出的是引用对应的变量的地址。例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;ri = i;</span><br><span class="line"><span class="keyword">int</span> *pi = &amp;ri;   <span class="comment">// pi的值实际上是i(ri是i的别名引用)的地址</span></span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;⑥ 建立引用时，引用应当类型匹配。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double d;</span><br><span class="line">int &amp;rd = d;   // 引用类型与它对应的变量类型不匹配</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;⑦ 引用与数组。可以建立数组或数组元素的引用，但不能建立引用数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int i = 0, a[10] = &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10&#125;, *b[10];</span><br><span class="line">int (&amp;ra)[10] = a;   // ra是具有10个元素的整型数组的引用</span><br><span class="line">int &amp;aa = a[0];      // 数组元素的引用</span><br><span class="line">int *(&amp;rpa)[10] = b; // rpa是具有10个整型指针的数组的引用</span><br><span class="line">int &amp;ai[10] = a;     // error,ai是引用数组(每个数组元素都是引用)，这是不允定义的</span><br><span class="line">ra[3] = 0;           // 数组引用的用法</span><br><span class="line">rpa[3] = &amp;i;         //</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;⑧ 引用与指针。可以建立指针的引用，但不能创建指向引用的指针。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int i = 0, a[10];</span><br><span class="line">int &amp;*ip = i;     // error,ip是指向引用的指针</span><br><span class="line">int *pi = &amp;i;</span><br><span class="line">int *pr = pi;     // pr是指针的引用</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+      <category term="C++" scheme="https://baibainote.pro/categories/C/"/>
+    
+    
+      <category term="C++" scheme="https://baibainote.pro/tags/C/"/>
     
   </entry>
   

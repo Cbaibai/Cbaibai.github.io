@@ -131,16 +131,18 @@
 
 
 
-  <meta name="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="摆摆笔记">
-<meta property="og:url" content="http://Cbaibai.com/categories/perl/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但iostream中定义的数据类型和函数只能用于标准输入/输出设配的数据处理。C++将处理文件的数据类型放在了头文件fstream里，分为ofstream和ifstream。文件流操作一般包括五个步骤:123456789">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件的读写">
+<meta property="og:url" content="http://Cbaibai.com/2018/12/07/文件输入与输出/index.html">
 <meta property="og:site_name" content="摆摆笔记">
-<meta property="og:description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但iostream中定义的数据类型和函数只能用于标准输入/输出设配的数据处理。C++将处理文件的数据类型放在了头文件fstream里，分为ofstream和ifstream。文件流操作一般包括五个步骤:123456789">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-07T11:38:19.500Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="摆摆笔记">
-<meta name="twitter:description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+<meta name="twitter:title" content="文件的读写">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但iostream中定义的数据类型和函数只能用于标准输入/输出设配的数据处理。C++将处理文件的数据类型放在了头文件fstream里，分为ofstream和ifstream。文件流操作一般包括五个步骤:123456789">
 
 
 
@@ -157,7 +159,7 @@
   };
 </script>
 
-  <title>分类: perl | 摆摆笔记</title>
+  <title>文件的读写 | 摆摆笔记</title>
   
 
 
@@ -206,7 +208,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/Cbaibai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
@@ -267,15 +269,15 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">1</span></a>
   </li>
         
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
   </li>
         
         
@@ -283,7 +285,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">2</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
   </li>
         
         
@@ -351,86 +353,295 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
+  <!--<form action="http://www.baidu.com/baidu" target="_blank" style="border-radius: 5%;">
+    <table bgcolor="#FFFFFF"><tr><td>
+      <input name="tn" type="hidden" value="baidu">
+        <a href="http://www.baidu.com/">
+          <img src="https://gss0.bdstatic.com/70cFsjip0QIZ8tyhnq/img/logo-80px.gif" alt="Baidu" align="bottom" border="0">
+        </a>
+        <div style="display: flex;flex-direction: row; margin-left:290px;">
+          <input type="text" name="word" size="50"><input type="submit" value="百度搜索" class="btn">
+        </div>
+    </td></tr></table>
+  </form>-->
+
+  <div id="posts" class="posts-expand">
+    
+
+  
 
   
   
   
-  <div class="post-block category">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>perl<small>分类</small>
-        </h2>
-      </div>
-
-      
-        
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Cbaibai.com/2018/12/07/文件输入与输出/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cbaibai">
+      <meta itemprop="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+      <meta itemprop="image" content="/images/Cbaibai.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="摆摆笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/26/Perl _process/" itemprop="url">
-              
-                <span itemprop="name">Perl子程序(函数)</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">文件的读写
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-26T10:40:40+08:00" content="2018-10-26">
-          10-26
-        </time>
-      </div>
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+            
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2018-12-07 19:34:45 / 修改时间：19:38:19" itemprop="dateCreated datePublished" datetime="2018-12-07T19:34:45+08:00">2018-12-07</time>
+            
+
+            
+              
+
+              
+            
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/07/文件输入与输出/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/07/文件输入与输出/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;程序与文件的数据交换方法同它与标准输入/输出设配的数据交换方法相同。从文件读取数据与从键盘输入数据的方法相似，将数据写入文件与将数据输出到显示器的方法相似。但<code>iostream</code>中定义的数据类型和函数只能用于标准输入/输出设配的数据处理。C++将处理文件的数据类型放在了头文件<code>fstream</code>里，分为<code>ofstream</code>和<code>ifstream</code>。<br><br>文件流操作一般包括五个步骤:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* &lt;1&gt; 包含头文件 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;2&gt; 定义文件流句柄file_handler */</span></span><br><span class="line">ifstream inData;</span><br><span class="line">ofstream outData;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;3&gt; 将文件流句柄与磁盘文件filename关联起来 */</span></span><br><span class="line">file_handler.open(filename, mode)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    打开或建立文件的模式mode的可选值:</span></span><br><span class="line"><span class="comment">    ios::in            // 打开输入文件，ifstream类型变量的默认方式</span></span><br><span class="line"><span class="comment">    ios::out           // 建立输出文件，ofstream类型变量的默认方式</span></span><br><span class="line"><span class="comment">    ios::app           // 增加方式，若文件存在，将在文件尾增加数据，否则就建立文件</span></span><br><span class="line"><span class="comment">    ios::trunk         // 若文件存在，则文件中已有内容将被清除</span></span><br><span class="line"><span class="comment">    ios::nocreate      // 若文件不存在，则打开操作失败</span></span><br><span class="line"><span class="comment">    ios::noreplace     // 若文件存在，则打开操作失败</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/* 打开一个文件:</span></span><br><span class="line"><span class="comment">    ofstream outData;</span></span><br><span class="line"><span class="comment">    outData.open("abc.txt", ios:in);</span></span><br><span class="line"><span class="comment">或将&lt;2&gt;,&lt;3&gt;合为一步:</span></span><br><span class="line"><span class="comment">    ofstream outData("abc.txt", ios::in)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;4&gt; 用文件流(&lt;&lt;或&gt;&gt;)操作文件，读/写文件数据，将输入文件流与&gt;&gt;连接，就能够从文件中读入数据，与cin用法相同。将输出文件流与&lt;&lt;连接，就能够从文件中读入数据，与cout用法相同。 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;5&gt; 关闭文件 */</span></span><br><span class="line">inData.close();</span><br><span class="line">ourData.close();</span><br></pre></td></tr></table></figure></p>
+<p><strong>示例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;fstream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void main() &#123;</span><br><span class="line">    ofstream outData(&quot;C:\\data.txt&quot;);    // 前一个 / 用于转义</span><br><span class="line">    ifstream inData;</span><br><span class="line">    int x, a[10];</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        outData &lt;&lt; x &lt;&lt; &quot; &quot;;  // 将x的值写入文件流句柄outData指向的文件data.txt中</span><br><span class="line">    &#125;</span><br><span class="line">    outData.close();</span><br><span class="line">    inData.open(&quot;D:\\data.txt&quot;);</span><br><span class="line">    int j = 0;</span><br><span class="line">    while(!inData.eof())</span><br><span class="line">        inData &gt;&gt; a[j++];   // 将data.txt中的数据载入数组a[]中</span><br><span class="line">    inData.close();</span><br><span class="line">    int s = 0;</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        s += a[i];</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;the sum is: &quot; &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
 
+    
+      
+
+
+    
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文已结束<i class="fa fa-paw"></i>感谢您的阅读！-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="Cbaibai wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎订阅本站公众号!</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Cbaibai 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cbaibai 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>摆摆</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://Cbaibai.com/2018/12/07/文件输入与输出/" title="文件的读写">http://Cbaibai.com/2018/12/07/文件输入与输出/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag" style="margin-right:2px;"></i>C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/07/C++类型转换/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/07/作用域和生命期/" rel="prev" title="C++z作用域与生命周期">
+                C++z作用域与生命周期 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
-
+  </div>
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -469,7 +680,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -484,9 +695,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -501,11 +710,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -570,7 +775,7 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://leetcode-cn.com/" title="leetCode" target="_blank">leetCode</a>
+                    <a href="https://leetcode-cn.com/cbaibai" title="leetCode" target="_blank">leetCode</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
@@ -770,6 +975,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -1279,5 +1488,5 @@
   </script>
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-wanko"}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

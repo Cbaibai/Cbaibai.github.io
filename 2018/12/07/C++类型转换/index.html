@@ -131,16 +131,19 @@
 
 
 
-  <meta name="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
-<meta property="og:type" content="website">
+  <meta name="description" content="隐式类型转换以下4种情况，C++会自动对参与运算的数据类型进行转换：&amp;emsp;&amp;emsp;① 同一算术表达式中出现了多种不同的数据类型。转换的总原则是尽可能避免损失精度，因此窄数据类型(占用内存少)向宽数据类型转换(占用内存多)，具体情况如下所示：  &amp;emsp;&amp;emsp;其中整数转换的方法是把小整数类型转换成较大的整数类型,即对于bool, char, signed char, unsign">
+<meta property="og:type" content="article">
 <meta property="og:title" content="摆摆笔记">
-<meta property="og:url" content="http://Cbaibai.com/tags/函数/index.html">
+<meta property="og:url" content="http://Cbaibai.com/2018/12/07/C++类型转换/index.html">
 <meta property="og:site_name" content="摆摆笔记">
-<meta property="og:description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+<meta property="og:description" content="隐式类型转换以下4种情况，C++会自动对参与运算的数据类型进行转换：&amp;emsp;&amp;emsp;① 同一算术表达式中出现了多种不同的数据类型。转换的总原则是尽可能避免损失精度，因此窄数据类型(占用内存少)向宽数据类型转换(占用内存多)，具体情况如下所示：  &amp;emsp;&amp;emsp;其中整数转换的方法是把小整数类型转换成较大的整数类型,即对于bool, char, signed char, unsign">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/221712b3563701a749b4b8925395f5d3/xmlnote/e69989703a8d2f70add7b7a55b8e0907/25027">
+<meta property="og:updated_time" content="2018-12-07T11:36:49.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="摆摆笔记">
-<meta name="twitter:description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+<meta name="twitter:description" content="隐式类型转换以下4种情况，C++会自动对参与运算的数据类型进行转换：&amp;emsp;&amp;emsp;① 同一算术表达式中出现了多种不同的数据类型。转换的总原则是尽可能避免损失精度，因此窄数据类型(占用内存少)向宽数据类型转换(占用内存多)，具体情况如下所示：  &amp;emsp;&amp;emsp;其中整数转换的方法是把小整数类型转换成较大的整数类型,即对于bool, char, signed char, unsign">
+<meta name="twitter:image" content="https://note.youdao.com/yws/public/resource/221712b3563701a749b4b8925395f5d3/xmlnote/e69989703a8d2f70add7b7a55b8e0907/25027">
 
 
 
@@ -157,7 +160,7 @@
   };
 </script>
 
-  <title>标签: 函数 | 摆摆笔记</title>
+  <title> | 摆摆笔记</title>
   
 
 
@@ -206,7 +209,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/Cbaibai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
@@ -265,9 +268,9 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">1</span></a>
   </li>
         
         
@@ -275,7 +278,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
   </li>
         
         
@@ -283,7 +286,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">2</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
   </li>
         
         
@@ -351,85 +354,275 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
+  <!--<form action="http://www.baidu.com/baidu" target="_blank" style="border-radius: 5%;">
+    <table bgcolor="#FFFFFF"><tr><td>
+      <input name="tn" type="hidden" value="baidu">
+        <a href="http://www.baidu.com/">
+          <img src="https://gss0.bdstatic.com/70cFsjip0QIZ8tyhnq/img/logo-80px.gif" alt="Baidu" align="bottom" border="0">
+        </a>
+        <div style="display: flex;flex-direction: row; margin-left:290px;">
+          <input type="text" name="word" size="50"><input type="submit" value="百度搜索" class="btn">
+        </div>
+    </td></tr></table>
+  </form>-->
+
+  <div id="posts" class="posts-expand">
+    
+
+  
 
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>函数<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Cbaibai.com/2018/12/07/C++类型转换/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cbaibai">
+      <meta itemprop="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+      <meta itemprop="image" content="/images/Cbaibai.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="摆摆笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/26/Perl _process/" itemprop="url">
-              
-                <span itemprop="name">Perl子程序(函数)</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-26T10:40:40+08:00" content="2018-10-26">
-          10-26
-        </time>
-      </div>
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+            
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2018-12-07 19:32:58 / 修改时间：19:36:49" itemprop="dateCreated datePublished" datetime="2018-12-07T19:32:58+08:00">2018-12-07</time>
+            
+
+            
+              
+
+              
+            
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/07/C++类型转换/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/07/C++类型转换/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h5><p>以下4种情况，C++会自动对参与运算的数据类型进行转换：<br><br>&emsp;&emsp;① 同一算术表达式中出现了多种不同的数据类型。转换的总原则是<u>尽可能避免损失精度</u>，因此<u>窄数据类型(占用内存少)向宽数据类型转换(占用内存多)</u>，具体情况如下所示：</p>
+<p><img src="https://note.youdao.com/yws/public/resource/221712b3563701a749b4b8925395f5d3/xmlnote/e69989703a8d2f70add7b7a55b8e0907/25027" alt=""></p>
+<p>&emsp;&emsp;其中整数转换的方法是把小整数类型转换成较大的整数类型,即对于<code>bool</code>, <code>char</code>, <code>signed char</code>, <code>unsigned char</code>, <code>short</code>和 <code>unsigned short</code>等类型来说,如果在同一表达式中出现了这些类型,只要对应变量值能够用<code>int</code>存储,它们就会提升成<code>int</code>类型:反之,如果超出了整数的表示范围,就将其提升成 <code>unsigned int</code>类型。<br></p>
+<p>&emsp;&emsp;②将一种类型的数据赋值给另一种类型的变量,会发生隐式类型转换,把赋值句右边的表达式结果转成赋值句左边变量的类型,例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a = 2;</span><br><span class="line">float b = 3.4;</span><br><span class="line">double c = 2.2;</span><br><span class="line">b = a;    //,将a的值转换为float型(2.000000)再赋给b</span><br><span class="line">a = c;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;由于宽类型数据所占的存储空间比窄类型多,因此窄类型向宽类型转换不会有什么问题,而宽类型数据转换成窄类型时常会发生精度损失,是不安全的。C+常采用截取方法进行宽类型向窄类型的转换,即从宽类型中截取与窄类型大小相同的存储区域作为转换的结果,而宽类型中多出的字节就丢掉了。在上面的例子中<code>a = c</code>,C++将截取c的整数部分并赋值给a,至于c的小数部分就丢掉了,所以a的最终结果是2。</p>
+<p>&emsp;&emsp;③在函数调用中,若实参表达式与形参的类型不相符合,则把实参的类型转换成形参的类型</p>
+<p>&emsp;&emsp;④在函数返回时,若函数返回表达式的值与函数声明中的返回类型不相同,则把表达式结果转换成函数返回类型。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">float min(int a,int b) &#123;</span><br><span class="line">    return a &lt; b ? a ： b;</span><br><span class="line">    // int =&gt; float后再返回</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int a = 2;</span><br><span class="line">float b = 3.4;</span><br><span class="line">int x = min(b, a + 3.5);</span><br></pre></td></tr></table></figure></p>
+<h5 id="显示类型转换"><a href="#显示类型转换" class="headerlink" title="显示类型转换"></a>显示类型转换</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// (type) exp, C和C++中都可以用</span></span><br><span class="line"><span class="comment">// type (exp),只有C++中才可以用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">float</span> c = (<span class="keyword">float</span>)a;</span><br><span class="line">a = <span class="keyword">int</span>(<span class="number">8.8</span>);</span><br></pre></td></tr></table></figure>
+<p>在C++标准中还有4个强制类型转换运算符：<code>static_cast</code>，<code>dynamic_cast</code>，<code>const_cast</code>和<code>reinterpret_cast</code><br><br>用法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_cast &lt;type&gt; (exp)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/* 使用const_cast在运算时暂时去掉数据的const限制 */</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void sqrt(const int &amp;x) &#123;</span><br><span class="line">    const_cast &lt;int &amp;&gt; (x) = x * x;  // 去掉const限制，将常量 x 强转为变量</span><br><span class="line">    // x = x * x;   // error,x为常量，不能被修改</span><br><span class="line">&#125;</span><br><span class="line">void main() &#123;</span><br><span class="line">    int a = 5;</span><br><span class="line">    const int b = 5;</span><br><span class="line">    sqr(a);</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    sqr(b);</span><br><span class="line">    cout &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
+    
+      
+
+
+    
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文已结束<i class="fa fa-paw"></i>感谢您的阅读！-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="Cbaibai wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎订阅本站公众号!</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Cbaibai 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cbaibai 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>摆摆</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://Cbaibai.com/2018/12/07/C++类型转换/" title="">http://Cbaibai.com/2018/12/07/C++类型转换/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/07/文件输入与输出/" rel="prev" title="文件的读写">
+                文件的读写 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -450,8 +643,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -468,7 +670,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -483,9 +685,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -500,11 +700,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -569,7 +765,7 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://leetcode-cn.com/" title="leetCode" target="_blank">leetCode</a>
+                    <a href="https://leetcode-cn.com/cbaibai" title="leetCode" target="_blank">leetCode</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
@@ -595,6 +791,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#隐式类型转换"><span class="nav-text">隐式类型转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#显示类型转换"><span class="nav-text">显示类型转换</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -769,6 +981,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -1278,5 +1494,5 @@
   </script>
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-wanko"}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

@@ -1,529 +1,233 @@
+
+
 <!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-
-
-
-
-
-
-
-
-
-
-<html class="theme-next gemini" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-
-<script>
-  (function(){
-    if(''){
-        if (prompt('该文章属于加密文章，请输入文章阅读密码') !== ''){
-            alert('密码错误！');
-            history.back();
-        }
-    }
-  })();
-</script>
-
-
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  
-  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+  <meta name="author" content="Cbaibai">
+  <meta name="keywords" content="">
+  <title>OpenCV核心操作 - 摆摆笔记</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-
-  
   
     
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/笔.png?v=6.4.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/笔.png?v=6.4.2">
-
-
-  <link rel="mask-icon" href="/images/笔.png?v=6.4.2" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.4.2',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
-    fancybox: true,
-    fastclick: false,
-    lazyload: true,
-    tabs: false,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"bounceIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftBigIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="keywords" content="opencv-python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV核心操作">
-<meta property="og:url" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/index.html">
-<meta property="og:site_name" content="摆摆笔记">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE6d7baca158d17692c83b8fa28ac74cb1">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEbaafbcf85a3bbcb1c07459ba5591d965">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE78c77e4e2caa830fd7888551f703ba49">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE6c2a10b16b1cf512f3fcd3bc0e6909d3">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE35eeffd487e7f99b153f677db84f2320">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEb9ceeb8d12d33a23e61749d42411bdea">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEfb351b487c60d81664b9153ef11dec3a">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE309363e875f4341774a11a6845e568f4">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEb24e8b77cffe46404d302ded6bce0ccb">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEaf17a5ad85522974fabcf07d95c96139">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEae11fe265ff70931f6e24ae6cf0f583c">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE82ac39e0bfebcc238e7fd2d46f3877bb">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE2b2c5076bdfeee89393610f180f302e2">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEf44e566b70abd030966e3abf0fa293c4">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE4526221ecbe96ddd16e16de8efcc7f8e">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCEe0703bcdc37ff4bf97300df029fb9023">
-<meta property="og:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE0ef307208c25fd58446882e407b9d7a5">
-<meta property="og:updated_time" content="2020-03-15T07:35:06.057Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV核心操作">
-<meta name="twitter:image" content="https://baibainote.pro/2020/03/15/OpenCV核心操作/WEBRESOURCE6d7baca158d17692c83b8fa28ac74cb1">
-
-
-
-  <link rel="alternate" href="/atom.xml" title="摆摆笔记" type="application/atom+xml">
-
-
-
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>OpenCV核心操作 | 摆摆笔记</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <a href="https://github.com/Cbaibai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta custom-logo">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">摆摆笔记</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
     
       
-        <h1 class="site-subtitle" itemprop="description">书写，是对思维的缓存！</h1>
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
     
-  </div>
+  
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"baibainote.pro","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
-  </div>
-</div>
 
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
           
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-  </li>
-        
-        
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-address-card-o"></i> <br>关于</a>
-  </li>
-        
-        
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
-  </li>
-        
-        
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
-  </li>
-        
-        
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
-  </li>
-        
-        
-        
           
-          <li class="menu-item menu-item-douban_books">
-    <a href="/books/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-book"></i> <br>豆瓣书评</a>
-  </li>
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
         
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
         
-          
-          <li class="menu-item menu-item-douban_movies">
-    <a href="/movies/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-film"></i> <br>豆瓣影评</a>
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
 
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="OpenCV核心操作">
+              
+            </span>
 
-
+            
+              <div class="mt-3">
   
-
-<meta name="google-site-verification" content="8dNmqLyUH5-GfxpDhkWZy67xLvRgMZIi4kpO9ujmk14">
-<meta name="baidu-site-verification" content="FNRTpVDmJ0">
-<link href="http://cdn.webfont.youziku.com/webfonts/nomal/125719/445/5c028eb7f629d90828d30df1.css" rel="stylesheet" type="text/css">
-
-
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-15 15:35" pubdate>
+        2020年3月15日 下午
+      </time>
+    </span>
+  
 </div>
-    </header>
 
+<div class="mt-1">
+  
     
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      0 字
+    </span>
+  
 
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+  
+  
+</div>
+
             
+          </div>
 
           
-          <div id="content" class="content">
-            
-  <!--<form action="http://www.baidu.com/baidu" target="_blank" style="border-radius: 5%;">
-    <table bgcolor="#FFFFFF"><tr><td>
-      <input name="tn" type="hidden" value="baidu">
-        <a href="http://www.baidu.com/">
-          <img src="https://gss0.bdstatic.com/70cFsjip0QIZ8tyhnq/img/logo-80px.gif" alt="Baidu" align="bottom" border="0">
-        </a>
-        <div style="display: flex;flex-direction: row; margin-left:290px;">
-          <input type="text" name="word" size="50"><input type="submit" value="百度搜索" class="btn">
         </div>
-    </td></tr></table>
-  </form>-->
+      </div>
+    </div>
+  </header>
 
-  <div id="posts" class="posts-expand">
+  <main>
     
-
-  
-
-  
-  
-  
-
-  
-    <div class="reading-progress-bar"></div>
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://baibainote.pro/2020/03/15/OpenCV核心操作/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cbaibai">
-      <meta itemprop="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
-      <meta itemprop="image" content="/images/Cbaibai.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="摆摆笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">OpenCV核心操作
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-15 15:35:06" itemprop="dateCreated datePublished" datetime="2020-03-15T15:35:06+08:00">2020-03-15</time>
-            
-
-            
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/03/15/OpenCV核心操作/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/03/15/OpenCV核心操作/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             阅读次数： 
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-
-          
-
-        </span></div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <ul="">
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OpenCV核心操作</h1>
+            
+            <div class="markdown-body">
+              <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<ul>
 <li><a href="#图像的基本操作">图像的基本操作</a><ul>
 <li><a href="#获取并修改像素值">获取并修改像素值</a></li>
 <li><a href="#获取的图像的属性">获取的图像的属性</a></li>
@@ -543,1082 +247,433 @@
 <li><a href="#OpenCV中的默认优化">OpenCV 中的默认优化</a></li>
 </ul>
 </li>
-
+</ul>
 <h1 id="图像的基本操作"><a href="#图像的基本操作" class="headerlink" title="图像的基本操作"></a>图像的基本操作</h1><h2 id="获取并修改像素值"><a href="#获取并修改像素值" class="headerlink" title="获取并修改像素值"></a>获取并修改像素值</h2><p>&emsp;&emsp;可以根据像素的行与列的坐标来获取它的像素值。对BGR图像而言，返回值为B，G，R 的值。对灰度图像而言，会返回它的灰度值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line"></span><br><span class="line">px = img[<span class="number">100</span>, <span class="number">100</span>]         <span class="comment"># 某一像素点的颜色BGR表示</span></span><br><span class="line">print(px)</span><br><span class="line"></span><br><span class="line">blue = img[<span class="number">100</span>, <span class="number">100</span>, <span class="number">0</span>]    <span class="comment"># 某一像素点的Blue颜色分量</span></span><br><span class="line">print(blue)</span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCE6d7baca158d17692c83b8fa28ac74cb1" title="image.png" class="gallery-item"><img src="WEBRESOURCE6d7baca158d17692c83b8fa28ac74cb1" alt="image.png"></a></p>
-<p>当然了，也可以用这种方法更改某一点的像素值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line"></span><br><span class="line">img[<span class="number">100</span>,<span class="number">100</span>]=[<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>]</span><br><span class="line">print(img[<span class="number">100</span>,<span class="number">100</span>])</span><br></pre></td></tr></table></figure></p>
-<p><a href="WEBRESOURCEbaafbcf85a3bbcb1c07459ba5591d965" title="image.png" class="gallery-item"><img src="WEBRESOURCEbaafbcf85a3bbcb1c07459ba5591d965" alt="image.png"></a></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)
+
+px = img[<span class="hljs-number">100</span>, <span class="hljs-number">100</span>]         <span class="hljs-comment"># 某一像素点的颜色BGR表示</span>
+print(px)
+
+blue = img[<span class="hljs-number">100</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>]    <span class="hljs-comment"># 某一像素点的Blue颜色分量</span>
+print(blue)</code></pre>
+<p><a href="WEBRESOURCE6d7baca158d17692c83b8fa28ac74cb1" title="image.png" class="gallery-item"><img src="WEBRESOURCE6d7baca158d17692c83b8fa28ac74cb1" srcset="/img/loading.gif" alt="image.png"></a></p>
+<p>当然了，也可以用这种方法更改某一点的像素值：<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</p>
+<p>img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)</p>
+<p>img[<span class="hljs-number">100</span>,<span class="hljs-number">100</span>]=[<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>]<br>print(img[<span class="hljs-number">100</span>,<span class="hljs-number">100</span>])</code></pre>:hexoPostRenderEscape–&gt;<br><a href="WEBRESOURCEbaafbcf85a3bbcb1c07459ba5591d965" title="image.png" class="gallery-item"><img src="WEBRESOURCEbaafbcf85a3bbcb1c07459ba5591d965" srcset="/img/loading.gif" alt="image.png"></a></p>
 <p>&emsp;&emsp;上面用于更改某一点的像素值的方法被用来选取矩阵的一个区域，比如说前5行的后3<br>列。对于获取每一个像素值，可以使用Numpy 的array.item() 和array.<br>itemset() 来进行遍历操作。但这两个函数的返回值都是标量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line"></span><br><span class="line">print(img.item(<span class="number">10</span>,<span class="number">10</span>,<span class="number">2</span>))	<span class="comment"># 输出(10,10,2)处像素点的值</span></span><br><span class="line">img.itemset((<span class="number">10</span>,<span class="number">10</span>,<span class="number">2</span>),<span class="number">100</span>)	<span class="comment"># 将(10,10,2)处的值设为100</span></span><br><span class="line">print(img.item(<span class="number">10</span>,<span class="number">10</span>,<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCE78c77e4e2caa830fd7888551f703ba49" title="image.png" class="gallery-item"><img src="WEBRESOURCE78c77e4e2caa830fd7888551f703ba49" alt="image.png"></a></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)
+
+print(img.item(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))    <span class="hljs-comment"># 输出(10,10,2)处像素点的值</span>
+img.itemset((<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">2</span>),<span class="hljs-number">100</span>)    <span class="hljs-comment"># 将(10,10,2)处的值设为100</span>
+print(img.item(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))</code></pre>
+<p><a href="WEBRESOURCE78c77e4e2caa830fd7888551f703ba49" title="image.png" class="gallery-item"><img src="WEBRESOURCE78c77e4e2caa830fd7888551f703ba49" srcset="/img/loading.gif" alt="image.png"></a></p>
 <h2 id="获取的图像的属性"><a href="#获取的图像的属性" class="headerlink" title="获取的图像的属性"></a>获取的图像的属性</h2><p>图像的属性包括：行，列，通道，图像数据类型，像素数目等。</p>
-<p>img.shape 可以获取图像的形状。他的返回值是一个包含行数，列数，颜色通道数的元组。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line"></span><br><span class="line">print(img.shape)</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;如果图像是灰度图，img.shape的返回值就只有行数和列数。所以通过检查这个返回值就可以知道加载的是灰度图还是彩色图。</p>
-<p><a href="WEBRESOURCE6c2a10b16b1cf512f3fcd3bc0e6909d3" title="image.png" class="gallery-item"><img src="WEBRESOURCE6c2a10b16b1cf512f3fcd3bc0e6909d3" alt="image.png"></a></p>
+<p>img.shape 可以获取图像的形状。他的返回值是一个包含行数，列数，颜色通道数的元组。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</p>
+<p>img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)</p>
+<p>print(img.shape)</code></pre>:hexoPostRenderEscape–&gt;<br>&emsp;&emsp;如果图像是灰度图，img.shape的返回值就只有行数和列数。所以通过检查这个返回值就可以知道加载的是灰度图还是彩色图。</p>
+<p><a href="WEBRESOURCE6c2a10b16b1cf512f3fcd3bc0e6909d3" title="image.png" class="gallery-item"><img src="WEBRESOURCE6c2a10b16b1cf512f3fcd3bc0e6909d3" srcset="/img/loading.gif" alt="image.png"></a></p>
 <p>img.size 可以返回图像的像素数目。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line"></span><br><span class="line">print(img.size)</span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCE35eeffd487e7f99b153f677db84f2320" title="image.png" class="gallery-item"><img src="WEBRESOURCE35eeffd487e7f99b153f677db84f2320" alt="image.png"></a></p>
-<p>img.dtype 返回的是图像的数据类型。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line"></span><br><span class="line">print(img.dtype)</span><br></pre></td></tr></table></figure></p>
-<p><a href="WEBRESOURCEb9ceeb8d12d33a23e61749d42411bdea" title="image.png" class="gallery-item"><img src="WEBRESOURCEb9ceeb8d12d33a23e61749d42411bdea" alt="image.png"></a></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)
+
+print(img.size)</code></pre>
+<p><a href="WEBRESOURCE35eeffd487e7f99b153f677db84f2320" title="image.png" class="gallery-item"><img src="WEBRESOURCE35eeffd487e7f99b153f677db84f2320" srcset="/img/loading.gif" alt="image.png"></a></p>
+<p>img.dtype 返回的是图像的数据类型。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</p>
+<p>img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)</p>
+<p>print(img.dtype)</code></pre>:hexoPostRenderEscape–&gt;<br><a href="WEBRESOURCEb9ceeb8d12d33a23e61749d42411bdea" title="image.png" class="gallery-item"><img src="WEBRESOURCEb9ceeb8d12d33a23e61749d42411bdea" srcset="/img/loading.gif" alt="image.png"></a></p>
 <h2 id="图像ROI"><a href="#图像ROI" class="headerlink" title="图像ROI"></a>图像ROI</h2><p>&emsp;&emsp;有时我们需要对一幅图像的特定区域进行操作。例如我们要检测一副图像中眼睛的位置，我们首先应该在图像中找到脸，再在脸的区域中找眼睛，而不是直接在一幅图像中搜索眼睛。灵活的使用ROI操作会提高程序的准确性和性能。ROI 是使用Numpy 索引来获得的。</p>
 <div style="border: 1px solid #ddd;padding:2px;"><br><div style="background-color:#906060;color:white;text-align:center;padding:5px;border-radius:5px;">注意</div>
 
-<p>&emsp;&emsp;图像不存在或内容为空时不能用[ ]取出其中的像素点，会报<code>&#39;NoneType&#39; object is not subscriptable</code>这样的错误。<br></p></div><br><p></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'ball.png'</span>)</span><br><span class="line"></span><br><span class="line">ball=img[<span class="number">280</span>:<span class="number">340</span>,<span class="number">330</span>:<span class="number">390</span>]   <span class="comment"># 框定一个矩形取出选中的像素区域</span></span><br><span class="line">img[<span class="number">273</span>:<span class="number">333</span>,<span class="number">100</span>:<span class="number">160</span>]=ball   <span class="comment"># 将拷贝得到的子图复制到图像中的另一块区域</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;图像不存在或内容为空时不能用[ ]取出其中的像素点，会报<code>&#39;NoneType&#39; object is not subscriptable</code>这样的错误。<br></div><br></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+img = cv2.imread(<span class="hljs-string">&#x27;ball.png&#x27;</span>)
+
+ball=img[<span class="hljs-number">280</span>:<span class="hljs-number">340</span>,<span class="hljs-number">330</span>:<span class="hljs-number">390</span>]   <span class="hljs-comment"># 框定一个矩形取出选中的像素区域</span>
+img[<span class="hljs-number">273</span>:<span class="hljs-number">333</span>,<span class="hljs-number">100</span>:<span class="hljs-number">160</span>]=ball   <span class="hljs-comment"># 将拷贝得到的子图复制到图像中的另一块区域</span></code></pre>
 <h2 id="拆分和合并图像通道"><a href="#拆分和合并图像通道" class="headerlink" title="拆分和合并图像通道"></a>拆分和合并图像通道</h2><p>&emsp;&emsp;有时我们需要对BGR 三个通道分别进行操作，这时就需要把BGR拆分成单个通道进行处理，可以使用<code>cv2.split()</code>。<br>也可以使用<code>cv2.merge()</code>把独立通道的图片合并成一个BGR 图像。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line"></span><br><span class="line">b,g,r = cv2.split(img)  <span class="comment"># 将BGR图像拆分成三个通道</span></span><br><span class="line">img=cv2.merge(b,g)    <span class="comment"># 合并两个通道</span></span><br><span class="line">b=img[:,:,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)
+
+b,g,r = cv2.split(img)  <span class="hljs-comment"># 将BGR图像拆分成三个通道</span>
+img=cv2.merge(b,g)    <span class="hljs-comment"># 合并两个通道</span>
+b=img[:,:,<span class="hljs-number">0</span>]</code></pre>
 <p>cv2.split() 是一个比较耗时的操作，只有真正需要时才用它，平时尽量使用numpy索引取像素点。</p>
-<p><a href="WEBRESOURCEfb351b487c60d81664b9153ef11dec3a" title="image.png" class="gallery-item"><img src="WEBRESOURCEfb351b487c60d81664b9153ef11dec3a" alt="image.png"></a></p>
-<p>&emsp;&emsp;事实上，如果我们想让图像所有像素点的红色通道值都为0的话，不用拆分通道后再对其进行操作，可以直接使用numpy索引实现。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line">img[:,:,<span class="number">2</span>]=<span class="number">0</span></span><br><span class="line">cv2.imwrite(<span class="string">'paint.jpg'</span>, img)</span><br></pre></td></tr></table></figure></p>
-<p><a href="WEBRESOURCE309363e875f4341774a11a6845e568f4" title="image.png" class="gallery-item"><img src="WEBRESOURCE309363e875f4341774a11a6845e568f4" alt="image.png"></a></p>
+<p><a href="WEBRESOURCEfb351b487c60d81664b9153ef11dec3a" title="image.png" class="gallery-item"><img src="WEBRESOURCEfb351b487c60d81664b9153ef11dec3a" srcset="/img/loading.gif" alt="image.png"></a></p>
+<p>&emsp;&emsp;事实上，如果我们想让图像所有像素点的红色通道值都为0的话，不用拆分通道后再对其进行操作，可以直接使用numpy索引实现。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</p>
+<p>img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)<br>img[:,:,<span class="hljs-number">2</span>]=<span class="hljs-number">0</span><br>cv2.imwrite(<span class="hljs-string">&#x27;paint.jpg&#x27;</span>, img)</code></pre>:hexoPostRenderEscape–&gt;<br><a href="WEBRESOURCE309363e875f4341774a11a6845e568f4" title="image.png" class="gallery-item"><img src="WEBRESOURCE309363e875f4341774a11a6845e568f4" srcset="/img/loading.gif" alt="image.png"></a></p>
 <h2 id="为图像括边"><a href="#为图像括边" class="headerlink" title="为图像括边"></a>为图像括边</h2><p>&emsp;&emsp;如果你想在图像周围创建一个边，就像相框一样，你可以使用<code>cv2.copyMakeBorder()</code>函数。这经常在卷积运算或0 填充时被用到。</p>
-<p>这个函数所需的参数如下：<br><a href="WEBRESOURCEb24e8b77cffe46404d302ded6bce0ccb" title="image.png" class="gallery-item"><img src="WEBRESOURCEb24e8b77cffe46404d302ded6bce0ccb" alt="image.png"></a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">BLUE=[<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">img1=cv2.imread(<span class="string">'ball.png'</span>)</span><br><span class="line"><span class="comment"># 设置不同的括边方式</span></span><br><span class="line">replicate = cv2.copyMakeBorder(img1,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,cv2.BORDER_REPLICATE)   <span class="comment"># 复制源图像img1的像素值并为其进行括边</span></span><br><span class="line">reflect = cv2.copyMakeBorder(img1,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,cv2.BORDER_REFLECT)</span><br><span class="line">reflect101 = cv2.copyMakeBorder(img1,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,cv2.BORDER_REFLECT_101)</span><br><span class="line">wrap = cv2.copyMakeBorder(img1,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,cv2.BORDER_WRAP)</span><br><span class="line">constant= cv2.copyMakeBorder(img1,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>,cv2.BORDER_CONSTANT,value=BLUE)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加几个子图并显示</span></span><br><span class="line">plt.subplot(<span class="number">231</span>), plt.imshow(img1,<span class="string">'gray'</span>), plt.title(<span class="string">'ORIGINAL'</span>)</span><br><span class="line">plt.subplot(<span class="number">232</span>), plt.imshow(replicate,<span class="string">'gray'</span>), plt.title(<span class="string">'REPLICATE'</span>)</span><br><span class="line">plt.subplot(<span class="number">233</span>), plt.imshow(reflect,<span class="string">'gray'</span>), plt.title(<span class="string">'REFLECT'</span>)</span><br><span class="line">plt.subplot(<span class="number">234</span>), plt.imshow(reflect101,<span class="string">'gray'</span>), plt.title(<span class="string">'REFLECT_101'</span>)</span><br><span class="line">plt.subplot(<span class="number">235</span>), plt.imshow(wrap,<span class="string">'gray'</span>), plt.title(<span class="string">'WRAP'</span>)</span><br><span class="line">plt.subplot(<span class="number">236</span>), plt.imshow(constant,<span class="string">'gray'</span>), plt.title(<span class="string">'CONSTANT'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCEaf17a5ad85522974fabcf07d95c96139" title="image.png" class="gallery-item"><img src="WEBRESOURCEaf17a5ad85522974fabcf07d95c96139" alt="image.png"></a></p>
-<h1 id="图像上的算术运算"><a href="#图像上的算术运算" class="headerlink" title="图像上的算术运算"></a>图像上的算术运算</h1><h2 id="图像加法"><a href="#图像加法" class="headerlink" title="图像加法"></a>图像加法</h2><p>&emsp;&emsp;可以使用函数<code>cv2.add()</code>对两幅图像进行加法运算，当然也可以直接使用numpy，即<code>res=img1+img</code>。<font color="#609090">两幅图像的大小，类型必须一致</font>，或者第二个图像是一个简单的标量值。</p>
+<p>这个函数所需的参数如下：<br><a href="WEBRESOURCEb24e8b77cffe46404d302ded6bce0ccb" title="image.png" class="gallery-item"><img src="WEBRESOURCEb24e8b77cffe46404d302ded6bce0ccb" srcset="/img/loading.gif" alt="image.png"></a></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt
+
+BLUE=[<span class="hljs-number">255</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]
+img1=cv2.imread(<span class="hljs-string">&#x27;ball.png&#x27;</span>)
+<span class="hljs-comment"># 设置不同的括边方式</span>
+replicate = cv2.copyMakeBorder(img1,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,cv2.BORDER_REPLICATE)   <span class="hljs-comment"># 复制源图像img1的像素值并为其进行括边</span>
+reflect = cv2.copyMakeBorder(img1,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,cv2.BORDER_REFLECT)
+reflect101 = cv2.copyMakeBorder(img1,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,cv2.BORDER_REFLECT_101)
+wrap = cv2.copyMakeBorder(img1,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,cv2.BORDER_WRAP)
+constant= cv2.copyMakeBorder(img1,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,cv2.BORDER_CONSTANT,value=BLUE)
+
+<span class="hljs-comment"># 添加几个子图并显示</span>
+plt.subplot(<span class="hljs-number">231</span>), plt.imshow(img1,<span class="hljs-string">&#x27;gray&#x27;</span>), plt.title(<span class="hljs-string">&#x27;ORIGINAL&#x27;</span>)
+plt.subplot(<span class="hljs-number">232</span>), plt.imshow(replicate,<span class="hljs-string">&#x27;gray&#x27;</span>), plt.title(<span class="hljs-string">&#x27;REPLICATE&#x27;</span>)
+plt.subplot(<span class="hljs-number">233</span>), plt.imshow(reflect,<span class="hljs-string">&#x27;gray&#x27;</span>), plt.title(<span class="hljs-string">&#x27;REFLECT&#x27;</span>)
+plt.subplot(<span class="hljs-number">234</span>), plt.imshow(reflect101,<span class="hljs-string">&#x27;gray&#x27;</span>), plt.title(<span class="hljs-string">&#x27;REFLECT_101&#x27;</span>)
+plt.subplot(<span class="hljs-number">235</span>), plt.imshow(wrap,<span class="hljs-string">&#x27;gray&#x27;</span>), plt.title(<span class="hljs-string">&#x27;WRAP&#x27;</span>)
+plt.subplot(<span class="hljs-number">236</span>), plt.imshow(constant,<span class="hljs-string">&#x27;gray&#x27;</span>), plt.title(<span class="hljs-string">&#x27;CONSTANT&#x27;</span>)
+plt.show()</code></pre>
+<p><a href="WEBRESOURCEaf17a5ad85522974fabcf07d95c96139" title="image.png" class="gallery-item"><img src="WEBRESOURCEaf17a5ad85522974fabcf07d95c96139" srcset="/img/loading.gif" alt="image.png"></a></p>
+<h1 id="图像上的算术运算"><a href="#图像上的算术运算" class="headerlink" title="图像上的算术运算"></a>图像上的算术运算</h1><h2 id="图像加法"><a href="#图像加法" class="headerlink" title="图像加法"></a>图像加法</h2><p>&emsp;&emsp;可以使用函数<code>cv2.add()</code>对两幅图像进行加法运算，当然也可以直接使用numpy，即<code>res=img1+img</code>。<font color=#609090>两幅图像的大小，类型必须一致</font>，或者第二个图像是一个简单的标量值。</p>
 <div style="border: 1px solid #ddd;padding:2px;"><br><div style="background-color:#906060;color:white;text-align:center;padding:5px;border-radius:5px;">注意</div>
 
-<p>&emsp;&emsp;OpenCV 中的加法与Numpy 的加法是有所不同的。OpenCV 的加法是一种饱和操作，而Numpy 的加法是一种模操作。<br></p></div><br><p></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">x = np.uint8([<span class="number">250</span>])</span><br><span class="line">y = np.uint8([<span class="number">10</span>])</span><br><span class="line">print(cv2.add(x, y)) <span class="comment"># OpenCV图像加法，250+10 = 260 =&gt; 255</span></span><br><span class="line">print(x+y)           <span class="comment"># numpy取模加法，250+10 = 260 % 256 = 4</span></span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCEae11fe265ff70931f6e24ae6cf0f583c" title="image.png" class="gallery-item"><img src="WEBRESOURCEae11fe265ff70931f6e24ae6cf0f583c" alt="image.png"></a></p>
-<h2 id="图像混合"><a href="#图像混合" class="headerlink" title="图像混合"></a>图像混合</h2><p>&emsp;&emsp;图像混合其实也是一种图像加法，但是不同的是两幅图像的权重不同，这就会给人一种混合或者透明的感觉。图像混合的计算公式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g(x) = (1-\alpha)f_0(x) + \alpha f_1(x)</span><br></pre></td></tr></table></figure></p>
-<p>通过改变<code>$\alpha$</code>的值可以实现图像的平滑效果。</p>
-<p>&emsp;&emsp;下面我们把两幅图混合在一起。第一幅图的权重是0.7，第二幅图的权重是0.3。函数<code>cv2.addWeighted()</code>可以按下面的公式对图片进行混合操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dst = \alpha.img1 + \beta.img2 + \gamma</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img1=cv2.imread(<span class="string">'ml.png'</span>)</span><br><span class="line">img2=cv2.imread(<span class="string">'opencv-logo.png'</span>)</span><br><span class="line"></span><br><span class="line">dst=cv2.addWeighted(img1,<span class="number">0.7</span>,img2,<span class="number">0.3</span>, <span class="number">0</span>)   <span class="comment"># 第一幅图的权重是0.7，第二幅图的权重是0.3</span></span><br><span class="line"></span><br><span class="line">cv2.namedWindow(<span class="string">'dst'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.imshow(<span class="string">'dst'</span>,dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindow()</span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCE82ac39e0bfebcc238e7fd2d46f3877bb" title="image.png" class="gallery-item"><img src="WEBRESOURCE82ac39e0bfebcc238e7fd2d46f3877bb" alt="image.png"></a></p>
+<p>&emsp;&emsp;OpenCV 中的加法与Numpy 的加法是有所不同的。OpenCV 的加法是一种饱和操作，而Numpy 的加法是一种模操作。<br></div><br></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> cv2
+
+x = np.uint8([<span class="hljs-number">250</span>])
+y = np.uint8([<span class="hljs-number">10</span>])
+print(cv2.add(x, y)) <span class="hljs-comment"># OpenCV图像加法，250+10 = 260 =&gt; 255</span>
+print(x+y)           <span class="hljs-comment"># numpy取模加法，250+10 = 260 % 256 = 4</span></code></pre>
+<p><a href="WEBRESOURCEae11fe265ff70931f6e24ae6cf0f583c" title="image.png" class="gallery-item"><img src="WEBRESOURCEae11fe265ff70931f6e24ae6cf0f583c" srcset="/img/loading.gif" alt="image.png"></a></p>
+<h2 id="图像混合"><a href="#图像混合" class="headerlink" title="图像混合"></a>图像混合</h2><p>&emsp;&emsp;图像混合其实也是一种图像加法，但是不同的是两幅图像的权重不同，这就会给人一种混合或者透明的感觉。图像混合的计算公式如下：<br><pre><code class="hljs math">g(x) &#x3D; (1-\alpha)f_0(x) + \alpha f_1(x)</code></pre><br>通过改变<code>$\alpha$</code>的值可以实现图像的平滑效果。</p>
+<p>&emsp;&emsp;下面我们把两幅图混合在一起。第一幅图的权重是0.7，第二幅图的权重是0.3。函数<code>cv2.addWeighted()</code>可以按下面的公式对图片进行混合操作:<br><pre><code class="hljs math">dst &#x3D; \alpha.img1 + \beta.img2 + \gamma</code></pre></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+img1=cv2.imread(<span class="hljs-string">&#x27;ml.png&#x27;</span>)
+img2=cv2.imread(<span class="hljs-string">&#x27;opencv-logo.png&#x27;</span>)
+
+dst=cv2.addWeighted(img1,<span class="hljs-number">0.7</span>,img2,<span class="hljs-number">0.3</span>, <span class="hljs-number">0</span>)   <span class="hljs-comment"># 第一幅图的权重是0.7，第二幅图的权重是0.3</span>
+
+cv2.namedWindow(<span class="hljs-string">&#x27;dst&#x27;</span>, cv2.WINDOW_NORMAL)
+cv2.imshow(<span class="hljs-string">&#x27;dst&#x27;</span>,dst)
+cv2.waitKey(<span class="hljs-number">0</span>)
+cv2.destroyAllWindow()</code></pre>
+<p><a href="WEBRESOURCE82ac39e0bfebcc238e7fd2d46f3877bb" title="image.png" class="gallery-item"><img src="WEBRESOURCE82ac39e0bfebcc238e7fd2d46f3877bb" srcset="/img/loading.gif" alt="image.png"></a></p>
 <h2 id="按位操作"><a href="#按位操作" class="headerlink" title="按位操作"></a>按位操作</h2><p>&emsp;&emsp;这里包括的按位操作有：AND，OR，NOT，XOR 等。当我们提取图像的一部分，选择非矩形ROI 时这些操作会很有用</p>
 <p>&emsp;&emsp;现在我想把OpenCV 的标志放到另一幅图像上。如果使用加法，颜色会改变，如果使用混合，会得到透明效果，但是我不想要透明。如果它是矩形那么我可以使用ROI。但事实上它不是矩形。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图像</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'ball.png'</span>)</span><br><span class="line">img2 = cv2.imread(<span class="string">'opencv-logo.png'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 想把logo放在img1的左上角，所以这里先创建一个ROI区域</span></span><br><span class="line">rows,cols,channels = img2.shape    <span class="comment"># 根据img2的Logo尺寸在img1上开一个ROI区域</span></span><br><span class="line">roi = img1[<span class="number">0</span>:rows, <span class="number">0</span>:cols ]</span><br><span class="line"></span><br><span class="line">img2gray = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)    <span class="comment"># 先将彩色图转换为灰度图(图像阈值化处理的前一步骤)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 图像阈值化处理</span></span><br><span class="line"><span class="comment"># 创建一个图像的掩膜和它翻转后的图像的掩膜(制作掩膜的目的是保护被掩膜覆盖的区域，之后的操作将只影响掩膜之外的区域)</span></span><br><span class="line"><span class="comment"># 使用cv2.threshold()将img2gray中大于175像素的值设为0(黑色)，小于175像素的设为255(白色)，cv2.THRESH_BINARY表示采用的是二进制阈值化模式</span></span><br><span class="line">ret, mask = cv2.threshold(img2gray, <span class="number">175</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line"></span><br><span class="line">mask_inv = cv2.bitwise_not(mask)    <span class="comment"># 对掩膜进行'按位非'操作，黑色=&gt;白色</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 剔除logo图片中ROI区域之外的像素，取roi 中与mask 中不为零的值对应的像素的值，其他值为0</span></span><br><span class="line"><span class="comment"># 注意这里必须有mask=mask 或者mask=mask_inv, 这里的mask= 参数不能缺省</span></span><br><span class="line">img1_bg = cv2.bitwise_and(roi,roi,mask = mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取roi 中与mask_inv 中不为零的值对应的像素的值，其他值为0。</span></span><br><span class="line">img2_fg = cv2.bitwise_and(img2,img2,mask = mask_inv)    <span class="comment"># 从logo图片img2中取出掩膜mask_inv覆盖的区域作为前景</span></span><br><span class="line"></span><br><span class="line">dst = cv2.add(img1_bg,img2_fg)     <span class="comment"># 将img1_bg背景和img2_fg前景进行图像拼接操作，生成最终将要嵌入到源图像中的图像dst</span></span><br><span class="line">img1[<span class="number">0</span>:rows, <span class="number">0</span>:cols] = dst         <span class="comment"># 改变源图像中设置了ROI的区域</span></span><br><span class="line"></span><br><span class="line">cv2.namedWindow(<span class="string">'res'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.namedWindow(<span class="string">'mask'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.namedWindow(<span class="string">'mask_inv'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.namedWindow(<span class="string">'img1_bg'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.namedWindow(<span class="string">'img2_fg'</span>, cv2.WINDOW_NORMAL)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'res'</span>,img1)</span><br><span class="line">cv2.imshow(<span class="string">'mask'</span>,mask)</span><br><span class="line">cv2.imshow(<span class="string">'mask_inv'</span>,mask_inv)</span><br><span class="line">cv2.imshow(<span class="string">'img1_bg'</span>,img1_bg)</span><br><span class="line">cv2.imshow(<span class="string">'img2_fg'</span>,img2_fg)</span><br><span class="line"></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCE2b2c5076bdfeee89393610f180f302e2" title="image.png" class="gallery-item"><img src="WEBRESOURCE2b2c5076bdfeee89393610f180f302e2" alt="image.png"></a></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># 加载图像</span>
+img1 = cv2.imread(<span class="hljs-string">&#x27;ball.png&#x27;</span>)
+img2 = cv2.imread(<span class="hljs-string">&#x27;opencv-logo.png&#x27;</span>)
+
+<span class="hljs-comment"># 想把logo放在img1的左上角，所以这里先创建一个ROI区域</span>
+rows,cols,channels = img2.shape    <span class="hljs-comment"># 根据img2的Logo尺寸在img1上开一个ROI区域</span>
+roi = img1[<span class="hljs-number">0</span>:rows, <span class="hljs-number">0</span>:cols ]
+
+img2gray = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)    <span class="hljs-comment"># 先将彩色图转换为灰度图(图像阈值化处理的前一步骤)</span>
+
+<span class="hljs-comment"># 图像阈值化处理</span>
+<span class="hljs-comment"># 创建一个图像的掩膜和它翻转后的图像的掩膜(制作掩膜的目的是保护被掩膜覆盖的区域，之后的操作将只影响掩膜之外的区域)</span>
+<span class="hljs-comment"># 使用cv2.threshold()将img2gray中大于175像素的值设为0(黑色)，小于175像素的设为255(白色)，cv2.THRESH_BINARY表示采用的是二进制阈值化模式</span>
+ret, mask = cv2.threshold(img2gray, <span class="hljs-number">175</span>, <span class="hljs-number">255</span>, cv2.THRESH_BINARY)
+
+mask_inv = cv2.bitwise_not(mask)    <span class="hljs-comment"># 对掩膜进行&#x27;按位非&#x27;操作，黑色=&gt;白色</span>
+
+
+<span class="hljs-comment"># 剔除logo图片中ROI区域之外的像素，取roi 中与mask 中不为零的值对应的像素的值，其他值为0</span>
+<span class="hljs-comment"># 注意这里必须有mask=mask 或者mask=mask_inv, 这里的mask= 参数不能缺省</span>
+img1_bg = cv2.bitwise_and(roi,roi,mask = mask)
+
+<span class="hljs-comment"># 取roi 中与mask_inv 中不为零的值对应的像素的值，其他值为0。</span>
+img2_fg = cv2.bitwise_and(img2,img2,mask = mask_inv)    <span class="hljs-comment"># 从logo图片img2中取出掩膜mask_inv覆盖的区域作为前景</span>
+
+dst = cv2.add(img1_bg,img2_fg)     <span class="hljs-comment"># 将img1_bg背景和img2_fg前景进行图像拼接操作，生成最终将要嵌入到源图像中的图像dst</span>
+img1[<span class="hljs-number">0</span>:rows, <span class="hljs-number">0</span>:cols] = dst         <span class="hljs-comment"># 改变源图像中设置了ROI的区域</span>
+
+cv2.namedWindow(<span class="hljs-string">&#x27;res&#x27;</span>, cv2.WINDOW_NORMAL)
+cv2.namedWindow(<span class="hljs-string">&#x27;mask&#x27;</span>, cv2.WINDOW_NORMAL)
+cv2.namedWindow(<span class="hljs-string">&#x27;mask_inv&#x27;</span>, cv2.WINDOW_NORMAL)
+cv2.namedWindow(<span class="hljs-string">&#x27;img1_bg&#x27;</span>, cv2.WINDOW_NORMAL)
+cv2.namedWindow(<span class="hljs-string">&#x27;img2_fg&#x27;</span>, cv2.WINDOW_NORMAL)
+
+cv2.imshow(<span class="hljs-string">&#x27;res&#x27;</span>,img1)
+cv2.imshow(<span class="hljs-string">&#x27;mask&#x27;</span>,mask)
+cv2.imshow(<span class="hljs-string">&#x27;mask_inv&#x27;</span>,mask_inv)
+cv2.imshow(<span class="hljs-string">&#x27;img1_bg&#x27;</span>,img1_bg)
+cv2.imshow(<span class="hljs-string">&#x27;img2_fg&#x27;</span>,img2_fg)
+
+cv2.waitKey(<span class="hljs-number">0</span>)
+cv2.destroyAllWindows()</code></pre>
+<p><a href="WEBRESOURCE2b2c5076bdfeee89393610f180f302e2" title="image.png" class="gallery-item"><img src="WEBRESOURCE2b2c5076bdfeee89393610f180f302e2" srcset="/img/loading.gif" alt="image.png"></a></p>
 <h1 id="程序性能检测及优化"><a href="#程序性能检测及优化" class="headerlink" title="程序性能检测及优化"></a>程序性能检测及优化</h1><p>&emsp;&emsp;在图像处理中每秒钟都要做大量的运算，所以给出的程序不仅要能得到正确的处理结果，同时还必须要快。</p>
-<h2 id="使用OpenCV检测程序效率"><a href="#使用OpenCV检测程序效率" class="headerlink" title="使用OpenCV检测程序效率"></a>使用OpenCV检测程序效率</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">e1 = cv2.getTickCount()</span><br><span class="line"><span class="comment"># func()   函数执行代码段</span></span><br><span class="line">e2 = cv2.getTickCount()    <span class="comment"># 返回从参考点到这个函数被执行的时钟数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># (e2 - e1)得到两次调用getTickFrequency()之间的时间间隔</span></span><br><span class="line">time = (e2 - e1)/ cv2.getTickFrequency()   <span class="comment"># cv2.getTickFrequency() 是时钟频率，即每秒钟的时钟数</span></span><br></pre></td></tr></table></figure>
-<p>看一个例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img1 = cv2.imread(<span class="string">'miss.jpg'</span>)</span><br><span class="line">e1 = cv2.getTickCount()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    <span class="keyword">if</span> i!=<span class="number">0</span>:</span><br><span class="line">        img1 = cv2.medianBlur(img1,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">e2 = cv2.getTickCount()</span><br><span class="line"></span><br><span class="line">t = (e2 - e1)/cv2.getTickFrequency()</span><br><span class="line">print(t)</span><br></pre></td></tr></table></figure></p>
-<p><a href="WEBRESOURCEf44e566b70abd030966e3abf0fa293c4" title="image.png" class="gallery-item"><img src="WEBRESOURCEf44e566b70abd030966e3abf0fa293c4" alt="image.png"></a></p>
+<h2 id="使用OpenCV检测程序效率"><a href="#使用OpenCV检测程序效率" class="headerlink" title="使用OpenCV检测程序效率"></a>使用OpenCV检测程序效率</h2><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+e1 = cv2.getTickCount()
+<span class="hljs-comment"># func()   函数执行代码段</span>
+e2 = cv2.getTickCount()    <span class="hljs-comment"># 返回从参考点到这个函数被执行的时钟数</span>
+
+<span class="hljs-comment"># (e2 - e1)得到两次调用getTickFrequency()之间的时间间隔</span>
+time = (e2 - e1)/ cv2.getTickFrequency()   <span class="hljs-comment"># cv2.getTickFrequency() 是时钟频率，即每秒钟的时钟数</span></code></pre>
+<p>看一个例子：<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</p>
+<p>img1 = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>)<br>e1 = cv2.getTickCount()</p>
+<p><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    <span class="hljs-keyword">if</span> i!=<span class="hljs-number">0</span>:<br>        img1 = cv2.medianBlur(img1,<span class="hljs-number">1</span>)</p>
+<p>e2 = cv2.getTickCount()</p>
+<p>t = (e2 - e1)/cv2.getTickFrequency()<br>print(t)</code></pre>:hexoPostRenderEscape–&gt;<br><a href="WEBRESOURCEf44e566b70abd030966e3abf0fa293c4" title="image.png" class="gallery-item"><img src="WEBRESOURCEf44e566b70abd030966e3abf0fa293c4" srcset="/img/loading.gif" alt="image.png"></a></p>
 <h2 id="OpenCV-中的默认优化"><a href="#OpenCV-中的默认优化" class="headerlink" title="OpenCV 中的默认优化"></a>OpenCV 中的默认优化</h2><p>&emsp;&emsp;事实上，OpenCV 中的很多函数都被优化过（SSE2，AVX 等），当然也包含一些没有被优化的代码。如果我们的系统支持优化的话那自然要充分利用这一点。在编译时优化是默认开启的，因此OpenCV运行的就是优化后的代码。你可以使用函数cv2.useOptimized()来查看优化是否被开启了，如果没有开启，使用函数cv2.setUseOptimized()来开启优化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">img = cv2.imread(&apos;miss.jpg&apos;, 0)</span><br><span class="line"></span><br><span class="line">cv2.useOptimized()    # 查看是否开启了优化(默认开启)</span><br><span class="line">    </span><br><span class="line"># 观察同一段程序运行的时间，直观感受优化后的效率提升</span><br><span class="line">%timeit res = cv2.medianBlur(img,49)    # 图像中值滤波</span><br><span class="line"></span><br><span class="line">cv2.setUseOptimized(False)    # 关闭优化</span><br><span class="line">cv2.useOptimized()</span><br><span class="line">    </span><br><span class="line">%timeit res = cv2.medianBlur(img,49)    # 很明显这段语句相比上面开启了优化后的语句执行时间变长了</span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCE4526221ecbe96ddd16e16de8efcc7f8e" title="image.png" class="gallery-item"><img src="WEBRESOURCE4526221ecbe96ddd16e16de8efcc7f8e" alt="image.png"></a></p>
+<pre><code class="hljs pyhton">import cv2
+import numpy as np
+img &#x3D; cv2.imread(&#39;miss.jpg&#39;, 0)
+
+cv2.useOptimized()    # 查看是否开启了优化(默认开启)
+
+# 观察同一段程序运行的时间，直观感受优化后的效率提升
+%timeit res &#x3D; cv2.medianBlur(img,49)    # 图像中值滤波
+
+cv2.setUseOptimized(False)    # 关闭优化
+cv2.useOptimized()
+
+%timeit res &#x3D; cv2.medianBlur(img,49)    # 很明显这段语句相比上面开启了优化后的语句执行时间变长了</code></pre>
+<p><a href="WEBRESOURCE4526221ecbe96ddd16e16de8efcc7f8e" title="image.png" class="gallery-item"><img src="WEBRESOURCE4526221ecbe96ddd16e16de8efcc7f8e" srcset="/img/loading.gif" alt="image.png"></a></p>
 <p>&emsp;&emsp;再来比较一下cv2.countNonZero()和np.count_nonzero()这两个函数的运行效率，可见，opencv中的函数较numpy做了更多的优化。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'miss.jpg'</span>,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">%timeit z = cv2.countNonZero(img)</span><br><span class="line"><span class="comment"># 4.7 µs ± 5.65 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)</span></span><br><span class="line"></span><br><span class="line">%timeit z = np.count_nonzero(img)</span><br><span class="line"><span class="comment"># 640 ns ± 2.29 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)</span></span><br></pre></td></tr></table></figure>
-<p><a href="WEBRESOURCEe0703bcdc37ff4bf97300df029fb9023" title="image.png" class="gallery-item"><img src="WEBRESOURCEe0703bcdc37ff4bf97300df029fb9023" alt="image.png"></a></p>
-<p>程序优化注意事项：<br><a href="WEBRESOURCE0ef307208c25fd58446882e407b9d7a5" title="image.png" class="gallery-item"><img src="WEBRESOURCE0ef307208c25fd58446882e407b9d7a5" alt="image.png"></a></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+img = cv2.imread(<span class="hljs-string">&#x27;miss.jpg&#x27;</span>,<span class="hljs-number">0</span>)
+
+%timeit z = cv2.countNonZero(img)
+<span class="hljs-comment"># 4.7 µs ± 5.65 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)</span>
+
+%timeit z = np.count_nonzero(img)
+<span class="hljs-comment"># 640 ns ± 2.29 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)</span>
+</code></pre>
+<p><a href="WEBRESOURCEe0703bcdc37ff4bf97300df029fb9023" title="image.png" class="gallery-item"><img src="WEBRESOURCEe0703bcdc37ff4bf97300df029fb9023" srcset="/img/loading.gif" alt="image.png"></a></p>
+<p>程序优化注意事项：<br><a href="WEBRESOURCE0ef307208c25fd58446882e407b9d7a5" title="image.png" class="gallery-item"><img src="WEBRESOURCE0ef307208c25fd58446882e407b9d7a5" srcset="/img/loading.gif" alt="image.png"></a></p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
         lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
         }</script>
-      
-    </div>
-
-    
-      
-
-
-    
-
-    
-    
-    
-
-    <div>
-      
-        <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文已结束<i class="fa fa-paw"></i>感谢您的阅读！-------------</div>
-    
-</div>
-      
-    </div>
-
-
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="Cbaibai wechat" style="width: 200px; max-width: 100%;">
-    <div>欢迎订阅本站公众号!</div>
-</div>
-
-      </div>
-    
-
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.png" alt="Cbaibai 微信支付">
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="Cbaibai 支付宝">
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>摆摆</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://baibainote.pro/2020/03/15/OpenCV核心操作/" title="OpenCV核心操作">https://baibainote.pro/2020/03/15/OpenCV核心操作/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
-</ul>
-
-      </div>
-    
-
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/opencv-python/" rel="tag"><i class="fa fa-tag" style="margin-right:2px;"></i>opencv-python</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/03/15/OpenCV中的图像处理/" rel="next" title="OpenCV中的图像处理">
-                <i class="fa fa-chevron-left"></i> OpenCV中的图像处理
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/15/OpenCV的GUI特性/" rel="prev" title="OpenCV的GUI特性">
-                OpenCV的GUI特性 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/Cbaibai.gif" alt="Cbaibai">
-            
-              <p class="site-author-name" itemprop="name">Cbaibai</p>
-              <p class="site-description motion-element" itemprop="description">本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">9</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS订阅
-              </a>
             </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/yourname" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://www.jianshu.com/u/4172b00e93da" target="_blank" title="简书" rel="external nofollow"><i class="fa fa-fw fa-pencil"></i>简书</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://www.zhihu.com/people/cheng-yixi-68/activities" target="_blank" title="知乎" rel="external nofollow"><i class="fa fa-fw fa-tags"></i>知乎</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://www.douban.com/people/186465728" target="_blank" title="豆瓣" rel="external nofollow"><i class="fa fa-fw fa-mortar-board"></i>豆瓣</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://weibo.com/6646223936" target="_blank" title="微博" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i>微博</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                友情链接
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Python/">Python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/opencv-python/">opencv-python</a>
+                    
+                  </div>
+                
               </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.shejidaren.com/" title="设计达人" target="_blank">设计达人</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://leetcode-cn.com/cbaibai" title="leetCode" target="_blank">leetCode</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://codepen.io/" title="Codepen" target="_blank">Codepen</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          <!--
-	<hr>
-
-	<div id="music163player">
-	    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66">
-	    </iframe>
-	</div>
--->
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
               
-            
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/15/OpenCV%E7%9A%84GUI%E7%89%B9%E6%80%A7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OpenCV的GUI特性</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/15/OpenCV%E4%B8%AD%E7%9A%84%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
+                        <span class="hidden-mobile">OpenCV中的图像处理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图像的基本操作"><span class="nav-text">图像的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取并修改像素值"><span class="nav-text">获取并修改像素值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取的图像的属性"><span class="nav-text">获取的图像的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像ROI"><span class="nav-text">图像ROI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拆分和合并图像通道"><span class="nav-text">拆分和合并图像通道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为图像括边"><span class="nav-text">为图像括边</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像上的算术运算"><span class="nav-text">图像上的算术运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像加法"><span class="nav-text">图像加法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像混合"><span class="nav-text">图像混合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按位操作"><span class="nav-text">按位操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序性能检测及优化"><span class="nav-text">程序性能检测及优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用OpenCV检测程序效率"><span class="nav-text">使用OpenCV检测程序效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV-中的默认优化"><span class="nav-text">OpenCV 中的默认优化</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+          </article>
+        </div>
+      </div>
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright"> &copy; 2018 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-info"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Cbaibai</span>
-
-  
-
-  
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-
-  
-
-
-
-
-
-
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-
-  
-</div>
-
-
-
-
-
-
-
-
-
-        
       </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-
-    
-      <div id="needsharebutton-float">
-        <span class="btn">
-          <i class="fa fa-share-alt" aria-hidden="true"></i>
-        </span>
-      </div>
-    
-	
-    
-
     
   </div>
+</div>
+
+<!-- Custom -->
+
+
     
-  <script type="text/javascript" src="source/js/src/love.js"></script>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/baidu_js_push.js?v=6.4.2"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'aLVVb5yKAIwYkY3q1TQkFHef-gzGzoHsz',
-        appKey: 'MAyvoih1a2EacmTYskPHHUyA',
-        placeholder: '来吧，输入你的第一条评论',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-        // ref: https://github.com/ForbesLindesay/unescape-html
-        var unescapeHtml = function(html) {
-          return String(html)
-            .replace(/&quot;/g, '"')
-            .replace(/&#39;/g, '\'')
-            .replace(/&#x3A;/g, ':')
-            // replace all the other &#x; chars
-            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
-            .replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>')
-            .replace(/&amp;/g, '&');
-        };
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                content = unescapeHtml(content);
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('-1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
 
   
 
   
+</footer>
 
-  
+<!-- SCRIPTS -->
 
-  
-  
-
-  
-  
-
-  
-
-
-  
-  
-  
-  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    
-    
-      flOptions = {};
-      
-          flOptions.iconStyle = "box";
-      
-          flOptions.boxForm = "horizontal";
-      
-          flOptions.position = "middleRight";
-      
-          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Evernote";
-      
-      new needShareButton('#needsharebutton-float', flOptions);
-    
-  </script>
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.4.2"></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.4.2"></script>
-
-
-  
-
-  
-
-  
-  <style>
-    .copy-btn {
-      display: inline-block;
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 20px;
-      color: #333;
-      white-space: nowrap;
-      vertical-align: middle;
-      cursor: pointer;
-      background-color: #eee;
-      background-image: linear-gradient(#fcfcfc, #eee);
-      border: 1px solid #d5d5d5;
-      border-radius: 3px;
-      user-select: none;
-      outline: 0;
-    }
-
-    .highlight-wrap .copy-btn {
-      transition: opacity .3s ease-in-out;
-      opacity: 0;
-      padding: 2px 6px;
-      position: absolute;
-      right: 4px;
-      top: 8px;
-    }
-
-    .highlight-wrap:hover .copy-btn,
-    .highlight-wrap .copy-btn:focus {
-      opacity: 1
-    }
-
-    .highlight-wrap {
-      position: relative;
-    }
-  </style>
-  <script>
-    $('.highlight').each(function (i, e) {
-      var $wrap = $('<div>').addClass('highlight-wrap')
-      $(e).after($wrap)
-      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
-        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
-          return $(e).text()
-        }).toArray().join('\n')
-        var ta = document.createElement('textarea')
-        document.body.appendChild(ta)
-        ta.style.position = 'absolute'
-        ta.style.top = '0px'
-        ta.style.left = '0px'
-        ta.value = code
-        ta.select()
-        ta.focus()
-        var result = document.execCommand('copy')
-        document.body.removeChild(ta)
-        
-        $(this).blur()
-      })).on('mouseleave', function (e) {
-        var $b = $(this).find('.copy-btn')
-        setTimeout(function () {
-          $b.text('复制')
-        }, 300)
-      }).append(e)
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
   </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
 
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>

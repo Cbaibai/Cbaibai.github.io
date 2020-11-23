@@ -1,0 +1,940 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="本站所有文章系原创，如有文章侵权请联系2583245026@qq.com，我会及时删除！">
+  <meta name="author" content="Cbaibai">
+  <meta name="keywords" content="">
+  <title>摆摆笔记</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"baibainote.pro","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-30 21:14" pubdate>
+        2020年10月30日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      0 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>[toc]</p>
+<h1 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h1><p>Lambda 表达式是在 Java 8 中引入的，并且成为了 Java 8 最大的特点。它使得功能性编程变得非常便利，极大地简化了开发工作。</p>
+<h2 id="Lambda-表达式的语法与特征"><a href="#Lambda-表达式的语法与特征" class="headerlink" title="Lambda 表达式的语法与特征"></a>Lambda 表达式的语法与特征</h2><p>一个 Lambda 表达式具有下面这样的语法特征。它由三个部分组成：第一部分为一个括号内用逗号分隔的参数列表，参数即函数式接口里面方法的参数；第二部分为一个箭头符号：-&gt;；第三部分为方法体，可以是表达式和代码块。语法如下：<br><pre><code class="hljs gams"><span class="hljs-keyword">parameter</span> -&gt; expression <span class="hljs-comment">body</span></code></pre></p>
+<p>下面列举了 Lambda 表达式的几个最重要的特征：</p>
+<ul>
+<li><strong>可选的类型声明</strong>：你不用去声明参数的类型。编译器可以从参数的值来推断它是什么类型。</li>
+<li><strong>可选的参数周围的括号</strong>：你可以不用在括号内声明单个参数。但是对于很多参数的情况，括号是必需的。</li>
+<li><strong>可选的大括号</strong>：如果表达式体里面只有一个语句，那么你不必用大括号括起来。</li>
+<li><strong>可选的返回关键字</strong>：如果表达式体只有单个表达式用于值的返回，那么编译器会自动完成这一步。若要指示表达式来返回某个值，则需要使用大括号。</li>
+</ul>
+<p>Java 语言的设计者们思考了很多如何让现有的功能和 Lambda 表达式友好兼容。于是就有了函数接口这个概念。<strong>函数接口是一种只有一个方法的接口，函数接口可以隐式地转换成 Lambda 表达式。</strong></p>
+<blockquote>
+<p><strong>函数式接口的重要属性是</strong>：我们能够使用 Lambda 实例化它们，Lambda 表达式让你能够将函数作为方法参数，或者将代码作为数据对待。Lambda 表达式的引入给开发者带来了不少优点：在 Java 8 之前，匿名内部类，监听器和事件处理器的使用都显得很冗长，代码可读性很差，Lambda 表达式的应用则使代码变得更加紧凑，可读性增强；Lambda 表达式使并行操作大集合变得很方便，可以充分发挥多核 CPU 的优势，更易于为多核处理器编写代码。</p>
+</blockquote>
+<h2 id="一个Lambda表达式的例子"><a href="#一个Lambda表达式的例子" class="headerlink" title="一个Lambda表达式的例子"></a>一个Lambda表达式的例子</h2><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewFeaturesTester</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;
+        NewFeaturesTester tester = <span class="hljs-keyword">new</span> NewFeaturesTester();
+
+        <span class="hljs-comment">/*--- Lambda 表达式可以实现接口 ---*/</span>
+        <span class="hljs-comment">// 带有类型声明的表达式</span>
+        MathOperation addition = (<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) -&gt; a + b;
+
+        <span class="hljs-comment">// 没有类型声明的表达式</span>
+        MathOperation subtraction = (a, b) -&gt; a - b;
+
+        <span class="hljs-comment">// 带有大括号、带有返回语句的表达式</span>
+        MathOperation multiplication = (<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) -&gt; &#123; <span class="hljs-keyword">return</span> a * b; &#125;;
+
+        <span class="hljs-comment">// 没有大括号和 return 语句的表达式</span>
+        MathOperation division = (<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) -&gt; a / b;
+
+        <span class="hljs-comment">// 输出结果</span>
+        System.out.println(<span class="hljs-string">&quot;10 + 5 = &quot;</span> + tester.operate(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>, addition));
+        System.out.println(<span class="hljs-string">&quot;10 - 5 = &quot;</span> + tester.operate(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>, subtraction));
+        System.out.println(<span class="hljs-string">&quot;10 x 5 = &quot;</span> + tester.operate(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>, multiplication));
+        System.out.println(<span class="hljs-string">&quot;10 / 5 = &quot;</span> + tester.operate(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>, division));
+
+        <span class="hljs-comment">// 没有括号的表达式</span>
+        GreetingService greetService1 = message -&gt;
+        System.out.println(<span class="hljs-string">&quot;Hello &quot;</span> + message);
+
+        <span class="hljs-comment">// 有括号的表达式</span>
+         GreetingService greetService2 = (message) -&gt;
+        System.out.println(<span class="hljs-string">&quot;Hello &quot;</span> + message);
+
+        <span class="hljs-comment">// 调用 sayMessage 方法输出结果</span>
+        greetService1.sayMessage(<span class="hljs-string">&quot;Shiyanlou&quot;</span>);
+        greetService2.sayMessage(<span class="hljs-string">&quot;Classmate&quot;</span>);
+    &#125;
+
+    <span class="hljs-comment">// 下面是定义的一些接口和方法(函数式接口)</span>
+    <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">MathOperation</span></span>&#123;
+        <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">operation</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>;
+    &#125;
+
+    <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">GreetingService</span></span>&#123;
+        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sayMessage</span><span class="hljs-params">(String message)</span></span>;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">operate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, MathOperation mathOperation)</span></span>&#123;
+        <span class="hljs-keyword">return</span> mathOperation.operation(a, b);
+    &#125;
+&#125;</code></pre>
+<p><a href="../images/993e3dfb4be036a039bd87b9b8ed9399_4204371964.jpg" class="gallery-item"><img src="../images/993e3dfb4be036a039bd87b9b8ed9399_4204371964.jpg" srcset="/img/loading.gif" alt=""></a></p>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<ul>
+<li>Lambda 表达式优先用于定义功能接口在行内的实现，即单个方法只有一个接口。</li>
+<li>Lambda 表达式让匿名类不再需要，这为 Java 增添了简洁但实用的函数式编程能力</li>
+</ul>
+<h2 id="Lambda-的作用域"><a href="#Lambda-的作用域" class="headerlink" title="Lambda 的作用域"></a>Lambda 的作用域</h2><p>将以上代码更改为：<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewFeaturesTester</span></span>&#123;<br>    <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String salutation = <span class="hljs-string">&quot;Hello &quot;</span>;     <span class="hljs-comment">// 正确，不可再次赋值</span><br>    <span class="hljs-comment">// static String salutation = &quot;Hello &quot;;        // 正确，可再次赋值</span><br>    <span class="hljs-comment">// String salutation = &quot;Hello &quot;;               // 报错</span><br>    <span class="hljs-comment">// final String salutation = &quot;Hello &quot;;         // 报错</span></p>
+<pre><code>&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String args[])&lt;/span&gt;&lt;/span&gt;&amp;#123;
+    &lt;span class=&quot;hljs-comment&quot;&gt;// final String salutation = &amp;quot;Hello &amp;quot;;     // 正确，不可再次赋值&lt;/span&gt;
+    &lt;span class=&quot;hljs-comment&quot;&gt;// String salutation = &amp;quot;Hello &amp;quot;;           // 正确，隐性为 final，不可再次赋值&lt;/span&gt;
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// salution = &amp;quot;welcome to &amp;quot;&lt;/span&gt;
+    GreetingService greetService1 = message -&amp;gt;
+    System.out.println(salutation + message);
+    greetService1.sayMessage(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Shiyanlou&amp;quot;&lt;/span&gt;);
+&amp;#125;
+
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;GreetingService&lt;/span&gt;&lt;/span&gt;&amp;#123;
+   &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;sayMessage&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String message)&lt;/span&gt;&lt;/span&gt;;
+&amp;#125;
+</code></pre><p>&#125;</code></pre>:hexoPostRenderEscape–&gt;<br><a href="../images/2a857631f38cae293da106483771136a_1768532042.jpg" class="gallery-item"><img src="../images/2a857631f38cae293da106483771136a_1768532042.jpg" srcset="/img/loading.gif" alt=""></a></p>
+<p>根据以上代码可以得出结论：</p>
+<ul>
+<li>可访问 static 修饰的成员变量，如果是 final static 修饰，不可再次赋值，只有 static 修饰可再次赋值。</li>
+<li>可访问表达式外层的 final 局部变量（不用声明为 final，隐性具有 final 语义），不可再次赋值。</li>
+</ul>
+<h2 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h2><blockquote>
+<p>方法也是一种对象，可以通过名字来引用。不过方法引用的唯一用途是支持 Lambda 的简写，使用方法名称来表示 Lambda。不能通过方法引用来获得诸如方法签名的相关信息。</p>
+</blockquote>
+<p>方法引用提供了一个很有用的语义来直接访问类或者实例的已经存在的方法或者构造方法。</p>
+<p>方法引用可以通过方法的名字来引用其本身。方法引用是通过双冒号 :: 来描述的。</p>
+<p>它可以用来引用下列类型的方法：</p>
+<ul>
+<li><strong>构造器引用</strong>。语法是 <code>Class::new</code>，或者更一般的 Class&lt; T &gt;::new，要求构造器方法是没有参数。</li>
+<li><strong>静态方法引用</strong>。语法是 <code>Class::static_method</code>，要求接受一个 Class 类型的参数。</li>
+<li><strong>特定类的任意对象方法引用</strong>。它的语法是 <code>Class::method</code>，要求方法是没有参数的。</li>
+<li><strong>特定对象的方法引用</strong>，它的语法是<code>instance::method</code>。要求方法接受一个参数，与 3 不同的地方在于，3 是在列表元素上分别调用方法，而 4 是在某个对象上调用方法，将列表元素作为参数传入。</li>
+</ul>
+<p>更多对于方法引用的介绍，可以参考这一篇博文—— java8 - 方法引用(method referrance)</p>
+<p>下面是一个简单的方法引用的例子:<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.ArrayList;</p>
+<p><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewFeaturesTester</span></span>&#123;</p>
+<pre><code>&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String args[])&lt;/span&gt;&lt;/span&gt;&amp;#123;
+    List&amp;lt;String&amp;gt; names = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;&amp;gt;();
+
+    names.add(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Peter&amp;quot;&lt;/span&gt;);
+    names.add(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Linda&amp;quot;&lt;/span&gt;);
+    names.add(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Smith&amp;quot;&lt;/span&gt;);
+    names.add(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Zack&amp;quot;&lt;/span&gt;);
+    names.add(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Bob&amp;quot;&lt;/span&gt;);
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 通过 System.out::println 引用了输出的方法&lt;/span&gt;
+    names.forEach(System.out::println);
+&amp;#125;
+</code></pre><p>&#125;</code></pre>:hexoPostRenderEscape–&gt;<br><a href="../images/ccc3c6284413355adaf8030f8737d94e_3808493287.jpg" class="gallery-item"><img src="../images/ccc3c6284413355adaf8030f8737d94e_3808493287.jpg" srcset="/img/loading.gif" alt=""></a></p>
+<h1 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h1><p>函数式接口通过一个单一的功能来表现。例如，带有单个 compareTo 方法的比较接口，被用于比较的场合。Java 8 开始定义了大量的函数式接口来广泛地用于 Lambda 表达式。</p>
+<blockquote>
+<p>Java 8 引入的一个核心概念是函数式接口（Functional Interfaces）。通过在接口里面添加一个抽象方法，这些方法可以直接从接口中运行。如果一个接口定义唯一一个抽象方法，那么这个接口就成为函数式接口。同时，引入了一个新的注解：<code>@FunctionalInterface</code>。可以把他它放在一个接口前，表示这个接口是一个函数式接口。这个注解是非必须的，只要接口只包含一个方法的接口，虚拟机会自动判断，不过最好在接口上使用注解 <code>@FunctionalInterface</code> 进行声明。在接口中添加了 <code>@FunctionalInterface</code> 的接口，只允许有一个抽象方法，否则编译器也会报错。</p>
+</blockquote>
+<h2 id="函数式相关的接口及描述"><a href="#函数式相关的接口及描述" class="headerlink" title="函数式相关的接口及描述"></a>函数式相关的接口及描述</h2><table>
+<thead>
+<tr>
+<th>接 口</th>
+<th>描 述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BitConsumer&lt;T,U&gt;</td>
+<td>该接口代表了接收两个输入参数 T、U，并且没有返回的操作</td>
+</tr>
+<tr>
+<td>BiFunction&lt;T,U,R&gt;</td>
+<td>该接口代表提供接收两个参数 T、U，并且产生一个结果 R 的方法</td>
+</tr>
+<tr>
+<td>BinaryOperator</td>
+<td>代表了基于两个相同类型的操作数，产生仍然是相同类型结果的操作</td>
+</tr>
+<tr>
+<td>BiPredicate&lt;T,U&gt;</td>
+<td>代表了对两个参数的断言操作（基于 Boolean 值的方法）</td>
+</tr>
+<tr>
+<td>BooleanSupplier</td>
+<td>代表了一个给出 Boolean 值结果的方法</td>
+</tr>
+<tr>
+<td>Consumer</td>
+<td>代表了接受单一输入参数并且没有返回值的操作</td>
+</tr>
+<tr>
+<td>DoubleBinaryOperator</td>
+<td>代表了基于两个 Double 类型操作数的操作，并且返回一个 Double 类型的返回值</td>
+</tr>
+<tr>
+<td>DoubleConsumer</td>
+<td>代表了一个接受单个 Double 类型的参数并且没有返回的操作</td>
+</tr>
+<tr>
+<td>DoubleFunction</td>
+<td>代表了一个接受 Double 类型参数并且返回结果的方法</td>
+</tr>
+<tr>
+<td>DoublePredicate</td>
+<td>代表了对一个 Double 类型的参数的断言操作</td>
+</tr>
+<tr>
+<td>DoubleSupplier</td>
+<td>代表了一个给出 Double 类型值的方法</td>
+</tr>
+<tr>
+<td>DoubleToIntFunction</td>
+<td>代表了接受单个 Double 类型参数但返回 Int 类型结果的方法</td>
+</tr>
+<tr>
+<td>DoubleToLongFunction</td>
+<td>代表了接受单个 Double 类型参数但返回 Long 类型结果的方法</td>
+</tr>
+<tr>
+<td>DoubleUnaryOperator</td>
+<td>代表了基于单个 Double 类型操作数且产生 Double 类型结果的操作</td>
+</tr>
+<tr>
+<td>Function&lt;T,R&gt;</td>
+<td>代表了接受一个参数并且产生一个结果的方法</td>
+</tr>
+<tr>
+<td>IntBinaryOperator</td>
+<td>代表了对两个 Int 类型操作数的操作，并且产生一个 Int 类型的结果</td>
+</tr>
+<tr>
+<td>IntConsumer</td>
+<td>代表了接受单个 Int 类型参数的操作，没有返回结果</td>
+</tr>
+<tr>
+<td>IntFunction</td>
+<td>代表了接受 Int 类型参数并且给出返回值的方法</td>
+</tr>
+<tr>
+<td>IntPredicate</td>
+<td>代表了对单个 Int 类型参数的断言操作</td>
+</tr>
+</tbody>
+</table>
+<p>更多的接口可以参考 Java 官方 API 手册：[java.lang.Annotation Type FunctionalInterface][4]。在实际使用过程中，加有 @FunctionalInterface 注解的方法均是此类接口，位于 [java.util.Funtion][5] 包中。</p>
+<h2 id="一个函数式编程的例子"><a href="#一个函数式编程的例子" class="headerlink" title="一个函数式编程的例子"></a>一个函数式编程的例子</h2><p>下面我们通过一个例子学习如何使用这些函数式编程的接口。</p>
+<p>新建一个类 <code>NewFeaturesTester.java</code>，以下是 <code>NewFeaturesTester.java</code> 类中应当输入的代码：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Arrays;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.function.Predicate;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewFeaturesTester</span></span>&#123;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;
+      List&lt;Integer&gt; list = Arrays.asList(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>);
+
+      System.out.println(<span class="hljs-string">&quot;All of the numbers:&quot;</span>);
+
+      eval(list, n-&gt;<span class="hljs-keyword">true</span>);
+
+      System.out.println(<span class="hljs-string">&quot;Even numbers:&quot;</span>);
+      eval(list, n-&gt; n%<span class="hljs-number">2</span> == <span class="hljs-number">0</span> );
+
+      System.out.println(<span class="hljs-string">&quot;Numbers that greater than  5:&quot;</span>);
+      eval(list, n -&gt; n &gt; <span class="hljs-number">5</span> );
+   &#125;
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">eval</span><span class="hljs-params">(List&lt;Integer&gt; list, Predicate&lt;Integer&gt; predicate)</span></span>&#123;
+      <span class="hljs-keyword">for</span>(Integer n: list)&#123;
+
+         <span class="hljs-keyword">if</span>(predicate.test(n))&#123;
+            System.out.println(n);
+         &#125;
+      &#125;
+   &#125;
+&#125;</code></pre>
+<p><a href="../images/93129ac18cc800cae5bcbfec8dc39125_3436648429.jpg" class="gallery-item"><img src="../images/93129ac18cc800cae5bcbfec8dc39125_3436648429.jpg" srcset="/img/loading.gif" alt=""></a></p>
+<h2 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h2><p>Java 8 在接口方面引入了一个关于默认方法实现的新概念。它也是作为一种向后兼容能力而出现，旧的接口也能用到 Lambda 表达式中。例如，List 或 Collection 接口是没有 forEach 方法的声明的。但是，通过这些默认方法能够就能轻易地打破集合框架实现的限制。Java 8 引入默认方式使得 List 和 Collection 接口能够拥有 forEach 方法的默认实现。实现了这些接口的类也不必再实现相同的功能了。</p>
+<p>语法如下所示：<br><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">boy</span></span>&#123;
+   <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;
+      System.out.println(<span class="hljs-string">&quot;I am a boy.&quot;</span>);
+   &#125;
+&#125;</code></pre></p>
+<h3 id="多个默认值"><a href="#多个默认值" class="headerlink" title="多个默认值"></a>多个默认值</h3><p>接口中有了默认方法之后，在同一个类里面实现两个带有相同默认方法的接口就可行了。</p>
+<p>下面的代码演示了如何解决这种含糊不清的情况。首先是同一个类里面的两个接口。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">younger</span></span>&#123;<br>   <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;<br>      System.out.println(<span class="hljs-string">&quot;I am a younger.&quot;</span>);<br>   &#125;<br>&#125;</p>
+<p><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">learner</span></span>&#123;<br>   <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;<br>      System.out.println(<span class="hljs-string">&quot;I am a learner.&quot;</span>);<br>   &#125;<br>&#125;</code></pre>:hexoPostRenderEscape–&gt;<br>第一个解决办法就是创建一个自有的方法，来重写默认的实现。就像这样：<br><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">younger</span>, <span class="hljs-title">learner</span></span>&#123;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;
+      System.out.println(<span class="hljs-string">&quot;I am a younger and a learner, so I am  a student.&quot;</span>);
+   &#125;
+&#125;</code></pre><br>另外一个解决办法是使用超类 super 来调用特定接口的默认方法。<br><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">younger</span>, <span class="hljs-title">learner</span></span>&#123;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;
+      learner.<span class="hljs-keyword">super</span>.print();
+   &#125;
+&#125;</code></pre></p>
+<h3 id="静态默认方法"><a href="#静态默认方法" class="headerlink" title="静态默认方法"></a>静态默认方法</h3><p>你也可以为这个接口增加静态的辅助方法（helper），就像下面这样：<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Younger</span></span>&#123;<br>   <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;<br>      System.out.println(<span class="hljs-string">&quot;I am a younger.&quot;</span>);<br>   &#125;</p>
+<p>   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sayHi</span><span class="hljs-params">()</span></span>&#123;<br>      System.out.println(<span class="hljs-string">&quot;Young is the capital.&quot;</span>);<br>   &#125;<br>&#125;</code></pre>:hexoPostRenderEscape–&gt;</p>
+<h3 id="一个默认方法的例子"><a href="#一个默认方法的例子" class="headerlink" title="一个默认方法的例子"></a>一个默认方法的例子</h3><p>下面我们通过一个例子来掌握如何使用默认方法，请将代码修改为下面的内容，对应知识点已在注释中写明。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewFeaturesTester</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;<br>        Younger younger = <span class="hljs-keyword">new</span> Student();<br>        younger.print();<br>    &#125;<br>&#125;</p>
+<p><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Younger</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;I am a younger.&quot;</span>);<br>    &#125;</p>
+<pre><code>&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;sayHi&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;
+    System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Young is the capital.&amp;quot;&lt;/span&gt;);
+&amp;#125;
+</code></pre><p>&#125;</p>
+<p><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Learner</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;I am a learner.&quot;</span>);<br>    &#125;<br>&#125;</p>
+<p><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Younger</span>, <span class="hljs-title">Learner</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>&#123;<br>        Younger.<span class="hljs-keyword">super</span>.print();<br>        Learner.<span class="hljs-keyword">super</span>.print();<br>        Younger.sayHi();<br>        System.out.println(<span class="hljs-string">&quot;I am a student!&quot;</span>);<br>    &#125;<br>&#125;</code></pre>:hexoPostRenderEscape–&gt;<br>运行结果如下所示：</p>
+<p><a href="../images/b37467d1fbbbf2e08149a2b36c08859a_1550726729.png" class="gallery-item"><img src="../images/b37467d1fbbbf2e08149a2b36c08859a_1550726729.png" srcset="/img/loading.gif" alt=""></a></p>
+<h2 id="Optional-类"><a href="#Optional-类" class="headerlink" title="Optional 类"></a>Optional 类</h2><p><code>Optional</code> 是一个容器对象，用于容纳非空对象。Optional 对象通过缺失值表示 null。这个类有许多实用的方法来促使代码能够处理一些像可用或者不可用的值，而不是检查那些空值（null）。Java 8 中引入的这个特性有点像 Google Guava 里的 Optional（Guava 是一个 Google 的基于 Java 6 的类库集合的扩展项目）。</p>
+<p>在 Java 官方文档的解释中，它是一个可以为 null 的容器对象。如果值存在则 <code>isPresent()</code> 方法会返回 true，调用 <code>get()</code>方法会返回该对象。</p>
+<h3 id="类的声明及方法"><a href="#类的声明及方法" class="headerlink" title="类的声明及方法"></a>类的声明及方法</h3><p>下面是 <code>java.util.Optional&lt;T&gt;</code> 类的声明：<br><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Optional</span>&lt;<span class="hljs-title">T</span>&gt;</span>
+<span class="hljs-class"><span class="hljs-keyword">extends</span> <span class="hljs-title">Object</span></span></code></pre><br>这个类继承了 <code>java.lang.Object</code> 类大多数方法。主要有：<br>|接口    |描述|<br>|——-|—-|<br>|static Optional empty()    |该方法返回一个空的 Optional 实例|<br>|boolean equals(Object obj)    |该方法可以指示某个对象是否与当前 Optional 对象相等|<br>|Optional filter(Predicate&lt;? super predicate)    |如果一个值存在并且这个值满足某个给定的断言，那么该方法将返回一个描述该值的 Optional 对象；否则，将返回一个空的 Optional 对象<br>|Optional flatMap(Function&lt;? super T,Optional&gt; mapper)    |如果一个值存在，该方法会把一个 map 方法应用于它，并且返回结果；否则，将返回空的 Optional 对象|<br>|T get()    |如果一个值存在于当前 Optional 中，则返回这个值；否则将抛出一个 NoSuchElementException 异常|<br>|int hashCode()    |返回当前值的 hash 编码值。若这个值不存在，则返回 0|<br>|void ifPresent(Consumer&lt;? super T&gt; consumer)    |如果一个值存在，该方法会通过该值调用指定的 consumer。如果不存在，则不调用|<br>|boolean isPresent()    |返回一个值是否存在|<br>|Optional map(Function&lt;? super T,? extends U&gt; mapper    |如果一个值存在，则将某个 map 方法应用于它。如果这个值是非空的，则返回一个描述结果的 Optional 对象|<br>|static Optional of(T value)    |返回某个存在的非空值的 Optional 对象|</p>
+<h3 id="一个-Optional-类的例子"><a href="#一个-Optional-类的例子" class="headerlink" title="一个 Optional 类的例子"></a>一个 Optional 类的例子</h3><p>下面我们通过一个实例来学习如何将 Optional 类应用到我们的编程中。</p>
+<p>请将 WEB IDE 中的代码修改为下面的内容：<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Optional;</p>
+<p><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewFeaturesTester</span></span>&#123;<br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;</p>
+<pre><code>NewFeaturesTester tester = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; NewFeaturesTester();
+Integer value1 = &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;;
+Integer value2 = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Integer(&lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// ofNullable 允许传参时给出 null&lt;/span&gt;
+Optional&amp;lt;Integer&amp;gt; a = Optional.ofNullable(value1);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 如果传递的参数为null，那么 of 将抛出空指针异常（NullPointerException）&lt;/span&gt;
+Optional&amp;lt;Integer&amp;gt; b = Optional.of(value2);
+System.out.println(tester.sum(a,b));
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">sum</span><span class="hljs-params">(Optional&lt;Integer&gt; a, Optional&lt;Integer&gt; b)</span></span>&#123;</p>
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;// isPresent 用于检查值是否存在&lt;/span&gt;
+
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;First parameter is present: &amp;quot;&lt;/span&gt; + a.isPresent());
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Second parameter is present: &amp;quot;&lt;/span&gt; + b.isPresent());
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 如果当前返回的是传入的默认值，orElse 将返回它&lt;/span&gt;
+Integer value1 = a.orElse(&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Integer(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;));
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// get 用于获得值，条件是这个值必须存在&lt;/span&gt;
+Integer value2 = b.get();
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; value1 + value2;
+</code></pre><p>   &#125;<br>&#125;</code></pre>:hexoPostRenderEscape–&gt;<br>编辑完成后，编译运行一下：</p>
+<p><a href="../images/1b8d608966090998c579420740ad650e_384844522.png" class="gallery-item"><img src="../images/1b8d608966090998c579420740ad650e_384844522.png" srcset="/img/loading.gif" alt=""></a></p>
+<h1 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a>Streams</h1><h2 id="Stream（流）简介"><a href="#Stream（流）简介" class="headerlink" title="Stream（流）简介"></a>Stream（流）简介</h2><p>Stream 是 Java 8 中的一个新的抽象层。通过使用 Stream，你能以类似于 SQL 语句的声明式方式处理数据。</p>
+<p>例如一个典型的 SQL 语句能够自动地返回某些信息，而不用在开发者这一端做任何的计算工作。同样，通过使用 Java 的集合框架，开发者能够利用循环做重复的检查。另外一个关注点是效率，就像多核处理器能够提升效率一样，开发者也可以通过并行化编程来改进工作流程，但是这样很容易出错。</p>
+<p>因此，Stream 的引入是为了解决上述痛点。开发者可以通行声明式数据处理，以及简单地利用多核处理体系而不用写特定的代码。</p>
+<p>说了这么久，Stream 究竟是什么呢？Stream 代表了来自某个源的对象的序列，这些序列支持聚集操作。下面是 Stream 的一些特性：</p>
+<ul>
+<li><strong>元素序列</strong>：Stream 以序列的形式提供了特定类型的元素的集合。根据需求，它可以获得和计算元素，但不会储存任何元素。<br>源：Stream 可以将集合、数组和 I/O 资源作为输入源。</li>
+<li><strong>聚集操作</strong>：Stream 支持诸如 filter、map、limit、reduce 等的聚集操作。</li>
+<li><strong>流水技术</strong>：许多 Stream 操作返回了流本身，故它们的返回值可以以流水的行式存在。这些操作称之为中间操作，并且它们的功能就是负责输入、处理和向目标输出。collect() 方法是一个终结操作，通常存在于流水线操作的末端，来标记流的结束。</li>
+<li><strong>自动迭代</strong>：Stream 的操作可以基于已提供的源元素进行内部的迭代，而集合则需要显式的迭代。</li>
+</ul>
+<h2 id="产生流"><a href="#产生流" class="headerlink" title="产生流"></a>产生流</h2><p>集合的接口有两个方法来产生流：</p>
+<ul>
+<li><code>stream()</code>：该方法返回一个将集合视为源的连续流。</li>
+<li><code>parallelStream()</code>：该方法返回一个将集合视为源的并行流。</li>
+</ul>
+<p>相关的方法介绍</p>
+<ul>
+<li><code>forEach</code>：该方法用于对 Stream 中的每个元素进行迭代操作。下面的代码段演示了如何使用 forEach 方法输出 10 个随机数。</li>
+</ul>
+<pre><code class="hljs java">Random random = <span class="hljs-keyword">new</span> Random();
+random.ints().limit(<span class="hljs-number">10</span>).forEach(System.out::println);</code></pre>
+<ul>
+<li><p><code>map</code>：该方法用于将每个元素映射到对应的结果上。下面的代码段演示了怎样用 map 方法输出唯一的某个数的平方。</p>
+<pre><code class="hljs java">List&lt;Integer&gt; numbers = Arrays.asList(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>);
+<span class="hljs-comment">// get list of unique squares</span>
+List&lt;Integer&gt; squaresList = numbers.stream().map( i -&gt; i*i).distinct().collect(Collectors.toList());</code></pre>
+</li>
+<li><p><code>filter</code>：该方法用于过滤满足条件的元素。下面的代码段演示了怎样输出使用了过滤方法的空字符串数量。</p>
+<pre><code class="hljs java">List&lt;String&gt;strings = Arrays.asList(<span class="hljs-string">&quot;efg&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;abc&quot;</span>, <span class="hljs-string">&quot;bc&quot;</span>, <span class="hljs-string">&quot;ghij&quot;</span>,<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;lmn&quot;</span>);
+<span class="hljs-comment">//get count of empty string</span>
+<span class="hljs-keyword">long</span> count = strings.stream().filter(string -&gt; string.isEmpty()).count();</code></pre>
+</li>
+<li><p><code>limit</code>：该方法用于减少 Stream 的大小。下面的代码段演示了怎样有限制地输出 10 个随机数。</p>
+<pre><code class="hljs java">Random random = <span class="hljs-keyword">new</span> Random();
+random.ints().limit(<span class="hljs-number">10</span>).forEach(System.out::println);</code></pre>
+</li>
+<li><p><code>sorted</code>：该方法用于对 Stream 排序。下面的代码段演示了怎样以有序的形式输出 10 个随机数。</p>
+<pre><code class="hljs java">Random random = <span class="hljs-keyword">new</span> Random();
+random.ints().limit(<span class="hljs-number">10</span>).sorted().forEach(System.out::println);</code></pre>
+</li>
+</ul>
+<h3 id="并行处理"><a href="#并行处理" class="headerlink" title="并行处理"></a>并行处理</h3><p><code>ParallelStream</code> 是 Stream 用于并行处理的一种替代方案。下面的代码段演示了如何使用它来输出空字符串的数量。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java">List&lt;String&gt; strings = Arrays.asList(<span class="hljs-string">&quot;efg&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;abc&quot;</span>, <span class="hljs-string">&quot;bc&quot;</span>, <span class="hljs-string">&quot;ghij&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;lmn&quot;</span>);</p>
+<p><span class="hljs-comment">// 获得空字符串的计数</span><br><span class="hljs-keyword">long</span> count = strings.parallelStream().filter(String::isEmpty).count();</code></pre>:hexoPostRenderEscape–&gt;<br>当然，在连续的 Stream 与并行的 Stream 之间切换是很容易的。</p>
+<h3 id="Collector"><a href="#Collector" class="headerlink" title="Collector"></a>Collector</h3><p>Collector 用于合并 Stream 的元素处理结果。它可以用于返回一个字符串列表。</p>
+<p>Collector 是专门用来作为 Stream 的 collect 方法的参数的，而 Collectors 是作为生产具体 Collector 的工具类。</p>
+<p>下面的代码段演示了如何使用它。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java">List&lt;String&gt;strings = Arrays.asList(<span class="hljs-string">&quot;efg&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;abc&quot;</span>, <span class="hljs-string">&quot;bc&quot;</span>, <span class="hljs-string">&quot;ghij&quot;</span>,<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;lmn&quot;</span>);<br>List&lt;String&gt; filtered = strings.stream().filter(string -&gt; !string.isEmpty()).collect(Collectors.toList());</p>
+<p>System.out.println(<span class="hljs-string">&quot;Filtered List: &quot;</span> + filtered);<br>String mergedString = strings.stream().filter(string -&gt; !string.isEmpty()).collect(Collectors.joining(<span class="hljs-string">&quot;, &quot;</span>));<br>System.out.println(<span class="hljs-string">&quot;Merged String: &quot;</span> + mergedString);</code></pre>:hexoPostRenderEscape–&gt;</p>
+<h3 id="统计工具"><a href="#统计工具" class="headerlink" title="统计工具"></a>统计工具</h3><p>Java 8 引入了用于统计的 Collector 来计算 Stream 处理完成后的所有统计数据。</p>
+<p>下面的代码段演示了如何使用它。<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java">List&lt;Integer&gt; numbers = Arrays.asList(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>);</p>
+<p>IntSummaryStatistics stats = numbers.stream().mapToInt((x) -&gt; x).summaryStatistics();</p>
+<p>System.out.println(<span class="hljs-string">&quot;Highest number in List : &quot;</span> + stats.getMax());<br>System.out.println(<span class="hljs-string">&quot;Lowest number in List : &quot;</span> + stats.getMin());<br>System.out.println(<span class="hljs-string">&quot;Sum of all numbers : &quot;</span> + stats.getSum());<br>System.out.println(<span class="hljs-string">&quot;Average of all numbers : &quot;</span> + stats.getAverage());</code></pre>:hexoPostRenderEscape–&gt;</p>
+<h2 id="一个-Stream-的例子"><a href="#一个-Stream-的例子" class="headerlink" title="一个 Stream 的例子"></a>一个 Stream 的例子</h2><p>下面我们通过一个例子来综合应用上面提到的各个技巧。</p>
+<p>新建一个类 <code>NewFeaturesTester.java</code>，以下是 <code>NewFeaturesTester.java</code> 类中应当输入的代码：<br>&lt;!–hexoPostRenderEscape:<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.Arrays;<br><span class="hljs-keyword">import</span> java.util.IntSummaryStatistics;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.Random;<br><span class="hljs-keyword">import</span> java.util.stream.Collectors;<br><span class="hljs-keyword">import</span> java.util.Map;</p>
+<p><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewFeaturesTester</span></span>&#123;<br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;<br>      System.out.println(<span class="hljs-string">&quot;Using Java 7: &quot;</span>);</p>
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;// 统计空字符串的数量&lt;/span&gt;
+List&amp;lt;String&amp;gt; strings = Arrays.asList(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;efg&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;bc&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;ghij&amp;quot;&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;lmn&amp;quot;&lt;/span&gt;);
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;List: &amp;quot;&lt;/span&gt; +strings);
+&lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; count = getCountEmptyStringUsingJava7(strings);
+
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Empty Strings: &amp;quot;&lt;/span&gt; + count);
+count = getCountLength3UsingJava7(strings);
+
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Strings of length 3: &amp;quot;&lt;/span&gt; + count);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 消除空字符串&lt;/span&gt;
+List&amp;lt;String&amp;gt; filtered = deleteEmptyStringsUsingJava7(strings);
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Filtered List: &amp;quot;&lt;/span&gt; + filtered);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 消除空字符串，同时使用逗号来连接&lt;/span&gt;
+String mergedString = getMergedStringUsingJava7(strings,&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;, &amp;quot;&lt;/span&gt;);
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Merged String: &amp;quot;&lt;/span&gt; + mergedString);
+List&amp;lt;Integer&amp;gt; numbers = Arrays.asList(&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 获得不同数字的平方的列表&lt;/span&gt;
+List&amp;lt;Integer&amp;gt; squaresList = getSquares(numbers);
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Squares List: &amp;quot;&lt;/span&gt; + squaresList);
+List&amp;lt;Integer&amp;gt; integers = Arrays.asList(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;13&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;15&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;17&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;19&lt;/span&gt;);
+
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;List: &amp;quot;&lt;/span&gt; +integers);
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Highest number in List : &amp;quot;&lt;/span&gt; + getMax(integers));
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Lowest number in List : &amp;quot;&lt;/span&gt; + getMin(integers));
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Sum of all numbers : &amp;quot;&lt;/span&gt; + getSum(integers));
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Average of all numbers : &amp;quot;&lt;/span&gt; + getAverage(integers));
+
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 输出 10 个随机数&lt;/span&gt;
+ System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Random Numbers: &amp;quot;&lt;/span&gt;);
+Random random = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Random();
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;; i++)&amp;#123;
+   System.out.println(random.nextInt());
+&amp;#125;
+
+
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 使用 Java 8 的新特性&lt;/span&gt;
+
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Using Java 8: &amp;quot;&lt;/span&gt;);
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;List: &amp;quot;&lt;/span&gt; +strings);
+
+count = strings.stream().filter(string-&amp;gt;string.isEmpty()).count();
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Empty Strings: &amp;quot;&lt;/span&gt; + count);
+
+count = strings.stream().filter(string -&amp;gt; string.length() == &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;).count();
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Strings of length 3: &amp;quot;&lt;/span&gt; + count);
+
+filtered = strings.stream().filter(string -&amp;gt;!string.isEmpty()).collect(Collectors.toList());
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Filtered List: &amp;quot;&lt;/span&gt; + filtered);
+
+mergedString = strings.stream().filter(string -&amp;gt;!string.isEmpty()).collect(Collectors.joining(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;, &amp;quot;&lt;/span&gt;));
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Merged String: &amp;quot;&lt;/span&gt; + mergedString);
+
+squaresList = numbers.stream().map( i -&amp;gt;i*i).distinct().collect(Collectors.toList());
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Squares List: &amp;quot;&lt;/span&gt; + squaresList);
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;List: &amp;quot;&lt;/span&gt; +integers);
+
+IntSummaryStatistics stats = integers.stream().mapToInt((x) -&amp;gt;x).summaryStatistics();
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 输出结果&lt;/span&gt;
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Highest number in List : &amp;quot;&lt;/span&gt; + stats.getMax());
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Lowest number in List : &amp;quot;&lt;/span&gt; + stats.getMin());
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Sum of all numbers : &amp;quot;&lt;/span&gt; + stats.getSum());
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Average of all numbers : &amp;quot;&lt;/span&gt; + stats.getAverage());
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Random Numbers: &amp;quot;&lt;/span&gt;);
+
+random.ints().limit(&lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;).sorted().forEach(System.out::println);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 并行处理&lt;/span&gt;
+count = strings.parallelStream().filter(string -&amp;gt; string.isEmpty()).count();
+System.out.println(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Empty Strings: &amp;quot;&lt;/span&gt; + count);
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 使用 Java 7 版本就提供的 API 来计算空串数量</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getCountEmptyStringUsingJava7</span><span class="hljs-params">(List&lt;String&gt; strings)</span></span>&#123;<br>      <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(String string: strings)&amp;#123;
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(string.isEmpty())&amp;#123;
+      count++;
+   &amp;#125;
+&amp;#125;
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; count;
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 使用 Java 7 版本就提供的 API 来计算长度为 3 字符的字符串数量</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getCountLength3UsingJava7</span><span class="hljs-params">(List&lt;String&gt; strings)</span></span>&#123;<br>      <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(String string: strings)&amp;#123;
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(string.length() == &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;)&amp;#123;
+      count++;
+   &amp;#125;
+&amp;#125;
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; count;
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 使用 Java 7 版本就提供的 API 来删除空串</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;String&gt; <span class="hljs-title">deleteEmptyStringsUsingJava7</span><span class="hljs-params">(List&lt;String&gt; strings)</span></span>&#123;<br>      List&lt;String&gt; filteredList = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(String string: strings)&amp;#123;
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(!string.isEmpty())&amp;#123;
+       filteredList.add(string);
+   &amp;#125;
+&amp;#125;
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; filteredList;
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 使用 Java 7 版本就提供的 API 来获取合并后的字符串</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getMergedStringUsingJava7</span><span class="hljs-params">(List&lt;String&gt; strings, String separator)</span></span>&#123;<br>      StringBuilder stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(String string: strings)&amp;#123;
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(!string.isEmpty())&amp;#123;
+      stringBuilder.append(string);
+      stringBuilder.append(separator);
+   &amp;#125;
+&amp;#125;
+String mergedString = stringBuilder.toString();
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; mergedString.substring(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;, mergedString.length()-&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;);
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 自定义的用于计算数字的平方的方法</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Integer&gt; <span class="hljs-title">getSquares</span><span class="hljs-params">(List&lt;Integer&gt; numbers)</span></span>&#123;<br>      List&lt;Integer&gt; squaresList = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(Integer number: numbers)&amp;#123;
+   Integer square = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Integer(number.intValue() * number.intValue());
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(!squaresList.contains(square))&amp;#123;
+      squaresList.add(square);
+   &amp;#125;
+&amp;#125;
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; squaresList;
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 自定义的用于获得 List 中最大值的方法</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMax</span><span class="hljs-params">(List&lt;Integer&gt; numbers)</span></span>&#123;<br>      <span class="hljs-keyword">int</span> max = numbers.get(<span class="hljs-number">0</span>);</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;i &amp;lt; numbers.size();i++)&amp;#123;
+
+   Integer number = numbers.get(i);
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(number.intValue() &amp;gt; max)&amp;#123;
+      max = number.intValue();
+   &amp;#125;
+&amp;#125;
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; max;
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 自定义的用于获得 List 中最小值的方法</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">(List&lt;Integer&gt; numbers)</span></span>&#123;<br>      <span class="hljs-keyword">int</span> min = numbers.get(<span class="hljs-number">0</span>);</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;i &amp;lt; numbers.size();i++)&amp;#123;
+   Integer number = numbers.get(i);
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(number.intValue() &amp;lt; min)&amp;#123;
+      min = number.intValue();
+   &amp;#125;
+&amp;#125;
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; min;
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 自定义的用于获得 List 中各个数字的和的方法</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(List&lt;Integer&gt; numbers)</span></span>&#123;<br>      <span class="hljs-keyword">int</span> sum = (<span class="hljs-keyword">int</span>)(numbers.get(<span class="hljs-number">0</span>));</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;i &amp;lt; numbers.size();i++)&amp;#123;
+   sum += (&lt;span class=&quot;hljs-keyword&quot;&gt;int&lt;/span&gt;)numbers.get(i);
+&amp;#125;
+&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; sum;
+</code></pre><p>   &#125;</p>
+<p>   <span class="hljs-comment">// 自定义的用于获得 List 中各个数字的平均值的方法</span><br>   <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAverage</span><span class="hljs-params">(List&lt;Integer&gt; numbers)</span></span>&#123;<br>      <span class="hljs-keyword">return</span> getSum(numbers) / numbers.size();<br>   &#125;<br>&#125;</code></pre>:hexoPostRenderEscape–&gt;<br>编辑完成后，编译运行,可以在控制台看到如下图的输出，则说明相关的 API 使用是正确的：</p>
+<p><a href="../images/a05a341aff8781735c372a5b181c9bf5_1555136329.png" class="gallery-item"><img src="../images/a05a341aff8781735c372a5b181c9bf5_1555136329.png" srcset="/img/loading.gif" alt=""></a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/15/OpenCV%E7%9A%84GUI%E7%89%B9%E6%80%A7/">
+                        <span class="hidden-mobile">OpenCV的GUI特性</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
